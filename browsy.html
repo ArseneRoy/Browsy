@@ -1,0 +1,3542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VST Browser</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── ABLETON / MAX MSP DESIGN LANGUAGE ──────────────────────────────────────
+   Palette: Ableton uses warm near-blacks, a specific mid-grey hierarchy,
+   and that iconic orange #FF7700. Max MSP adds cyan highlights + patching grid feel.
+   Typography: tight, functional, no decorative elements. Everything earns its place.
+────────────────────────────────────────────────────────────────────────────── */
+:root {
+  /* Ableton greys — warm, slightly brownish */
+  --bg:          #1a1a1a;
+  --bg-deeper:   #141414;
+  --panel:       #222222;
+  --panel-mid:   #2a2a2a;
+  --panel-hi:    #323232;
+  --border-hard: #111111;
+  --border-soft: #3a3a3a;
+  --border-mid:  #2e2e2e;
+
+  /* Text hierarchy */
+  --text-hi:     #f0f0f0;
+  --text-mid:    #c8c8c8;
+  --text-lo:     #a0a0a0;
+  --text-dim:    #888888;
+
+  /* Ableton orange — the only real color */
+  --orange:      #ff7700;
+  --orange-dim:  #cc5500;
+  --orange-glow: rgba(255,119,0,0.15);
+  --orange-bg:   rgba(255,119,0,0.08);
+
+  /* Max MSP cyan — for M4L devices */
+  --cyan:        #00b4d8;
+  --cyan-dim:    #007a95;
+
+  /* Status colors — muted, professional */
+  --green:       #5a9a5a;
+  --green-hi:    #78c878;
+  --red:         #c85a5a;
+
+  /* Tag accent palette — all desaturated, Ableton-style */
+  --t1: #7a6a5a; /* warm brown */
+  --t2: #5a6a7a; /* cool grey-blue */
+  --t3: #6a7a5a; /* olive */
+  --t4: #7a5a6a; /* mauve */
+  --t5: #5a7a6a; /* teal-grey */
+  --t6: #7a7a5a; /* khaki */
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+
+body {
+  background: var(--bg-deeper);
+  color: var(--text-mid);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 3px; height: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-soft); border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-lo); }
+
+/* ── HEADER ── */
+.setup-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  background: #7c3800;
+  font-size: 12px;
+  color: #ffd9b3;
+  -webkit-app-region: no-drag;
+}
+.setup-banner-text { flex: 1; line-height: 1.4; }
+.setup-banner-btn {
+  flex-shrink: 0;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid #ffb36b;
+  background: transparent;
+  color: #ffb36b;
+  font-size: 11px;
+  cursor: pointer;
+}
+.setup-banner-btn:hover { background: rgba(255,179,107,.15); }
+.setup-banner-dismiss {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: #ffd9b3;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 2px;
+  opacity: .7;
+}
+.setup-banner-dismiss:hover { opacity: 1; }
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 12px;
+  background: var(--bg-deeper);
+  border-bottom: 1px solid var(--border-hard);
+  flex-shrink: 0;
+  gap: 0;
+  -webkit-app-region: drag;
+}
+
+.header button, .header select, .header input { -webkit-app-region: no-drag; }
+
+.logo-block {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-right: 16px;
+}
+
+.logo-text {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.logo-sub {
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--text-lo);
+  margin-left: 1px;
+}
+
+.header-sep {
+  width: 1px;
+  height: 14px;
+  background: var(--border-soft);
+  margin: 0 12px;
+}
+
+.hcount {
+  font-size: 10px;
+  color: var(--text-lo);
+  font-weight: 400;
+}
+
+.hcount b {
+  color: var(--text-mid);
+  font-weight: 500;
+}
+
+.scan-bar {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--orange), transparent);
+  background-size: 200% 100%;
+  animation: scan-slide 1.2s linear infinite;
+  display: none;
+}
+.scan-bar.active { display: block; }
+@keyframes scan-slide {
+  0%   { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.hright {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hdr-btn {
+  padding: 2px 8px;
+  background: var(--panel-hi);
+  border: 1px solid var(--border-soft);
+  color: var(--text-mid);
+  font-family: inherit;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.hdr-btn:hover { background: var(--panel-mid); color: var(--text-hi); }
+
+.m4l-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 7px;
+  background: var(--bg);
+  border: 1px solid var(--border-soft);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.m4l-badge .led {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--green-hi);
+  box-shadow: 0 0 4px var(--green-hi);
+  animation: led-pulse 3s ease-in-out infinite;
+}
+
+@keyframes led-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: .45; }
+}
+
+.m4l-badge .led-txt {
+  color: var(--text-lo);
+  font-size: 9px;
+}
+
+/* ── CATEGORY TABS — Ableton-style segment control ── */
+.cat-row {
+  display: flex;
+  align-items: stretch;
+  height: 28px;
+  background: var(--bg-deeper);
+  border-bottom: 1px solid var(--border-hard);
+  flex-shrink: 0;
+  padding: 0 12px;
+  gap: 1px;
+}
+
+.cat-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-mid);
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 0 12px;
+  cursor: pointer;
+  transition: color .1s, border-color .1s;
+  white-space: nowrap;
+  margin-bottom: -1px;
+}
+
+.cat-tab:hover { color: var(--text-hi); }
+
+.cat-tab.active {
+  color: var(--orange);
+  border-bottom-color: var(--orange);
+}
+
+/* ── SEARCH ── */
+.search-row {
+  padding: 8px 12px 0;
+  flex-shrink: 0;
+}
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--bg);
+  border: 1px solid var(--border-soft);
+  transition: border-color .1s;
+}
+
+.search-box:focus-within {
+  border-color: var(--orange);
+  background: var(--bg-deeper);
+}
+
+.search-box.tag-mode .search-icon { color: var(--orange); }
+
+.search-icon {
+  position: absolute;
+  left: 9px;
+  color: var(--text-lo);
+  font-size: 12px;
+  pointer-events: none;
+  font-style: normal;
+  z-index: 1;
+  transition: color .1s;
+}
+
+.search-inner {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 28px 3px 26px;
+  min-height: 28px;
+  box-sizing: border-box;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 60px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  color: var(--text-hi);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 0;
+  outline: none;
+  letter-spacing: .01em;
+}
+
+.search-input::placeholder { color: var(--text-dim); }
+
+.search-clear {
+  position: absolute;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  color: var(--text-lo);
+  cursor: pointer;
+  font-size: 14px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: color .1s;
+}
+
+.search-clear:hover { color: var(--text-hi); }
+.search-clear.visible { display: flex; }
+
+.search-token {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  background: rgba(255,119,0,.12);
+  border: 1px solid rgba(255,119,0,.35);
+  color: #ff7700;
+  border-radius: 2px;
+  padding: 0 4px 0 5px;
+  font-size: 11px;
+  height: 18px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.search-token .rm {
+  cursor: pointer;
+  opacity: .5;
+  font-size: 11px;
+  line-height: 1;
+  margin-left: 1px;
+}
+
+.search-token .rm:hover { opacity: 1; }
+
+/* ── TAG PANEL ── */
+.tag-panel {
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border-hard);
+  background: var(--bg-deeper);
+}
+
+.tag-panel-trigger {
+  display: flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 12px;
+  cursor: pointer;
+  gap: 8px;
+  transition: background .08s;
+}
+
+.tag-panel-trigger:hover { background: var(--panel); }
+
+.tag-trigger-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+}
+
+.tag-active-pills {
+  display: flex;
+  gap: 3px;
+  flex: 1;
+  overflow: hidden;
+  align-items: center;
+}
+
+.tag-active-pill {
+  font-size: 8px;
+  font-weight: 500;
+  padding: 1px 6px;
+  background: var(--orange-bg);
+  border: 1px solid var(--orange-dim);
+  color: var(--orange);
+  white-space: nowrap;
+  letter-spacing: .04em;
+}
+
+.tag-active-more {
+  font-size: 8px;
+  color: var(--text-lo);
+}
+
+.tag-chevron {
+  color: var(--text-lo);
+  font-size: 8px;
+  transition: transform .15s;
+  margin-left: auto;
+}
+
+.tag-panel.open .tag-chevron { transform: rotate(180deg); }
+
+/* TAG DRAWER */
+.tag-drawer {
+  display: none;
+  padding: 8px 12px 10px;
+  border-top: 1px solid var(--border-mid);
+  background: var(--bg);
+}
+
+.tag-panel.open .tag-drawer { display: block; }
+
+.tag-drawer-search {
+  position: relative;
+  margin-bottom: 7px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tag-drawer-search input { flex: 1; }
+
+.tag-drawer-search input {
+  width: 100%;
+  height: 24px;
+  background: var(--bg-deeper);
+  border: 1px solid var(--border-soft);
+  color: var(--text-hi);
+  font-family: inherit;
+  font-size: 10px;
+  padding: 0 8px 0 24px;
+  outline: none;
+  border-radius: 0;
+  transition: border-color .1s;
+}
+
+.tag-drawer-search input:focus { border-color: var(--border-soft); }
+.tag-drawer-search input::placeholder { color: var(--text-dim); }
+.tag-drawer-search .di { position: absolute; left: 8px; top: 50%; transform: translateY(-50%); color: var(--text-lo); font-size: 10px; font-style: normal; }
+
+.tags-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 3px;
+  height: 94px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.tag-chip {
+  height: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  cursor: pointer;
+  border: 1px solid var(--border-soft);
+  background: var(--panel);
+  color: var(--text-lo);
+  transition: all .08s;
+  white-space: nowrap;
+}
+
+.tag-chip:hover {
+  border-color: var(--border-soft);
+  color: var(--text-mid);
+  background: var(--panel-mid);
+}
+
+.tag-chip.active {
+  background: var(--orange-bg);
+  border-color: var(--orange-dim);
+  color: var(--orange);
+}
+
+.tag-clear-btn {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 9px;
+  color: var(--text-lo);
+  cursor: pointer;
+  padding: 0;
+  letter-spacing: .04em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.tag-clear-btn:hover { color: var(--orange); }
+
+.tag-drawer-resize {
+  height: 4px;
+  margin-top: 6px;
+  cursor: ns-resize;
+  background: var(--border-hard);
+  transition: background .1s;
+}
+.tag-drawer-resize:hover { background: var(--border-soft); }
+
+/* ── TOOLBAR — format + sort ── */
+.toolbar {
+  display: flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 12px;
+  background: var(--bg-deeper);
+  border-bottom: 1px solid var(--border-hard);
+  flex-shrink: 0;
+  gap: 2px;
+}
+
+.fmt-group {
+  display: flex;
+  align-items: stretch;
+  gap: 1px;
+}
+
+.fmt-btn {
+  height: 18px;
+  padding: 0 7px;
+  background: var(--panel);
+  border: 1px solid var(--border-hard);
+  color: var(--text-lo);
+  font-family: inherit;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .08s;
+  border-radius: 0;
+}
+
+.fmt-btn:hover { background: var(--panel-mid); color: var(--text-mid); }
+
+.fmt-btn.active {
+  background: var(--panel-hi);
+  border-color: var(--border-soft);
+  color: var(--text-hi);
+}
+
+/* format type badges get a color hint when active */
+.fmt-btn[data-fmt="vst3"].active { color: #7ab0e0; }
+.fmt-btn[data-fmt="vst2"].active { color: #c8a850; }
+.fmt-btn[data-fmt="au"].active   { color: #78b878; }
+.fmt-btn[data-fmt="m4l"].active  { color: var(--cyan); }
+
+.toolbar-sep { flex: 1; }
+
+.sort-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sort-lbl {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--text-lo);
+}
+
+.sort-sel {
+  height: 18px;
+  background: var(--panel);
+  border: 1px solid var(--border-hard);
+  color: var(--text-mid);
+  font-family: inherit;
+  font-size: 9px;
+  padding: 0 6px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+/* ── LIST COLUMN HEADERS ── */
+.list-cols {
+  display: flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 12px;
+  background: var(--bg-deeper);
+  border-bottom: 1px solid var(--border-hard);
+  flex-shrink: 0;
+  gap: 8px;
+}
+
+.col-hdr {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.col-fav  { width: 16px; flex-shrink: 0; }
+.col-type { width: 32px; flex-shrink: 0; }
+.col-name { flex: 1; min-width: 0; }
+.col-tags { width: 180px; flex-shrink: 0; text-align: right; }
+
+/* ── PLUGIN LIST ── */
+.list-wrap {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--bg-deeper);
+}
+
+.group-header {
+  display: flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 12px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border-hard);
+  border-top: 1px solid var(--border-hard);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  gap: 10px;
+}
+
+.group-header-text {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-lo);
+}
+
+.group-header-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border-mid);
+}
+
+.group-header-count {
+  font-size: 8px;
+  color: var(--text-dim);
+}
+
+.plugin-row {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 12px;
+  cursor: pointer;
+  gap: 8px;
+  border-bottom: 1px solid var(--border-hard);
+  transition: background .06s;
+  position: relative;
+}
+
+.plugin-row::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: transparent;
+  transition: background .06s;
+}
+
+.plugin-row:hover { background: var(--panel); }
+.plugin-row:hover::before { background: var(--border-soft); }
+
+.plugin-row.selected {
+  background: var(--panel-mid);
+}
+
+.plugin-row.selected::before {
+  background: var(--orange);
+}
+
+.plugin-row.selected .plugin-name {
+  color: var(--text-hi);
+}
+
+/* FAV */
+.fav-btn {
+  width: 16px;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 10px;
+  padding: 0;
+  line-height: 1;
+  transition: color .1s;
+  text-align: center;
+}
+
+.fav-btn:hover { color: #c8a028; }
+.fav-btn.on { color: #c8a028; }
+
+/* TYPE BADGE */
+.ptype {
+  width: 32px;
+  flex-shrink: 0;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 2px 0;
+  border: 1px solid;
+}
+
+.ptype.vst3         { color: #7ab0e0; border-color: #2a4860; background: #111c28; }
+.ptype.vst2         { color: #d4b040; border-color: #584818; background: #281e08; }
+.ptype.au           { color: #78c870; border-color: #284828; background: #101810; }
+.ptype.m4l          { color: var(--cyan); border-color: #00384a; background: #001a22; }
+.ptype.instrument,
+.ptype.audio_effect,
+.ptype.midi_effect  { color: #e09060; border-color: #503018; background: #1c1008; }
+
+/* PLUGIN INFO */
+.pinfo { flex: 1; min-width: 0; display: flex; align-items: baseline; gap: 8px; }
+
+.plugin-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-mid);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: .01em;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+.plugin-vendor {
+  font-size: 9px;
+  font-weight: 400;
+  color: var(--text-dim);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* TAGS */
+.ptags {
+  width: 180px;
+  flex-shrink: 0;
+  display: flex;
+  gap: 3px;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.ptag {
+  height: 14px;
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 1px solid;
+  flex-shrink: 0;
+}
+
+/* empty */
+.empty-state {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  gap: 8px;
+  color: var(--text-dim);
+}
+
+.disconnected-state {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 32px;
+  gap: 10px;
+  text-align: center;
+}
+.disconnected-icon {
+  font-size: 28px;
+  color: #444;
+  margin-bottom: 4px;
+}
+.disconnected-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-mid);
+}
+.disconnected-desc {
+  font-size: 11px;
+  color: var(--text-lo);
+  line-height: 1.6;
+  max-width: 280px;
+}
+.disconnected-retry {
+  margin-top: 8px;
+  padding: 5px 16px;
+  background: #252525;
+  border: 1px solid #383838;
+  color: var(--text-mid);
+  font-family: inherit;
+  font-size: 11px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.disconnected-retry:hover { background: #2e2e2e; color: var(--text-hi); }
+
+.empty-icon {
+  font-size: 20px;
+  opacity: .4;
+}
+
+.empty-text {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.empty-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.empty-filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: var(--bg);
+  border: 1px solid var(--border-soft);
+  color: var(--text-lo);
+  border-radius: 2px;
+  padding: 2px 6px 2px 7px;
+  font-size: 10px;
+  cursor: pointer;
+  transition: color .1s, border-color .1s;
+}
+
+.empty-filter-pill:hover { color: var(--text-hi); border-color: var(--text-lo); }
+.empty-filter-pill .rm { opacity: .5; margin-left: 1px; }
+
+.empty-clear {
+  margin-top: 4px;
+  background: none;
+  border: none;
+  color: var(--text-lo);
+  font-size: 10px;
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.empty-clear:hover { color: var(--text-hi); }
+
+/* tag count badge */
+.tag-count {
+  font-size: 9px;
+  opacity: .45;
+  margin-left: 3px;
+}
+
+/* ── BOTTOM BAR ── */
+.bottom-bar {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 10px;
+  background: var(--bg-deeper);
+  border-top: 1px solid var(--border-hard);
+  flex-shrink: 0;
+}
+
+.track-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 8px;
+  height: 22px;
+  background: var(--panel);
+  border: 1px solid var(--border-soft);
+  flex-shrink: 0;
+}
+
+.track-led {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 0 5px var(--orange);
+}
+
+.track-name {
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--text-lo);
+  letter-spacing: .06em;
+}
+
+.sel-block { flex: 1; min-width: 0; }
+
+.sel-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-hi);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sel-name.empty {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--text-dim);
+}
+
+.sel-meta {
+  font-size: 9px;
+  color: var(--text-lo);
+  margin-top: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.load-btn {
+  height: 28px;
+  padding: 0 20px;
+  background: var(--orange);
+  border: none;
+  color: #111;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .1s;
+  flex-shrink: 0;
+  border-radius: 0;
+}
+
+.load-btn:hover { background: #ff9922; }
+.load-btn:active { background: var(--orange-dim); }
+.load-btn:disabled { background: var(--panel-hi); color: var(--text-dim); cursor: default; }
+
+/* ── CONTEXT MENU ── */
+.ctx {
+  position: fixed;
+  z-index: 1000;
+  background: var(--panel-mid);
+  border: 1px solid var(--border-soft);
+  padding: 3px 0;
+  min-width: 170px;
+  display: none;
+  box-shadow: 0 6px 24px rgba(0,0,0,.7), 0 1px 3px rgba(0,0,0,.5);
+}
+
+.ctx.open { display: block; animation: ctx-pop .08s ease; }
+
+@keyframes ctx-pop {
+  from { opacity:0; transform: scale(.97) translateY(-2px); }
+  to   { opacity:1; transform: scale(1)  translateY(0); }
+}
+
+.ctx-item {
+  display: flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 12px;
+  gap: 9px;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: background .06s;
+}
+
+.ctx-item:hover { background: var(--panel-hi); color: var(--text-hi); }
+.ctx-item.ctx-danger { color: #e05050; }
+.ctx-item.ctx-danger:hover { background: rgba(224,80,80,.12); color: #ff7070; }
+
+.ctx-icon {
+  font-size: 10px;
+  color: var(--text-lo);
+  width: 12px;
+  text-align: center;
+  flex-shrink: 0;
+  font-style: normal;
+}
+
+.ctx-sep {
+  height: 1px;
+  background: var(--border-mid);
+  margin: 3px 0;
+}
+
+/* ── SETTINGS MODAL ── */
+/* ── HELP OVERLAY ── */
+.help-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.80);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 120;
+  -webkit-app-region: no-drag;
+  transition: none;
+}
+.help-overlay.open { display: flex; }
+.help-overlay.pos-top    { align-items: flex-start; padding-top: 20px; }
+.help-overlay.pos-bottom { align-items: flex-end; padding-bottom: 20px; }
+
+/* Spotlight highlight — element glows above the overlay */
+.help-highlighted {
+  position: relative !important;
+  z-index: 130 !important;
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px var(--orange), 0 0 20px 6px rgba(255,119,0,0.25) !important;
+  animation: help-pulse 1.5s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes help-pulse {
+  0%, 100% { box-shadow: 0 0 0 2px var(--orange), 0 0 14px 4px rgba(255,119,0,0.20); }
+  50%       { box-shadow: 0 0 0 2px var(--orange), 0 0 26px 8px rgba(255,119,0,0.40); }
+}
+.help-panel {
+  width: 420px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.help-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px 0;
+}
+.help-category {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.help-close {
+  background: none;
+  border: none;
+  color: var(--text-lo);
+  font-size: 18px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+.help-close:hover { color: var(--text-hi); }
+.help-body {
+  padding: 10px 20px 16px;
+  flex: 1;
+}
+.help-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-hi);
+  margin: 6px 0 8px;
+  line-height: 1.25;
+}
+.help-desc {
+  font-size: 12px;
+  color: var(--text-mid);
+  line-height: 1.65;
+  margin-bottom: 12px;
+}
+.help-desc b { color: var(--text-hi); font-weight: 600; }
+.help-desc code {
+  font-family: 'SF Mono', monospace;
+  font-size: 11px;
+  background: #252525;
+  border: 1px solid #383838;
+  border-radius: 3px;
+  padding: 1px 5px;
+  color: var(--orange);
+}
+.help-tip {
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-left: 2px solid var(--orange);
+  border-radius: 3px;
+  padding: 8px 10px;
+  font-size: 11px;
+  color: var(--text-lo);
+  line-height: 1.6;
+}
+.help-tip b { color: var(--text-mid); }
+.help-tip code {
+  font-family: 'SF Mono', monospace;
+  font-size: 10px;
+  color: #c8a850;
+}
+.help-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px 14px;
+  border-top: 1px solid #222;
+}
+.help-dots {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.help-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #333;
+  transition: background .15s, transform .15s;
+  cursor: pointer;
+}
+.help-dot.active { background: var(--orange); transform: scale(1.3); }
+.help-nav {
+  display: flex;
+  gap: 6px;
+}
+.help-nav button {
+  padding: 4px 12px;
+  background: #252525;
+  border: 1px solid #383838;
+  color: var(--text-mid);
+  font-family: inherit;
+  font-size: 11px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.help-nav button:hover { background: #2e2e2e; color: var(--text-hi); }
+.help-nav .help-done {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #000;
+  font-weight: 600;
+}
+.help-nav .help-done:hover { background: #ff9933; }
+
+.settings-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.92);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.settings-overlay.open { display: flex; }
+.settings-panel {
+  background: var(--panel-lo);
+  border: 1px solid var(--border-soft);
+  width: 400px;
+  max-height: 82vh;
+  display: flex;
+  flex-direction: column;
+}
+.settings-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--text-hi);
+  flex-shrink: 0;
+}
+.settings-body {
+  overflow-y: auto;
+  flex: 1;
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.settings-section { display: flex; flex-direction: column; gap: 6px; }
+.settings-section-title {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-lo);
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--border-soft);
+  margin-bottom: 2px;
+}
+.settings-label { font-size: 11px; color: var(--text-mid); margin-top: 2px; }
+.settings-sublabel { font-size: 10px; color: var(--text-lo); margin: 2px 0 6px; }
+.settings-path-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg);
+  border: 1px solid var(--border-soft);
+  padding: 5px 8px;
+  font-size: 11px;
+  color: var(--text-hi);
+}
+.settings-path-row span { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.settings-path-rm { background: none; border: none; color: var(--text-lo); cursor: pointer; font-size: 14px; padding: 0 2px; flex-shrink: 0; line-height: 1; }
+.settings-path-rm:hover { color: var(--text-hi); }
+.settings-add-btn {
+  background: #222;
+  border: 1px solid #383838;
+  border-radius: 4px;
+  color: var(--text-mid);
+  font-size: 11px;
+  font-family: inherit;
+  padding: 5px 10px;
+  cursor: pointer;
+  text-align: left;
+  transition: background .1s, border-color .1s, color .1s;
+}
+.settings-add-btn:hover { background: #2a2a2a; border-color: #555; color: var(--text-hi); }
+.settings-radio-group { display: flex; flex-direction: column; gap: 5px; }
+.settings-radio-group label { display: flex; align-items: center; gap: 7px; font-size: 11px; color: var(--text-mid); cursor: pointer; }
+.settings-radio-group input[type=radio] { accent-color: var(--orange); }
+.settings-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.settings-config-path { font-size: 9px; color: var(--text-lo); font-family: monospace; word-break: break-all; margin-top: 6px; opacity: .6; }
+.settings-install-status { font-size: 11px; margin-top: 6px; min-height: 16px; }
+.settings-install-status.ok  { color: #4caf50; }
+.settings-install-status.err { color: #f44336; }
+.settings-priority-list { display: flex; flex-direction: column; gap: 3px; }
+.settings-priority-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg);
+  border: 1px solid var(--border-soft);
+  padding: 5px 8px;
+  font-size: 11px;
+  color: var(--text-hi);
+}
+.settings-priority-rank { color: var(--text-lo); font-size: 10px; width: 14px; flex-shrink: 0; }
+.settings-priority-label { flex: 1; }
+.settings-priority-btns { display: flex; flex-direction: column; gap: 1px; }
+.settings-priority-btn {
+  background: none;
+  border: none;
+  color: var(--text-lo);
+  cursor: pointer;
+  font-size: 9px;
+  line-height: 1;
+  padding: 1px 3px;
+  font-family: inherit;
+}
+.settings-priority-btn:hover { color: var(--text-hi); }
+.settings-priority-btn:disabled { opacity: .2; cursor: default; }
+.settings-vocab { display: flex; flex-wrap: wrap; gap: 4px; }
+.settings-vocab-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: var(--bg);
+  border: 1px solid var(--border-soft);
+  color: var(--text-mid);
+  border-radius: 2px;
+  padding: 2px 5px 2px 7px;
+  font-size: 10px;
+  cursor: pointer;
+  transition: border-color .1s, color .1s;
+}
+.settings-vocab-tag:hover { border-color: #c04040; color: #e06060; }
+.settings-vocab-tag .rm { font-size: 10px; opacity: .5; margin-left: 1px; }
+.settings-vocab-add {
+  width: 100%;
+  height: 26px;
+  background: var(--bg);
+  border: 1px solid var(--border-soft);
+  color: var(--text-hi);
+  font-family: inherit;
+  font-size: 11px;
+  padding: 0 8px;
+  outline: none;
+  margin-top: 2px;
+  box-sizing: border-box;
+}
+.settings-vocab-add:focus { border-color: var(--orange); }
+.settings-vocab-add::placeholder { color: var(--text-dim); }
+
+.settings-danger { border-top: 1px solid var(--border-soft); padding-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+.settings-danger-title { font-size: 9px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #c04040; }
+.settings-reset-btn {
+  background: none;
+  border: 1px solid #6b2a2a;
+  color: #c04040;
+  font-family: inherit;
+  font-size: 11px;
+  padding: 6px 10px;
+  cursor: pointer;
+  text-align: left;
+  transition: background .1s, border-color .1s;
+}
+.settings-reset-btn:hover { background: rgba(192,64,64,.08); border-color: #c04040; }
+.settings-reset-confirm {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(192,64,64,.07);
+  border: 1px solid #6b2a2a;
+  padding: 10px;
+}
+.settings-reset-confirm.visible { display: flex; }
+.settings-reset-warning { font-size: 11px; color: #e07070; }
+.settings-reset-warning b { color: #e04040; }
+.settings-reset-actions { display: flex; gap: 6px; }
+.settings-reset-confirm-btn {
+  background: #6b2a2a;
+  border: 1px solid #c04040;
+  color: #f08080;
+  font-family: inherit;
+  font-size: 11px;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: background .1s;
+}
+.settings-reset-confirm-btn:hover { background: #8b3030; }
+.settings-reset-cancel-btn {
+  background: none;
+  border: 1px solid var(--border-soft);
+  color: var(--text-lo);
+  font-family: inherit;
+  font-size: 11px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+.settings-reset-cancel-btn:hover { color: var(--text-hi); }
+
+/* ── TAG EDITOR MODAL ── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.72);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay.open { display: flex; }
+
+.modal {
+  width: 360px;
+  background: var(--panel-mid);
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 20px 60px rgba(0,0,0,.8);
+  animation: modal-rise .14s ease;
+}
+
+@keyframes modal-rise {
+  from { opacity:0; transform:translateY(6px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.modal-head {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 12px;
+  border-bottom: 1px solid var(--border-hard);
+  gap: 8px;
+}
+
+.modal-title-block { flex: 1; min-width: 0; }
+
+.modal-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-hi);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.modal-subtitle {
+  font-size: 8px;
+  color: var(--text-lo);
+  margin-top: 1px;
+  letter-spacing: .04em;
+}
+
+.modal-x {
+  background: none;
+  border: none;
+  color: var(--text-lo);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0;
+  line-height: 1;
+  width: 20px;
+  text-align: center;
+}
+
+.modal-x:hover { color: var(--text-hi); }
+
+.modal-body { padding: 12px; }
+
+.modal-search {
+  width: 100%;
+  height: 28px;
+  background: var(--bg);
+  border: 1px solid var(--border-soft);
+  color: var(--text-hi);
+  font-family: inherit;
+  font-size: 11px;
+  padding: 0 10px;
+  outline: none;
+  margin-bottom: 8px;
+  border-radius: 0;
+  transition: border-color .1s;
+}
+
+.modal-search:focus { border-color: var(--orange); }
+.modal-search::placeholder { color: var(--text-dim); }
+
+.modal-hint {
+  font-size: 9px;
+  color: var(--text-lo);
+  margin-bottom: 8px;
+  min-height: 14px;
+  letter-spacing: .02em;
+}
+
+.modal-hint b { color: var(--orange); font-weight: 600; }
+
+.modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  max-height: 160px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.modal-tag-pill {
+  height: 22px;
+  display: flex;
+  align-items: center;
+  padding: 0 9px;
+  gap: 4px;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  cursor: pointer;
+  background: var(--panel);
+  border: 1px solid var(--border-soft);
+  color: var(--text-lo);
+  transition: all .08s;
+}
+
+.modal-tag-pill:hover {
+  background: var(--panel-hi);
+  color: var(--text-mid);
+}
+
+.modal-tag-pill.assigned {
+  background: var(--orange-bg);
+  border-color: var(--orange-dim);
+  color: var(--orange);
+}
+
+.modal-tag-pill.new-tag {
+  background: rgba(0,180,216,.08);
+  border-color: rgba(0,180,216,.3);
+  color: var(--cyan);
+  border-style: dashed;
+}
+
+.modal-tag-pill.new-tag:hover {
+  background: rgba(0,180,216,.14);
+}
+
+.modal-foot {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  padding: 8px 12px;
+  border-top: 1px solid var(--border-hard);
+}
+
+.btn-secondary {
+  height: 26px;
+  padding: 0 12px;
+  background: none;
+  border: 1px solid var(--border-soft);
+  color: var(--text-lo);
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 0;
+  transition: all .08s;
+}
+
+.btn-secondary:hover { color: var(--text-mid); border-color: var(--text-lo); }
+
+.btn-primary {
+  height: 26px;
+  padding: 0 14px;
+  background: var(--orange);
+  border: none;
+  color: #111;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 0;
+  transition: background .08s;
+}
+
+.btn-primary:hover { background: #ff9922; }
+
+mark {
+  background: rgba(255,119,0,.2);
+  color: var(--orange);
+  border-radius: 0;
+}
+
+/* ── SHORTCUTS ROW ── */
+.shortcuts-row {
+  display: flex;
+  padding: 5px 12px;
+  gap: 3px;
+  flex-shrink: 0;
+  background: var(--bg-deeper);
+  border-bottom: 1px solid var(--border-hard);
+}
+
+.shortcut-slot {
+  flex: 1;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 5px;
+  background: var(--panel);
+  border: 1px solid var(--border-hard);
+  cursor: pointer;
+  transition: background .06s, border-color .06s;
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.shortcut-slot:hover { background: var(--panel-mid); border-color: var(--border-soft); }
+.shortcut-slot.filled:hover { border-color: var(--orange-dim); }
+
+.shortcut-slot.triggered {
+  background: var(--orange-bg);
+  border-color: var(--orange-dim);
+}
+
+.shortcut-slot.drag-over {
+  background: var(--panel-mid);
+  border-color: var(--orange);
+}
+
+.sc-num {
+  font-size: 7px;
+  font-weight: 700;
+  color: var(--text-dim);
+  flex-shrink: 0;
+  letter-spacing: .04em;
+  min-width: 8px;
+}
+
+.shortcut-slot.filled .sc-num { color: var(--text-lo); }
+
+.sc-type {
+  font-size: 6px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  padding: 1px 3px;
+  border: 1px solid;
+  flex-shrink: 0;
+}
+
+.sc-type.vst3 { color: #7ab0e0; border-color: #2a4860; background: #111c28; }
+.sc-type.vst2 { color: #d4b040; border-color: #584818; background: #281e08; }
+.sc-type.au   { color: #78c870; border-color: #284828; background: #101810; }
+.sc-type.m4l  { color: var(--cyan); border-color: #00384a; background: #001a22; }
+.sc-type.instrument,
+.sc-type.audio_effect,
+.sc-type.midi_effect { color: #e09060; border-color: #503018; background: #1c1008; }
+
+.sc-name {
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--text-mid);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  flex: 1;
+  letter-spacing: .01em;
+}
+
+.shortcut-slot.empty .sc-name {
+  color: var(--text-dim);
+  font-weight: 400;
+  font-size: 8px;
+}
+
+/* shortcut context menu */
+.sc-ctx {
+  position: fixed;
+  z-index: 1000;
+  background: var(--panel-mid);
+  border: 1px solid var(--border-soft);
+  padding: 3px 0;
+  min-width: 200px;
+  display: none;
+  box-shadow: 0 6px 24px rgba(0,0,0,.7), 0 1px 3px rgba(0,0,0,.5);
+}
+
+.sc-ctx.open { display: block; animation: ctx-pop .08s ease; }
+
+/* ── WINDOW CONTROLS (Electron frameless) ── */
+.win-controls {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: auto;
+  -webkit-app-region: no-drag;
+}
+
+.win-btn {
+  width: 22px;
+  height: 18px;
+  background: none;
+  border: 1px solid var(--border-mid);
+  color: var(--text-lo);
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: all .08s;
+}
+
+.win-btn:hover { background: var(--panel-hi); color: var(--text-mid); border-color: var(--border-soft); }
+.win-close:hover { background: var(--red); color: #fff; border-color: var(--red); }
+</style>
+<script src="plugin-tags.js"></script>
+</head>
+<body>
+
+<!-- SETUP BANNER -->
+<div class="setup-banner" id="setup-banner" style="display:none">
+  <span class="setup-banner-text">Ableton Remote Script not found — Browsy won't work until it's installed.</span>
+  <button class="setup-banner-btn" id="setup-banner-install">Install now</button>
+  <button class="setup-banner-dismiss" id="setup-banner-dismiss">×</button>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo-block">
+    <span class="logo-text" style="color:var(--orange)">BROWSY</span><span class="logo-sub">plugin browser</span>
+  </div>
+  <div class="header-sep"></div>
+  <div class="hcount"><b id="visible-count">0</b> plugins</div>
+  <div class="hright">
+    <input type="file" id="import-file" accept=".json,.txt" style="display:none">
+  </div>
+  <div class="win-controls" id="win-controls" style="display:none">
+    <button class="hdr-btn" id="help-open-btn">?</button>
+    <button class="hdr-btn" id="settings-open-btn">Settings</button>
+    <button class="win-btn" id="win-minimize">−</button>
+    <button class="win-btn win-close" id="win-close">×</button>
+  </div>
+</div>
+
+<!-- CATEGORY TABS -->
+<div class="cat-row">
+  <button class="cat-tab active" data-cat="all">All</button>
+  <button class="cat-tab" data-cat="audio-fx">Audio FX</button>
+  <button class="cat-tab" data-cat="instruments">Instruments</button>
+  <button class="cat-tab" data-cat="midi-fx">MIDI FX</button>
+  <button class="cat-tab" data-cat="m4l">Max for Live</button>
+</div>
+
+<!-- SEARCH -->
+<div class="search-row">
+  <div class="search-box" id="search-box">
+    <i class="search-icon" id="search-icon">⌕</i>
+    <div class="search-inner" id="search-inner">
+      <input class="search-input" id="search" type="text" placeholder="Search plugins..." autocomplete="off" spellcheck="false">
+    </div>
+    <button class="search-clear" id="search-clear">×</button>
+  </div>
+</div>
+
+<!-- SHORTCUTS -->
+<div class="shortcuts-row" id="shortcuts-row">
+  <div class="shortcut-slot empty" data-slot="0"><span class="sc-num">1</span><span class="sc-name">—</span></div>
+  <div class="shortcut-slot empty" data-slot="1"><span class="sc-num">2</span><span class="sc-name">—</span></div>
+  <div class="shortcut-slot empty" data-slot="2"><span class="sc-num">3</span><span class="sc-name">—</span></div>
+  <div class="shortcut-slot empty" data-slot="3"><span class="sc-num">4</span><span class="sc-name">—</span></div>
+  <div class="shortcut-slot empty" data-slot="4"><span class="sc-num">5</span><span class="sc-name">—</span></div>
+  <div class="shortcut-slot empty" data-slot="5"><span class="sc-num">6</span><span class="sc-name">—</span></div>
+</div>
+
+<!-- TAG PANEL -->
+<div class="tag-panel" id="tag-panel">
+  <div class="tag-panel-trigger" id="tag-trigger">
+    <span class="tag-trigger-label">Tags</span>
+    <button class="tag-clear-btn" id="tags-clear">Clear all</button>
+    <div class="tag-active-pills" id="tag-active-pills"></div>
+    <span class="tag-chevron" id="tag-chevron">▾</span>
+  </div>
+  <div class="tag-drawer" id="tag-drawer">
+    <div class="tag-drawer-search">
+      <i class="di">⌕</i>
+      <input type="text" id="tag-search" placeholder="Filter tags..." autocomplete="off">
+    </div>
+    <div class="tags-cloud" id="tags-cloud"></div>
+    <div class="tag-drawer-resize" id="tag-drawer-resize"></div>
+  </div>
+</div>
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <div class="fmt-group">
+    <button class="fmt-btn active" data-fmt="all">All</button>
+    <button class="fmt-btn" data-fmt="vst3">VST3</button>
+    <button class="fmt-btn" data-fmt="vst2">VST2</button>
+    <button class="fmt-btn" data-fmt="au">AU</button>
+    <button class="fmt-btn" data-fmt="m4l">M4L</button>
+  </div>
+  <div class="toolbar-sep"></div>
+  <div class="sort-group">
+    <span class="sort-lbl">Sort</span>
+    <select class="sort-sel" id="sort-sel">
+      <option value="name">Name</option>
+      <option value="recent">Recent</option>
+      <option value="fav">Favorites</option>
+    </select>
+  </div>
+</div>
+
+<!-- LIST COLUMN HEADERS -->
+<div class="list-cols">
+  <div class="col-hdr col-fav"></div>
+  <div class="col-hdr col-type">Type</div>
+  <div class="col-hdr col-name">Name</div>
+  <div class="col-hdr col-tags">Tags</div>
+</div>
+
+<!-- SCAN PROGRESS BAR -->
+<div class="scan-bar" id="scan-bar"></div>
+
+<!-- PLUGIN LIST -->
+<div class="list-wrap" id="list-wrap">
+  <div class="empty-state" id="empty-state">
+    <div class="empty-icon">◈</div>
+    <div class="empty-text">No plugins match</div>
+    <div class="empty-filters" id="empty-filters"></div>
+    <button class="empty-clear" id="empty-clear">Clear all filters</button>
+  </div>
+  <div class="disconnected-state" id="disconnected-state" style="display:none">
+    <div class="disconnected-icon">⊘</div>
+    <div class="disconnected-title">Not connected to Ableton</div>
+    <div class="disconnected-desc">Make sure Ableton is open and Browsy is set as a Control Surface in Preferences → Link/MIDI.</div>
+    <button class="disconnected-retry" id="disconnected-retry">Retry</button>
+  </div>
+</div>
+
+<!-- BOTTOM BAR -->
+<div class="bottom-bar">
+  <div class="track-info" id="track-info">
+    <div class="track-led"></div>
+    <span class="track-name" id="track-name">1 — MIDI</span>
+  </div>
+  <div class="sel-block">
+    <div class="sel-name empty" id="sel-name">No plugin selected</div>
+    <div class="sel-meta" id="sel-meta"></div>
+  </div>
+  <button class="load-btn" id="load-btn" disabled>Load →</button>
+</div>
+
+<!-- CONTEXT MENU -->
+<div class="ctx" id="ctx">
+  <div class="ctx-item" id="ctx-tags"><i class="ctx-icon">⊕</i>Edit Tags</div>
+  <div class="ctx-item" id="ctx-fav"><i class="ctx-icon">★</i><span id="ctx-fav-label">Add to Favorites</span></div>
+  <div class="ctx-sep"></div>
+  <div class="ctx-item" id="ctx-load"><i class="ctx-icon">→</i>Load on Track</div>
+  <div class="ctx-sep"></div>
+  <div class="ctx-item ctx-danger" id="ctx-remove"><i class="ctx-icon">⊗</i>Remove from database</div>
+</div>
+
+<!-- SHORTCUT CONTEXT MENU -->
+<div class="sc-ctx" id="sc-ctx">
+  <div class="ctx-item" id="sc-ctx-assign"><i class="ctx-icon">⊕</i><span id="sc-ctx-label">Assign plugin</span></div>
+  <div class="ctx-sep"></div>
+  <div class="ctx-item" id="sc-ctx-clear"><i class="ctx-icon">✕</i>Clear slot</div>
+</div>
+
+<!-- HELP MODAL -->
+<div class="help-overlay" id="help-overlay">
+  <div class="help-panel">
+    <div class="help-head">
+      <span class="help-category" id="help-category"></span>
+      <button class="help-close" id="help-close">×</button>
+    </div>
+    <div class="help-body">
+      <div class="help-title" id="help-title"></div>
+      <div class="help-desc" id="help-desc"></div>
+      <div class="help-tip" id="help-tip"></div>
+    </div>
+    <div class="help-foot">
+      <div class="help-dots" id="help-dots"></div>
+      <div class="help-nav">
+        <button id="help-prev">← Back</button>
+        <button id="help-next">Next →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SETTINGS MODAL -->
+<div class="settings-overlay" id="settings-overlay">
+  <div class="settings-panel">
+    <div class="settings-head">
+      <span>Settings</span>
+      <button class="modal-x" id="settings-close">×</button>
+    </div>
+    <div class="settings-body">
+
+      <div class="settings-section">
+        <div class="settings-section-title">Max for Live</div>
+        <div class="settings-label">Folders scanned for .amxd files</div>
+        <div id="settings-m4l-paths"></div>
+        <button class="settings-add-btn" id="settings-m4l-add">+ Add folder</button>
+        <div class="settings-label" style="margin-top:10px">Vendor label</div>
+        <div class="settings-radio-group" id="settings-vendor-group">
+          <label><input type="radio" name="m4l-vendor" value="parent"> Use parent folder name</label>
+          <label><input type="radio" name="m4l-vendor" value="blank"> Leave blank</label>
+        </div>
+        <div class="settings-config-path" id="settings-config-path"></div>
+        <div class="settings-label" style="margin-top:14px">Ableton Remote Script</div>
+        <button class="settings-add-btn" id="settings-install-btn">Install Remote Script…</button>
+        <div class="settings-install-status" id="settings-install-status"></div>
+        <div class="settings-label" style="margin-top:14px">Max for Live Device</div>
+        <div class="settings-sublabel">Installs <b>Browsy Connect</b> in your User Library (Audio Effects → Max Audio Effect)</div>
+        <button class="settings-add-btn" id="settings-m4l-btn">Install Browsy Connect…</button>
+        <div class="settings-install-status" id="settings-m4l-status"></div>
+        <div class="settings-label" style="margin-top:14px">Hammerspoon</div>
+        <div class="settings-sublabel">Adds a shortcut: press <code style="font-size:10px;background:#252525;border:1px solid #383838;border-radius:3px;padding:1px 5px;color:var(--orange)">@</code> in Ableton to open Browsy</div>
+        <button class="settings-add-btn" id="settings-hs-btn">Install Hammerspoon script…</button>
+        <div class="settings-install-status" id="settings-hs-status"></div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-title">Keyboard Layout</div>
+        <div class="settings-label">Keys used to trigger shortcut slots (1–6)</div>
+        <div class="settings-radio-group" id="settings-layout-group">
+          <label><input type="radio" name="keyboard-layout" value="azerty"> AZERTY — &amp; é " ' ( -</label>
+          <label><input type="radio" name="keyboard-layout" value="qwerty"> QWERTY — 1 2 3 4 5 6</label>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-title">Format Priority</div>
+        <div class="settings-label">Preferred format when a plugin exists in multiple formats</div>
+        <div class="settings-priority-list" id="settings-priority-list"></div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-title">Data</div>
+        <div class="settings-label">Plugins</div>
+        <button class="settings-add-btn" id="settings-rescan-btn">Rescan plugins</button>
+        <div class="settings-label" style="margin-top:10px">Tag data</div>
+        <div class="settings-row">
+          <button class="hdr-btn" id="export-btn">Export for AI</button>
+          <button class="hdr-btn" id="import-btn">Import tags</button>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-title">Tag vocabulary</div>
+        <div class="settings-vocab" id="settings-vocab"></div>
+        <input class="settings-vocab-add" id="settings-vocab-add" placeholder="Type a tag name, Enter to add…" autocomplete="off" spellcheck="false">
+      </div>
+
+      <div class="settings-danger">
+        <div class="settings-danger-title">Danger zone</div>
+        <button class="settings-reset-btn" id="settings-reset-btn">Reset to factory settings…</button>
+        <div class="settings-reset-confirm" id="settings-reset-confirm">
+          <div class="settings-reset-warning"><b>This is permanent and cannot be undone.</b><br>All tags, favorites, shortcuts, and settings will be erased.</div>
+          <div class="settings-reset-actions">
+            <button class="settings-reset-confirm-btn" id="settings-reset-confirm-btn">Yes, erase everything</button>
+            <button class="settings-reset-cancel-btn" id="settings-reset-cancel-btn">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- TAG EDITOR MODAL -->
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="modal-title-block">
+        <div class="modal-title" id="modal-plugin-name">—</div>
+        <div class="modal-subtitle">Click to toggle · right-click to remove · type to create</div>
+      </div>
+      <button class="modal-x" id="modal-close">×</button>
+    </div>
+    <div class="modal-body">
+      <input class="modal-search" id="tag-edit-search" placeholder="Search or type to create new tag..." autocomplete="off" spellcheck="false">
+      <div class="modal-hint" id="modal-hint"></div>
+      <div class="modal-tags" id="modal-tags-grid"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-secondary" id="modal-cancel">Cancel</button>
+      <button class="btn-primary" id="modal-save">Save</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─────────────────────────────────────────────────────────────────────────────
+// TAG SYSTEM
+// ─────────────────────────────────────────────────────────────────────────────
+let ALL_TAGS = [
+  'additive','ambient','analog','arp',
+  'bass','bitcrusher','brass','bus',
+  'choir','chorus','clean','clipper','comp','convolution',
+  'de-esser','delay','distortion','drum','dynamic',
+  'eq','exciter',
+  'filter','flanger','fm','formant',
+  'gate','glitch','granular',
+  'harmonic','imager',
+  'keys',
+  'lead','limiter','lo-fi','looper',
+  'mastering','mix','mod','multi-fx','multiband',
+  'noise',
+  'organ',
+  'pad','panning','parallel','percussive','phaser','physical-modeling','piano','pitch','plate','pluck',
+  'reverb','ring-mod','room',
+  'sample-based','sampler','saturation','sequencer','sidechain','spectral','spring','stretch','strings','synth',
+  'tape','transient','tremolo','tube',
+  'utility',
+  'vintage','vocal','vocoder',
+  'wavetable','widener','woodwind'
+].sort();
+
+// Ableton-palette tag colors — warm, desaturated
+const TAG_PALETTE = [
+  {bg:'rgba(120,90,60,.18)',  border:'rgba(120,90,60,.45)',  color:'#c8a878'}, // warm
+  {bg:'rgba(60,90,120,.18)',  border:'rgba(60,90,120,.45)',  color:'#7ab0d8'}, // cool
+  {bg:'rgba(80,110,60,.18)',  border:'rgba(80,110,60,.45)',  color:'#90c870'}, // green
+  {bg:'rgba(110,60,90,.18)',  border:'rgba(110,60,90,.45)',  color:'#d88090'}, // rose
+  {bg:'rgba(60,110,100,.18)', border:'rgba(60,110,100,.45)', color:'#70c8b8'}, // teal
+  {bg:'rgba(110,100,60,.18)', border:'rgba(110,100,60,.45)', color:'#c8c070'}, // gold
+  {bg:'rgba(90,60,120,.18)',  border:'rgba(90,60,120,.45)',  color:'#a890e0'}, // purple
+  {bg:'rgba(120,70,50,.18)',  border:'rgba(120,70,50,.45)',  color:'#e09060'}, // terracotta
+];
+
+function tagHash(tag) {
+  let h = 0;
+  for (let i = 0; i < tag.length; i++) h = (h * 31 + tag.charCodeAt(i)) & 0xffff;
+  return TAG_PALETTE[h % TAG_PALETTE.length];
+}
+
+function tagStyle(tag) {
+  const c = tagHash(tag);
+  return `background:${c.bg};border-color:${c.border};color:${c.color};`;
+}
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// DATA
+// ─────────────────────────────────────────────────────────────────────────────
+const RAW = [];
+
+// ── Scan cache ───────────────────────────────────────────────────────────────
+const SCAN_CACHE_KEY = 'vst-scan-cache';
+function saveScanCache(rawPlugins) {
+  try {
+    localStorage.setItem(SCAN_CACHE_KEY, JSON.stringify({
+      ts: Date.now(),
+      plugins: rawPlugins.map(p => ({ name: p.name, type: p.type, vendor: p.vendor || '', cat: p.cat || '' }))
+    }));
+  } catch(e) {}
+}
+function loadScanCache() {
+  try {
+    const data = JSON.parse(localStorage.getItem(SCAN_CACHE_KEY) || 'null');
+    return data?.plugins ?? null;
+  } catch(e) { return null; }
+}
+
+function saveTags(){
+  const map={};
+  plugins.forEach(p=>{ map[p.name]={tags:p.tags, favorite:p.favorite, lastUsed:p.lastUsed}; });
+  localStorage.setItem('vst-tags', JSON.stringify(map));
+}
+function applysavedTags(){
+  const saved=JSON.parse(localStorage.getItem('vst-tags')||'{}');
+  plugins.forEach(p=>{
+    const s=saved[p.name];
+    if(s){ if(s.tags?.length) p.tags=s.tags; if(s.favorite) p.favorite=s.favorite; if(s.lastUsed) p.lastUsed=s.lastUsed; }
+  });
+}
+
+function lookupDefaultTags(name) {
+  if (typeof DEFAULT_TAGS === 'undefined') return null;
+  const lower = name.toLowerCase();
+  if (DEFAULT_TAGS[lower]) return DEFAULT_TAGS[lower];
+  // strip parenthetical suffixes like " (m)", " (stereo)", " (m->s)"
+  const stripped = lower.replace(/\s*[\(\[].*$/, '').trim();
+  return DEFAULT_TAGS[stripped] || null;
+}
+
+
+let plugins = RAW.map((p, i) => ({...p, id:i, tags: lookupDefaultTags(p.name) || [], favorite:false, lastUsed:null}));
+applysavedTags();
+
+// ─────────────────────────────────────────────────────────────────────────────
+// STATE
+// ─────────────────────────────────────────────────────────────────────────────
+const TYPE_LABEL = { vst3:'VST3', vst2:'VST2', au:'AU', m4l:'M4L', instrument:'ABL', audio_effect:'ABL', midi_effect:'ABL', plugin:'PLUG' };
+function loadUIState(){
+  try {
+    const s = JSON.parse(localStorage.getItem('vst-ui-state') || '{}');
+    return {
+      query: '',
+      cat: s.cat || 'all',
+      format: s.format || 'all',
+      sort: s.sort || 'name',
+      activeTags: new Set(Array.isArray(s.activeTags) ? s.activeTags : []),
+      searchTags: [],
+      selected: null
+    };
+  } catch(e) {
+    return {query:'', cat:'all', format:'all', sort:'name', activeTags:new Set(), searchTags:[], selected:null};
+  }
+}
+
+function saveUIState(){
+  try {
+    localStorage.setItem('vst-ui-state', JSON.stringify({
+      cat: state.cat,
+      format: state.format,
+      sort: state.sort,
+      activeTags: [...state.activeTags]
+    }));
+  } catch(e) {}
+}
+
+let state = loadUIState();
+let tagModePartial = ''; // the actually-typed part (excludes ghost suggestion)
+let tagSuggestionIndex = 0; // current index when cycling suggestions with arrow keys
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FILTER / SORT
+// ─────────────────────────────────────────────────────────────────────────────
+function lev(a,b){
+  const m=[];const al=a.length,bl=b.length;
+  for(let i=0;i<=bl;i++)m[i]=[i];for(let j=0;j<=al;j++)m[0][j]=j;
+  for(let i=1;i<=bl;i++)for(let j=1;j<=al;j++)
+    m[i][j]=b[i-1]===a[j-1]?m[i-1][j-1]:1+Math.min(m[i-1][j-1],m[i][j-1],m[i-1][j]);
+  return m[bl][al];
+}
+
+function filterPlugins(){
+  let list=[...plugins];
+  if(state.cat!=='all') list=list.filter(p=>p.cat===state.cat);
+  if(state.format!=='all') list=list.filter(p=>p.type===state.format);
+  const allTagFilters=new Set([...state.activeTags,...state.searchTags]);
+  if(allTagFilters.size) list=list.filter(p=>[...allTagFilters].every(t=>p.tags.includes(t)));
+  const q=state.query.toLowerCase().trim();
+  if(q){
+    list=list.filter(p=>p.name.toLowerCase().includes(q)||p.vendor.toLowerCase().includes(q))
+      .map(p=>{const n=p.name.toLowerCase();const pri=n.startsWith(q)?0:n.includes(q)?1:2;return{...p,_pri:pri,_d:lev(q,n)};})
+      .sort((a,b)=>a._pri-b._pri||a._d-b._d||a.name.localeCompare(b.name));
+  } else {
+    if(state.sort==='name') list.sort((a,b)=>a.name.localeCompare(b.name));
+    if(state.sort==='fav')  list.sort((a,b)=>b.favorite-a.favorite||a.name.localeCompare(b.name));
+    if(state.sort==='recent') list.sort((a,b)=>(b.lastUsed||0)-(a.lastUsed||0)||a.name.localeCompare(b.name));
+  }
+  return list;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TAG PANEL RENDER
+// ─────────────────────────────────────────────────────────────────────────────
+function getTagCounts(){
+  // Count tags against list filtered by cat/format/query only — not by tags
+  // so counts reflect "how many plugins have this tag" in the current view
+  let list=[...plugins];
+  if(state.cat!=='all') list=list.filter(p=>p.cat===state.cat);
+  if(state.format!=='all') list=list.filter(p=>p.type===state.format);
+  const q=state.query.toLowerCase().trim();
+  if(q) list=list.filter(p=>p.name.toLowerCase().includes(q)||p.vendor.toLowerCase().includes(q));
+  const counts=new Map();
+  list.forEach(p=>p.tags.forEach(t=>counts.set(t,(counts.get(t)||0)+1)));
+  return counts;
+}
+
+function getPoolTags(){
+  let list=filterPlugins();
+  const available=new Set(); list.forEach(p=>p.tags.forEach(t=>available.add(t)));
+  state.activeTags.forEach(t=>available.add(t));
+  state.searchTags.forEach(t=>available.add(t));
+  return [...available].sort();
+}
+
+function renderTagPanel(){
+  const cloud=document.getElementById('tags-cloud');
+  const q=document.getElementById('tag-search').value.toLowerCase().trim();
+  const searchInput=document.getElementById('search');
+  const tagModeQ=searchInput.value.startsWith('#')?tagModePartial:'';
+  const filterQ=tagModeQ||q;
+  const counts=getTagCounts();
+  const tags=getPoolTags()
+    .filter(tag=>!filterQ||tag.includes(filterQ))
+    .sort((a,b)=>a.localeCompare(b));
+  cloud.innerHTML='';
+  tags.forEach(tag=>{
+    const isActive=state.activeTags.has(tag)||state.searchTags.includes(tag);
+    const count=counts.get(tag)||0;
+    const chip=document.createElement('div');
+    chip.className='tag-chip'+(isActive?' active':'');
+    chip.dataset.tag=tag;
+    chip.innerHTML=`${tag}<span class="tag-count">${count}</span>`;
+    if(isActive) chip.style.cssText=`background:rgba(255,119,0,.1);border-color:rgba(255,119,0,.4);color:#ff7700;`;
+    cloud.appendChild(chip);
+  });
+
+  // Active pills in trigger bar (from drawer clicks + search tokens)
+  const pillBar=document.getElementById('tag-active-pills');
+  pillBar.innerHTML='';
+  const allActive=[...state.activeTags,...state.searchTags];
+  allActive.slice(0,4).forEach(tag=>{
+    const p=document.createElement('span');
+    p.className='tag-active-pill'; p.textContent=tag;
+    pillBar.appendChild(p);
+  });
+  if(allActive.length>4){
+    const m=document.createElement('span');
+    m.className='tag-active-more'; m.textContent=`+${allActive.length-4}`;
+    pillBar.appendChild(m);
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// LIST RENDER
+// ─────────────────────────────────────────────────────────────────────────────
+function hl(text,q){
+  if(!q) return text;
+  return text.replace(new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi'),'<mark>$1</mark>');
+}
+
+function renderList(){
+  const list=filterPlugins();
+  const wrap=document.getElementById('list-wrap');
+  const empty=document.getElementById('empty-state');
+  [...wrap.querySelectorAll('.plugin-row,.group-header')].forEach(e=>e.remove());
+  document.getElementById('visible-count').textContent=list.length;
+
+  if(!list.length){
+    empty.style.display='flex';
+    const filtersEl=document.getElementById('empty-filters');
+    filtersEl.innerHTML='';
+    const addPill=(label,onRemove)=>{
+      const pill=document.createElement('span');
+      pill.className='empty-filter-pill';
+      pill.innerHTML=`${label}<span class="rm">×</span>`;
+      pill.addEventListener('click',onRemove);
+      filtersEl.appendChild(pill);
+    };
+    if(state.cat!=='all') addPill(`cat: ${state.cat}`,()=>{ state.cat='all'; document.querySelectorAll('.cat-tab').forEach(b=>b.classList.toggle('active',b.dataset.cat==='all')); saveUIState(); render(); });
+    if(state.format!=='all') addPill(`format: ${state.format}`,()=>{ state.format='all'; document.querySelectorAll('.fmt-btn').forEach(b=>b.classList.toggle('active',b.dataset.fmt==='all')); saveUIState(); render(); });
+    if(state.query) addPill(`"${state.query}"`,()=>{ state.query=''; document.getElementById('search').value=''; render(); });
+    [...state.activeTags].forEach(t=>addPill(`#${t}`,()=>{ state.activeTags.delete(t); saveUIState(); render(); }));
+    state.searchTags.forEach(t=>addPill(`#${t}`,()=>{ state.searchTags=state.searchTags.filter(s=>s!==t); renderSearchTokens(); render(); }));
+    return;
+  }
+  empty.style.display='none';
+
+  let groups;
+  if(state.sort==='fav'&&!state.query){
+    const favs=list.filter(p=>p.favorite), rest=list.filter(p=>!p.favorite);
+    groups=[];
+    if(favs.length) groups.push({label:'Favorites',items:favs});
+    if(rest.length) groups.push({label:'All',items:rest});
+  } else {
+    groups=[{label:null,items:list}];
+  }
+
+  for(const g of groups){
+    if(g.label){
+      const hdr=document.createElement('div');
+      hdr.className='group-header';
+      hdr.innerHTML=`<span class="group-header-text">${g.label}</span><div class="group-header-line"></div><span class="group-header-count">${g.items.length}</span>`;
+      wrap.appendChild(hdr);
+    }
+    for(const p of g.items){
+      const row=document.createElement('div');
+      row.className='plugin-row'+(state.selected?.id===p.id?' selected':'');
+      row.dataset.id=p.id;
+
+      const tagsHtml=p.tags.slice(0,3).map(t=>
+        `<span class="ptag" style="${tagStyle(t)}">${t}</span>`
+      ).join('');
+
+      row.innerHTML=`
+        <button class="fav-btn ${p.favorite?'on':''}" data-fav="${p.id}">★</button>
+        <span class="ptype ${p.type}">${TYPE_LABEL[p.type] ?? p.type}</span>
+        <div class="pinfo">
+          <span class="plugin-name">${hl(p.name,state.query)}</span>
+          <span class="plugin-vendor">${p.vendor}</span>
+        </div>
+        <div class="ptags">${tagsHtml}</div>`;
+
+      row.draggable = true;
+      row.addEventListener('dragstart', e=>{ e.dataTransfer.setData('plugin-id', p.id); e.dataTransfer.effectAllowed='copy'; });
+      row.addEventListener('click', e=>{ if(!e.target.classList.contains('fav-btn')) selectPlugin(p); });
+      row.addEventListener('dblclick', e=>{ if(!e.target.classList.contains('fav-btn')){ selectPlugin(p); loadPlugin(); window.electronWindow?.focusAbleton(); }});
+      row.addEventListener('contextmenu', e=>{ e.preventDefault(); selectPlugin(p); openCtx(e,p); });
+      wrap.appendChild(row);
+    }
+  }
+}
+
+function renderSearchTokens(){
+  const inner=document.getElementById('search-inner');
+  const input=document.getElementById('search');
+  [...inner.querySelectorAll('.search-token')].forEach(e=>e.remove());
+  state.searchTags.forEach((tag,i)=>{
+    const tok=document.createElement('span');
+    tok.className='search-token';
+    tok.innerHTML=`#${tag}<span class="rm" data-i="${i}">×</span>`;
+    tok.querySelector('.rm').addEventListener('click',()=>{
+      state.searchTags.splice(i,1);
+      renderSearchTokens();
+      render();
+    });
+    inner.insertBefore(tok,input);
+  });
+  const clr=document.getElementById('search-clear');
+  clr.classList.toggle('visible',!!(state.query||state.searchTags.length||input.value));
+}
+
+function render(){ renderTagPanel(); renderList(); renderSearchTokens(); }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SELECT + LOAD
+// ─────────────────────────────────────────────────────────────────────────────
+function selectPlugin(p){
+  state.selected=p;
+  document.getElementById('sel-name').textContent=p.name;
+  document.getElementById('sel-name').classList.remove('empty');
+  document.getElementById('sel-meta').textContent=`${p.vendor}  ·  ${p.type.toUpperCase()}  ·  ${p.tags.join(', ')}`;
+  document.getElementById('load-btn').disabled=false;
+  document.querySelectorAll('.plugin-row').forEach(r=>r.classList.toggle('selected',parseInt(r.dataset.id)===p.id));
+}
+
+function loadPlugin(){
+  if(!state.selected) return;
+  console.trace('[loadPlugin] called for:', state.selected.name);
+  state.selected.lastUsed=Date.now();
+  const btn=document.getElementById('load-btn');
+  btn.textContent='Loading…'; btn.disabled=true;
+
+  if(window.osc) {
+    // Real OSC — reply handled by /vst/load/ok and /vst/load/error listeners
+    window.osc.send('/vst/load', state.selected.name);
+  } else {
+    // Standalone fallback (no Electron)
+    console.log(`[OSC] /vst/load "${state.selected.name}"`);
+    setTimeout(()=>{
+      btn.textContent='Loaded ✓';
+      setTimeout(()=>{ btn.textContent='Load →'; btn.disabled=false; },1400);
+    },500);
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CONTEXT MENU
+// ─────────────────────────────────────────────────────────────────────────────
+let ctxPlugin=null;
+
+function openCtx(e,p){
+  ctxPlugin=p;
+  const m=document.getElementById('ctx');
+  m.style.left=Math.min(e.clientX,window.innerWidth-180)+'px';
+  m.style.top=Math.min(e.clientY,window.innerHeight-110)+'px';
+  m.classList.add('open');
+  document.getElementById('ctx-fav-label').textContent=p.favorite?'Remove Favorite':'Add to Favorites';
+}
+
+function closeCtx(){ document.getElementById('ctx').classList.remove('open'); }
+
+document.getElementById('ctx-tags').addEventListener('click',()=>{ closeCtx(); openTagEditor(ctxPlugin); });
+document.getElementById('ctx-fav').addEventListener('click',()=>{
+  if(!ctxPlugin) return;
+  const canonical = plugins.find(p => p.id === ctxPlugin.id) || ctxPlugin;
+  canonical.favorite=!canonical.favorite;
+  saveTags(); closeCtx(); render();
+});
+document.getElementById('ctx-load').addEventListener('click',()=>{ closeCtx(); loadPlugin(); });
+document.getElementById('ctx-remove').addEventListener('click',()=>{
+  if(!ctxPlugin) return;
+  plugins = plugins.filter(p => p.id !== ctxPlugin.id);
+  saveTags(); closeCtx();
+  if(state.selected?.id === ctxPlugin.id) state.selected = null;
+  render();
+});
+document.addEventListener('click',e=>{ if(!e.target.closest('#ctx')) closeCtx(); });
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TAG EDITOR
+// ─────────────────────────────────────────────────────────────────────────────
+let editPlugin=null, editTags=[];
+
+function openTagEditor(p){
+  editPlugin=p; editTags=[...p.tags];
+  document.getElementById('modal-plugin-name').textContent=p.name;
+  document.getElementById('tag-edit-search').value='';
+  document.getElementById('overlay').classList.add('open');
+  renderModalTags('');
+  document.getElementById('tag-edit-search').focus();
+}
+
+function renderModalTags(query){
+  const grid=document.getElementById('modal-tags-grid');
+  const hint=document.getElementById('modal-hint');
+  grid.innerHTML='';
+  const q=query.toLowerCase().trim();
+  const all=[...new Set([...ALL_TAGS,...editTags])].sort();
+  const filtered=q?all.filter(t=>t.includes(q)):all;
+  const exact=all.includes(q);
+
+  if(q&&!exact){
+    hint.innerHTML=`Press <b>Enter</b> or click to create tag <b>"${q}"</b>`;
+    const pill=document.createElement('div');
+    pill.className='modal-tag-pill new-tag';
+    pill.innerHTML=`<span>＋</span>${q}`;
+    pill.addEventListener('click',()=>addTag(q));
+    grid.appendChild(pill);
+  } else {
+    hint.innerHTML=filtered.length===0?'No matching tags.':'Click to toggle · right-click assigned to remove';
+  }
+
+  filtered.forEach(tag=>{
+    const on=editTags.includes(tag);
+    const pill=document.createElement('div');
+    pill.className='modal-tag-pill'+(on?' assigned':'');
+    pill.textContent=tag;
+    if(!on){ pill.style.cssText+=tagStyle(tag); }
+    pill.addEventListener('click',()=>toggleTag(tag));
+    pill.addEventListener('contextmenu',e=>{ e.preventDefault(); removeTag(tag); });
+    grid.appendChild(pill);
+  });
+}
+
+function toggleTag(tag){
+  const i=editTags.indexOf(tag);
+  if(i>=0) editTags.splice(i,1); else editTags.push(tag);
+  renderModalTags(document.getElementById('tag-edit-search').value);
+}
+
+function removeTag(tag){
+  editTags=editTags.filter(t=>t!==tag);
+  renderModalTags(document.getElementById('tag-edit-search').value);
+}
+
+function addTag(tag){
+  tag=tag.toLowerCase().trim().replace(/\s+/g,'-');
+  if(!tag) return;
+  if(!ALL_TAGS.includes(tag)){ ALL_TAGS.push(tag); ALL_TAGS.sort(); }
+  if(!editTags.includes(tag)) editTags.push(tag);
+  document.getElementById('tag-edit-search').value='';
+  renderModalTags('');
+}
+
+document.getElementById('tag-edit-search').addEventListener('input',e=>renderModalTags(e.target.value));
+document.getElementById('tag-edit-search').addEventListener('keydown',e=>{
+  if(e.key==='Enter'){ const q=e.target.value.trim(); if(q) addTag(q); }
+  if(e.key==='Escape') closeModal();
+});
+
+function closeModal(){
+  document.getElementById('overlay').classList.remove('open');
+  editPlugin=null; editTags=[];
+}
+
+document.getElementById('modal-close').addEventListener('click',closeModal);
+document.getElementById('modal-cancel').addEventListener('click',closeModal);
+document.getElementById('overlay').addEventListener('click',e=>{ if(e.target===document.getElementById('overlay')) closeModal(); });
+document.getElementById('modal-save').addEventListener('click',()=>{
+  if(!editPlugin) return;
+  // Always update the canonical object in plugins[] by id (editPlugin may be a filtered copy)
+  const canonical = plugins.find(p => p.id === editPlugin.id) || editPlugin;
+  canonical.tags=[...editTags];
+  if(state.selected?.id===canonical.id)
+    document.getElementById('sel-meta').textContent=`${canonical.vendor}  ·  ${canonical.type.toUpperCase()}  ·  ${canonical.tags.join(', ')}`;
+  saveTags(); closeModal(); render();
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// EVENTS
+// ─────────────────────────────────────────────────────────────────────────────
+document.getElementById('search').addEventListener('input',e=>{
+  const val=e.target.value;
+  const box=document.getElementById('search-box');
+  if(val.startsWith('#')){
+    box.classList.add('tag-mode');
+    state.query='';
+    const partial=val.slice(1).toLowerCase();
+    tagModePartial=partial;
+    tagSuggestionIndex=0;
+    if(partial){
+      const pool=getPoolTags();
+      const match=pool.filter(t=>t.startsWith(partial))[0];
+      if(match&&match!==partial){
+        const ghostStart=val.length;
+        e.target.value='#'+match;
+        e.target.setSelectionRange(ghostStart,e.target.value.length);
+      }
+    }
+  } else {
+    box.classList.remove('tag-mode');
+    tagModePartial='';
+    state.query=val;
+  }
+  render();
+});
+
+document.getElementById('search').addEventListener('keydown',e=>{
+  const input=e.target;
+  const inTagMode=input.value.startsWith('#');
+  const hasGhost=inTagMode&&input.selectionStart!==input.selectionEnd;
+
+  // Escape: clear everything and blur
+  if(e.key==='Escape'){
+    input.value=''; state.query=''; state.searchTags=[]; tagModePartial=''; tagSuggestionIndex=0;
+    document.getElementById('search-box').classList.remove('tag-mode');
+    renderSearchTokens(); render(); input.blur();
+    return;
+  }
+  // Arrow keys: cycle through tag suggestions
+  if(inTagMode&&(e.key==='ArrowDown'||e.key==='ArrowUp')){
+    e.preventDefault(); e.stopPropagation();
+    const suggestions=getPoolTags().filter(t=>t.startsWith(tagModePartial));
+    if(!suggestions.length) return;
+    if(e.key==='ArrowDown') tagSuggestionIndex=(tagSuggestionIndex+1)%suggestions.length;
+    else tagSuggestionIndex=(tagSuggestionIndex-1+suggestions.length)%suggestions.length;
+    const match=suggestions[tagSuggestionIndex];
+    input.value='#'+match;
+    tagModePartial=match; // so Enter commits exactly what's displayed
+    input.setSelectionRange(input.value.length,input.value.length);
+    renderTagPanel();
+    return;
+  }
+  // Accept ghost suggestion with Tab or →
+  if(hasGhost&&(e.key==='Tab'||e.key==='ArrowRight')){
+    e.preventDefault();
+    input.setSelectionRange(input.value.length,input.value.length);
+    tagModePartial=input.value.slice(1).toLowerCase();
+    renderTagPanel();
+    return;
+  }
+  // Collapse ghost on Backspace without consuming typed content
+  if(hasGhost&&e.key==='Backspace'){
+    e.preventDefault();
+    input.setSelectionRange(input.selectionStart,input.selectionStart);
+    return;
+  }
+  // Enter: commit tag
+  if(e.key==='Enter'&&inTagMode){
+    e.stopPropagation();
+    const partial=tagModePartial||input.value.slice(1).toLowerCase().trim();
+    if(!partial) return;
+    const pool=getPoolTags();
+    const tag=pool.find(t=>t===partial)||pool.find(t=>t.startsWith(partial))||pool.find(t=>t.includes(partial))||partial;
+    if(!state.searchTags.includes(tag)) state.searchTags.push(tag);
+    state.activeTags.delete(tag); // dedup
+    input.value=''; state.query=''; tagModePartial=''; tagSuggestionIndex=0;
+    document.getElementById('search-box').classList.remove('tag-mode');
+    renderSearchTokens(); render();
+    return;
+  }
+  // Backspace on empty input: remove last search token
+  if(e.key==='Backspace'&&input.value===''&&state.searchTags.length){
+    state.searchTags.pop();
+    renderSearchTokens(); render();
+  }
+});
+
+document.getElementById('search-clear').addEventListener('click',()=>{
+  const input=document.getElementById('search');
+  input.value=''; state.query=''; state.searchTags=[]; tagModePartial='';
+  document.getElementById('search-box').classList.remove('tag-mode');
+  document.getElementById('search-clear').classList.remove('visible');
+  render();
+});
+
+document.querySelectorAll('.cat-tab').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('.cat-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active'); state.cat=btn.dataset.cat; saveUIState(); render();
+}));
+
+document.getElementById('tag-trigger').addEventListener('click',()=>{
+  document.getElementById('tag-panel').classList.toggle('open');
+});
+
+document.getElementById('tags-cloud').addEventListener('click',e=>{
+  const chip=e.target.closest('.tag-chip'); if(!chip) return;
+  const t=chip.dataset.tag;
+  const searchInput=document.getElementById('search');
+  if(searchInput.value.startsWith('#')){
+    if(!state.searchTags.includes(t)) state.searchTags.push(t);
+    state.activeTags.delete(t); // dedup
+    searchInput.value=''; state.query=''; tagModePartial=''; tagSuggestionIndex=0;
+    document.getElementById('search-box').classList.remove('tag-mode');
+    renderSearchTokens(); render(); searchInput.focus();
+  } else {
+    // Toggle off from whichever set holds it; add to activeTags if neither
+    if(state.searchTags.includes(t)){
+      state.searchTags=state.searchTags.filter(s=>s!==t);
+      renderSearchTokens();
+    } else if(state.activeTags.has(t)){
+      state.activeTags.delete(t);
+    } else {
+      state.activeTags.add(t);
+      state.searchTags=state.searchTags.filter(s=>s!==t); // dedup
+    }
+    saveUIState(); render();
+  }
+});
+
+document.getElementById('tag-search').addEventListener('input',()=>renderTagPanel());
+document.getElementById('tags-clear').addEventListener('click',e=>{ e.stopPropagation(); state.activeTags.clear(); state.searchTags=[]; renderSearchTokens(); saveUIState(); render(); });
+document.getElementById('empty-clear').addEventListener('click',()=>{
+  state.cat='all'; state.format='all'; state.query=''; state.activeTags.clear(); state.searchTags=[];
+  document.getElementById('search').value='';
+  document.querySelectorAll('.cat-tab').forEach(b=>b.classList.toggle('active',b.dataset.cat==='all'));
+  document.querySelectorAll('.fmt-btn').forEach(b=>b.classList.toggle('active',b.dataset.fmt==='all'));
+  renderSearchTokens(); saveUIState(); render();
+});
+
+// Tag drawer resize
+const tagsCloud = document.getElementById('tags-cloud');
+const savedCloudH = localStorage.getItem('vst-cloud-h');
+if(savedCloudH) tagsCloud.style.height = savedCloudH + 'px';
+document.getElementById('tag-drawer-resize').addEventListener('mousedown', e => {
+  e.preventDefault();
+  const startY = e.clientY, startH = tagsCloud.offsetHeight;
+  const onMove = e => {
+    const h = Math.max(40, Math.min(400, startH + e.clientY - startY));
+    tagsCloud.style.height = h + 'px';
+  };
+  const onUp = () => {
+    localStorage.setItem('vst-cloud-h', tagsCloud.offsetHeight);
+    document.removeEventListener('mousemove', onMove);
+    document.removeEventListener('mouseup', onUp);
+  };
+  document.addEventListener('mousemove', onMove);
+  document.addEventListener('mouseup', onUp);
+});
+
+document.querySelectorAll('.fmt-btn').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('.fmt-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active'); state.format=btn.dataset.fmt; saveUIState(); render();
+}));
+
+document.getElementById('sort-sel').addEventListener('change',e=>{ state.sort=e.target.value; saveUIState(); render(); });
+document.getElementById('load-btn').addEventListener('click',loadPlugin);
+
+document.getElementById('list-wrap').addEventListener('click',e=>{
+  const btn=e.target.closest('.fav-btn'); if(!btn) return;
+  const p=plugins.find(p=>p.id===parseInt(btn.dataset.fav));
+  if(p){ p.favorite=!p.favorite; btn.classList.toggle('on',p.favorite); saveTags(); if(state.sort==='fav') render(); }
+});
+
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('overlay').classList.contains('open')) return;
+  if(document.getElementById('settings-overlay').classList.contains('open')) return;
+  if(document.getElementById('help-overlay').classList.contains('open')) return;
+  if(document.activeElement===document.getElementById('tag-search')) return;
+  if(e.key==='Escape'){
+    const search=document.getElementById('search');
+    search.value=''; state.query=''; state.searchTags=[]; tagModePartial=''; tagSuggestionIndex=0;
+    document.getElementById('search-box').classList.remove('tag-mode');
+    renderSearchTokens(); render(); search.blur();
+    return;
+  }
+  const list=filterPlugins(); if(!list.length) return;
+  const search=document.getElementById('search');
+  const SLOT_MAPS={azerty:{'&':0,'é':1,'"':2,"'":3,'(':4,'-':5},qwerty:{'1':0,'2':1,'3':2,'4':3,'5':4,'6':5}};
+  const SLOTS=SLOT_MAPS[appConfig.keyboard_layout]||SLOT_MAPS.azerty;
+  if(e.key in SLOTS&&!e.metaKey&&!e.ctrlKey&&document.activeElement!==search){
+    e.preventDefault();
+    triggerShortcut(SLOTS[e.key]);
+    window.electronWindow?.focusAbleton();
+    return;
+  }
+  if(e.key.length===1&&!e.metaKey&&!e.ctrlKey&&document.activeElement!==search){
+    search.value=''; search.focus();
+  }
+  if(e.key==='ArrowDown'||e.key==='ArrowUp'){
+    e.preventDefault();
+    document.getElementById('search').blur();
+    const idx=state.selected?list.findIndex(p=>p.id===state.selected.id):-1;
+    const next=e.key==='ArrowDown'?Math.min(idx+1,list.length-1):Math.max(idx-1,0);
+    selectPlugin(list[next]);
+    document.querySelector(`.plugin-row[data-id="${list[next].id}"]`)?.scrollIntoView({block:'nearest'});
+  }
+  if(e.key==='Enter'){
+    e.preventDefault();
+    if(document.activeElement===search){
+      const first=list[0]; if(first){ selectPlugin(first); search.blur(); document.querySelector(`.plugin-row[data-id="${first.id}"]`)?.scrollIntoView({block:'nearest'}); }
+    } else if(state.selected){ loadPlugin(); window.electronWindow?.focusAbleton(); }
+  }
+  if((e.metaKey||e.ctrlKey)&&e.key==='f'){ e.preventDefault(); document.getElementById('search').focus(); }
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SHORTCUTS
+// ─────────────────────────────────────────────────────────────────────────────
+let shortcuts = JSON.parse(localStorage.getItem('vst-shortcuts') || 'null') || Array(6).fill(null);
+
+function saveShortcuts() {
+  localStorage.setItem('vst-shortcuts', JSON.stringify(shortcuts));
+}
+
+function renderShortcuts() {
+  shortcuts.forEach((sc, i) => {
+    const slot = document.querySelector(`.shortcut-slot[data-slot="${i}"]`);
+    if (!slot) return;
+    if (sc) {
+      slot.className = 'shortcut-slot filled';
+      slot.innerHTML = `<span class="sc-num">${i+1}</span><span class="sc-name">${sc.name}</span>`;
+    } else {
+      slot.className = 'shortcut-slot empty';
+      slot.innerHTML = `<span class="sc-num">${i+1}</span><span class="sc-name">—</span>`;
+    }
+  });
+}
+
+let _lastShortcutAt = 0;
+function triggerShortcut(idx) {
+  const now = Date.now();
+  if (now - _lastShortcutAt < 200) return;
+  _lastShortcutAt = now;
+  const sc = shortcuts[idx];
+  if (!sc) return;
+  // Build a minimal plugin object compatible with selectPlugin + loadPlugin
+  const p = plugins.find(p => p.name === sc.name) || {
+    id: -1, name: sc.name, type: sc.type, vendor: sc.vendor || '',
+    tags: sc.tags || [], favorite: false, lastUsed: null
+  };
+  selectPlugin(p);
+  loadPlugin();
+  // Flash slot
+  const slot = document.querySelector(`.shortcut-slot[data-slot="${idx}"]`);
+  if (slot) {
+    slot.classList.add('triggered');
+    setTimeout(() => slot.classList.remove('triggered'), 300);
+  }
+}
+
+// Shortcut click — load
+document.getElementById('shortcuts-row').addEventListener('click', e => {
+  const slot = e.target.closest('.shortcut-slot');
+  if (!slot) return;
+  triggerShortcut(parseInt(slot.dataset.slot));
+});
+
+// Shortcut drag-and-drop — assign
+document.getElementById('shortcuts-row').addEventListener('dragover', e => {
+  const slot = e.target.closest('.shortcut-slot');
+  if (!slot) return;
+  e.preventDefault(); e.dataTransfer.dropEffect='copy';
+  slot.classList.add('drag-over');
+});
+document.getElementById('shortcuts-row').addEventListener('dragleave', e => {
+  const slot = e.target.closest('.shortcut-slot');
+  if (slot) slot.classList.remove('drag-over');
+});
+document.getElementById('shortcuts-row').addEventListener('drop', e => {
+  e.preventDefault();
+  const slot = e.target.closest('.shortcut-slot');
+  if (!slot) return;
+  slot.classList.remove('drag-over');
+  const id = parseInt(e.dataTransfer.getData('plugin-id'));
+  const p = plugins.find(p => p.id === id);
+  if (!p) return;
+  const idx = parseInt(slot.dataset.slot);
+  shortcuts[idx] = { name: p.name, type: p.type, vendor: p.vendor, tags: [...p.tags] };
+  saveShortcuts(); renderShortcuts();
+});
+
+// Shortcut right-click — assign / clear
+let scCtxSlot = -1;
+document.getElementById('shortcuts-row').addEventListener('contextmenu', e => {
+  e.preventDefault();
+  const slot = e.target.closest('.shortcut-slot');
+  if (!slot) return;
+  scCtxSlot = parseInt(slot.dataset.slot);
+  const label = document.getElementById('sc-ctx-label');
+  const assignBtn = document.getElementById('sc-ctx-assign');
+  if (state.selected) {
+    label.textContent = `Assign "${state.selected.name}"`;
+    assignBtn.style.opacity = '1';
+    assignBtn.style.pointerEvents = 'auto';
+  } else {
+    label.textContent = 'No plugin selected';
+    assignBtn.style.opacity = '0.4';
+    assignBtn.style.pointerEvents = 'none';
+  }
+  const menu = document.getElementById('sc-ctx');
+  menu.style.left = Math.min(e.clientX, window.innerWidth - 210) + 'px';
+  menu.style.top = Math.min(e.clientY, window.innerHeight - 80) + 'px';
+  menu.classList.add('open');
+});
+
+document.getElementById('sc-ctx-assign').addEventListener('click', () => {
+  if (scCtxSlot < 0 || !state.selected) return;
+  shortcuts[scCtxSlot] = {
+    name: state.selected.name, type: state.selected.type,
+    vendor: state.selected.vendor, tags: [...state.selected.tags]
+  };
+  saveShortcuts(); renderShortcuts();
+  document.getElementById('sc-ctx').classList.remove('open');
+});
+
+document.getElementById('sc-ctx-clear').addEventListener('click', () => {
+  if (scCtxSlot < 0) return;
+  shortcuts[scCtxSlot] = null;
+  saveShortcuts(); renderShortcuts();
+  document.getElementById('sc-ctx').classList.remove('open');
+});
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('#sc-ctx')) document.getElementById('sc-ctx').classList.remove('open');
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────────────────────────────────────
+// Restore UI controls to match saved state
+(function applyRestoredState(){
+  // Category tab
+  document.querySelectorAll('.cat-tab').forEach(b=>{
+    b.classList.toggle('active', b.dataset.cat===state.cat);
+  });
+  // Format button
+  document.querySelectorAll('.fmt-btn').forEach(b=>{
+    b.classList.toggle('active', b.dataset.fmt===state.format);
+  });
+  // Sort select
+  document.getElementById('sort-sel').value=state.sort;
+})();
+
+render();
+renderShortcuts();
+document.getElementById('tag-panel').classList.add('open');
+
+// ── ELECTRON / OSC INTEGRATION ───────────────────────────────────────────────
+let scanBuffer = [];
+let scanTimeout = null;
+let abletonConnected = false;
+let scanInProgress = false;
+
+function setDisconnected() {
+  abletonConnected = false;
+  scanInProgress = false;
+  document.getElementById('scan-bar').classList.remove('active');
+  document.getElementById('visible-count').textContent = '—';
+  document.getElementById('disconnected-state').style.display = 'flex';
+  document.getElementById('empty-state').style.display = 'none';
+  const btn = document.getElementById('settings-rescan-btn');
+  if (btn) { btn.textContent = 'Rescan plugins'; btn.disabled = false; }
+}
+
+function clearScanTimeout() {
+  if (scanTimeout) { clearTimeout(scanTimeout); scanTimeout = null; }
+}
+if(window.osc && !window._oscInitDone) {
+  window._oscInitDone = true;
+  // Show window controls
+  document.getElementById('win-controls').style.display='flex';
+  document.getElementById('win-minimize').addEventListener('click',()=>window.electronWindow.minimize());
+  document.getElementById('win-close').addEventListener('click',()=>window.electronWindow.close());
+
+  // Track name from M4L — also clears the disconnect timeout (proves Ableton is up)
+  window.osc.on('/vst/track/name', (name) => {
+    document.getElementById('track-name').textContent = name;
+    if (!abletonConnected) {
+      abletonConnected = true;
+      clearScanTimeout();
+      document.getElementById('disconnected-state').style.display = 'none';
+    }
+  });
+
+  // Load reply from M4L
+  window.osc.on('/vst/load/ok', () => {
+    const btn = document.getElementById('load-btn');
+    btn.textContent = 'Loaded ✓';
+    setTimeout(() => { btn.textContent = 'Load →'; btn.disabled = false; }, 1400);
+  });
+
+  window.osc.on('/vst/load/error', (msg) => {
+    const btn = document.getElementById('load-btn');
+    btn.textContent = 'Error ✗';
+    btn.style.background = 'var(--red)';
+    console.warn('[OSC] load error:', msg);
+    setTimeout(() => {
+      btn.textContent = 'Load →';
+      btn.disabled = false;
+      btn.style.background = '';
+    }, 2000);
+  });
+
+  // Plugin list from scan
+  window.osc.on('/vst/item', (name, type, vendor = '', cat = '') => {
+    if (!abletonConnected) {
+      abletonConnected = true;
+      clearScanTimeout();
+      document.getElementById('disconnected-state').style.display = 'none';
+    }
+    scanBuffer.push({ name, type, vendor, cat });
+    document.getElementById('visible-count').textContent = scanBuffer.length + ' found…';
+  });
+
+  window.osc.on('/vst/scan/end', () => {
+    clearScanTimeout();
+    abletonConnected = true;
+    scanInProgress = false;
+    document.getElementById('disconnected-state').style.display = 'none';
+    document.getElementById('scan-bar').classList.remove('active');
+    const rescanBtn = document.getElementById('settings-rescan-btn');
+    if (rescanBtn) { rescanBtn.textContent = 'Rescan plugins'; rescanBtn.disabled = false; }
+
+    if(scanBuffer.length > 0) {
+      // Build FMT_PRI here so it reflects the user's configured priority at scan time
+      const FMT_PRI = buildFmtPri();
+      const merged = new Map();
+      for (const p of scanBuffer) {
+        const key = p.name.toLowerCase();
+        if (!merged.has(key)) {
+          merged.set(key, { ...p });
+        } else {
+          const existing = merged.get(key);
+          const newPri = FMT_PRI[p.type] ?? -1;
+          const curPri = FMT_PRI[existing.type] ?? -1;
+          // Upgrade to better format; cat follows the winning format's entry
+          if (newPri > curPri) {
+            existing.type = p.type;
+            if (p.cat) existing.cat = p.cat;
+          }
+          // Always take vendor from third-party source
+          if (p.vendor && p.vendor !== 'Ableton') existing.vendor = p.vendor;
+        }
+      }
+
+      // Second pass: remove AU entries whose name = "Vendor PluginName" when a
+      // better-format entry exists under just "PluginName".
+      for (const [key, p] of merged) {
+        if (p.type !== 'au' || !p.vendor) continue;
+        const altKey = (p.vendor + ' ' + p.name).toLowerCase();
+        const better = merged.get(altKey);
+        if (better && (FMT_PRI[better.type] ?? -1) > FMT_PRI['au']) {
+          merged.delete(key);
+        }
+      }
+
+      // Third pass: remove entries where name = "Vendor PluginName" and a
+      // better-or-equal format entry exists under just "PluginName".
+      // Handles VST2 "FabFilter Pro-Q 4" vs VST3 "Pro-Q 4", "Voxengo SPAN" vs "SPAN", etc.
+      for (const [key, p] of merged) {
+        if (!p.vendor) continue;
+        const prefix = p.vendor.toLowerCase() + ' ';
+        if (!key.startsWith(prefix)) continue;
+        const bareKey = key.slice(prefix.length);
+        const better = merged.get(bareKey);
+        if (better && (FMT_PRI[better.type] ?? -1) >= (FMT_PRI[p.type] ?? -1)) {
+          merged.delete(key);
+        }
+      }
+
+      const mergedList = [...merged.values()];
+      saveScanCache(mergedList);
+      plugins = mergedList.map((p, i) => ({
+        ...p, id: i, tags: lookupDefaultTags(p.name) || [], favorite: false, lastUsed: null
+      }));
+      applysavedTags();
+      scanBuffer = [];
+      render();
+    }
+  });
+
+  // Shortcut trigger from Max: /shortcut <n> (1-indexed)
+  window.osc.on('/shortcut', (n) => triggerShortcut(n - 1));
+
+  // Startup: load cache instantly if available, then check connection
+  window.osc.send('/vst/track/get');
+  const cached = loadScanCache();
+  if (cached && cached.length > 0) {
+    // Restore from cache — show plugins immediately, no scan needed
+    plugins = cached.map((p, i) => ({
+      ...p, id: i, tags: lookupDefaultTags(p.name) || [], favorite: false, lastUsed: null
+    }));
+    applysavedTags();
+    document.getElementById('disconnected-state').style.display = 'none';
+    document.getElementById('visible-count').textContent = plugins.length + ' plugins';
+    render();
+    // Check connection silently — if Ableton doesn't respond, just mark as disconnected
+    // but keep the plugin list visible for browsing
+    scanTimeout = setTimeout(() => {
+      if (!abletonConnected) {
+        abletonConnected = false;
+        const btn = document.getElementById('settings-rescan-btn');
+        if (btn) { btn.textContent = 'Rescan plugins'; btn.disabled = false; }
+      }
+    }, 6000);
+  } else {
+    // No cache yet — full scan
+    scanTimeout = setTimeout(setDisconnected, 6000);
+    setTimeout(() => {
+      if (!scanInProgress) {
+        scanInProgress = true;
+        scanBuffer = [];
+        document.getElementById('scan-bar').classList.add('active');
+        document.getElementById('visible-count').textContent = 'Scanning…';
+        window.osc.send('/vst/scan');
+      }
+    }, 500);
+  }
+}
+
+function triggerScan() {
+  if (!window.osc) return;
+  if (scanInProgress) return; // prevent duplicate scans
+  scanInProgress = true;
+  const btn = document.getElementById('settings-rescan-btn');
+  if (btn) { btn.textContent = 'Scanning…'; btn.disabled = true; }
+  document.getElementById('scan-bar').classList.add('active');
+  document.getElementById('visible-count').textContent = 'Scanning…';
+  document.getElementById('disconnected-state').style.display = 'none';
+  clearScanTimeout();
+  scanBuffer = [];
+  window.osc.send('/vst/scan');
+  if (!abletonConnected) scanTimeout = setTimeout(setDisconnected, 6000);
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// EXPORT / IMPORT  (AI tagging workflow)
+// ─────────────────────────────────────────────────────────────────────────────
+function flashBtn(id, msg, ok = true) {
+  const btn = document.getElementById(id);
+  const orig = btn.textContent;
+  btn.textContent = msg;
+  btn.style.color = ok ? 'var(--green-hi)' : 'var(--red)';
+  setTimeout(() => { btn.textContent = orig; btn.style.color = ''; }, 2000);
+}
+
+document.getElementById('export-btn').addEventListener('click', () => {
+  const tagList = ALL_TAGS.join(', ');
+  const pluginLines = plugins.map(p => `${p.name} | ${p.vendor || ''} | ${p.cat}`).join('\n');
+  const text = [
+    "Tag each plugin below using your existing knowledge. Output one line per plugin:",
+    "  Plugin Name: tag1, tag2, tag3",
+    "Skip any plugin you don't recognise — just omit it. No explanations.",
+    "When done, present the full output as a downloadable text file artifact named 'tags.txt'.",
+    "",
+    "Rules:",
+    "- Only use tags from this vocabulary: " + tagList,
+    "- 2–5 tags per plugin. Be specific: wavetable/fm/physical-modeling over synth, de-esser over vocal.",
+    "- For synths include the synthesis method: wavetable, fm, physical-modeling, additive, sample-based, granular.",
+    "",
+    "=== PLUGINS ===",
+    pluginLines
+  ].join('\n');
+
+  const blob = new Blob([text], { type: 'text/plain' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'plugins-export.txt';
+  a.click();
+  flashBtn('export-btn', `${plugins.length} plugins`);
+});
+
+document.getElementById('import-btn').addEventListener('click', () => {
+  document.getElementById('import-file').click();
+});
+
+document.getElementById('import-file').addEventListener('change', e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = evt => {
+    const text = evt.target.result.trim();
+    let imported = [];
+    try {
+      // Try JSON first (backwards compat with old exports)
+      const raw = JSON.parse(text);
+      imported = Array.isArray(raw) ? raw : (raw.tags || raw.plugins || []);
+    } catch {
+      // Text format: "Plugin Name: tag1, tag2, tag3"
+      for (const line of text.split('\n')) {
+        const colonIdx = line.indexOf(': ');
+        if (colonIdx === -1) continue;
+        const name = line.slice(0, colonIdx).trim();
+        const tags = line.slice(colonIdx + 2).split(',').map(t => t.trim()).filter(Boolean);
+        if (name && tags.length) imported.push({ name, tags });
+      }
+    }
+    let updated = 0;
+    imported.forEach(entry => {
+      const p = plugins.find(p => p.name === entry.name);
+      if (p) {
+        if (Array.isArray(entry.tags)) entry.tags.forEach(t => { if (!p.tags.includes(t)) p.tags.push(t); });
+        updated++;
+      }
+    });
+    saveTags(); render();
+    flashBtn('import-btn', updated ? `${updated} updated` : 'no match', !!updated);
+    e.target.value = '';
+  };
+  reader.readAsText(file);
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SETTINGS
+// ─────────────────────────────────────────────────────────────────────────────
+let appConfig = { m4l_paths: [], m4l_vendor: 'blank', fmt_priority: ['vst3', 'vst2', 'au'], keyboard_layout: 'azerty' };
+
+function buildFmtPri() {
+  const order = appConfig.fmt_priority || ['vst3', 'vst2', 'au'];
+  const pri = { plugin: 0 };
+  order.forEach((fmt, i) => { pri[fmt] = order.length - i; });
+  return pri;
+}
+
+async function loadConfig() {
+  if (!window.electronConfig) return;
+  try {
+    const saved = await window.electronConfig.read();
+    appConfig = { m4l_paths: [], m4l_vendor: 'blank', fmt_priority: ['vst3', 'vst2', 'au'], keyboard_layout: 'azerty', ...saved };
+  } catch(e) {}
+}
+
+async function saveConfig() {
+  if (!window.electronConfig) return;
+  await window.electronConfig.write(appConfig);
+}
+
+function renderSettingsM4lPaths() {
+  const el = document.getElementById('settings-m4l-paths');
+  el.innerHTML = '';
+  if (!appConfig.m4l_paths.length) {
+    el.innerHTML = '<div style="font-size:10px;color:var(--text-lo);padding:4px 0">No folders configured</div>';
+    return;
+  }
+  appConfig.m4l_paths.forEach((p, i) => {
+    const row = document.createElement('div');
+    row.className = 'settings-path-row';
+    row.innerHTML = `<span title="${p}">${p}</span><button class="settings-path-rm" data-i="${i}">×</button>`;
+    row.querySelector('.settings-path-rm').addEventListener('click', async () => {
+      appConfig.m4l_paths.splice(i, 1);
+      await saveConfig();
+      renderSettingsM4lPaths();
+    });
+    el.appendChild(row);
+  });
+}
+
+function renderSettingsPriority() {
+  const list = document.getElementById('settings-priority-list');
+  list.innerHTML = '';
+  const order = appConfig.fmt_priority || ['vst3', 'vst2', 'au'];
+  const labels = { vst3: 'VST3', vst2: 'VST2', au: 'AU' };
+  order.forEach((fmt, i) => {
+    const row = document.createElement('div');
+    row.className = 'settings-priority-row';
+    row.innerHTML = `
+      <span class="settings-priority-rank">${i + 1}</span>
+      <span class="settings-priority-label">${labels[fmt] || fmt}</span>
+      <div class="settings-priority-btns">
+        <button class="settings-priority-btn" data-dir="-1" data-i="${i}" ${i === 0 ? 'disabled' : ''}>▲</button>
+        <button class="settings-priority-btn" data-dir="1"  data-i="${i}" ${i === order.length - 1 ? 'disabled' : ''}>▼</button>
+      </div>`;
+    row.querySelectorAll('.settings-priority-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const idx = parseInt(btn.dataset.i);
+        const dir = parseInt(btn.dataset.dir);
+        const arr = appConfig.fmt_priority;
+        [arr[idx], arr[idx + dir]] = [arr[idx + dir], arr[idx]];
+        await saveConfig();
+        renderSettingsPriority();
+      });
+    });
+    list.appendChild(row);
+  });
+}
+
+function renderSettingsVocab() {
+  const el = document.getElementById('settings-vocab');
+  el.innerHTML = '';
+  [...ALL_TAGS].sort().forEach(tag => {
+    const chip = document.createElement('span');
+    chip.className = 'settings-vocab-tag';
+    chip.innerHTML = `${tag}<span class="rm">×</span>`;
+    chip.addEventListener('click', () => {
+      ALL_TAGS.splice(ALL_TAGS.indexOf(tag), 1);
+      try { localStorage.setItem('vst-vocab', JSON.stringify(ALL_TAGS)); } catch(e) {}
+      renderSettingsVocab();
+      renderTagPanel();
+    });
+    el.appendChild(chip);
+  });
+}
+
+function openSettings() {
+  renderSettingsM4lPaths();
+  renderSettingsPriority();
+  renderSettingsVocab();
+  // Set vendor radio
+  const vendor = appConfig.m4l_vendor || 'blank';
+  document.querySelectorAll('input[name="m4l-vendor"]').forEach(r => r.checked = r.value === vendor);
+  // Set keyboard layout radio
+  const layout = appConfig.keyboard_layout || 'azerty';
+  document.querySelectorAll('input[name="keyboard-layout"]').forEach(r => r.checked = r.value === layout);
+  // Show config file path
+  if (window.electronConfig) {
+    window.electronConfig.path().then(p => {
+      document.getElementById('settings-config-path').textContent = 'Config: ' + p;
+    });
+  }
+  document.getElementById('settings-overlay').classList.add('open');
+  if (window.electronInstall) {
+    window.electronInstall.checkHammerspoon().then(state => {
+      const el = document.getElementById('settings-hs-status');
+      if (state === 'installed') {
+        el.textContent = '✓ Script is installed.';
+        el.className = 'settings-install-status ok';
+      } else if (state === 'not-configured') {
+        el.textContent = 'Hammerspoon found but Browsy script not added yet.';
+        el.className = 'settings-install-status';
+      } else {
+        el.textContent = '';
+        el.className = 'settings-install-status';
+      }
+    });
+  }
+}
+
+function closeSettings() {
+  document.getElementById('settings-overlay').classList.remove('open');
+  document.getElementById('settings-reset-confirm').classList.remove('visible');
+  document.getElementById('settings-reset-btn').style.display = '';
+}
+
+document.getElementById('settings-open-btn').addEventListener('click', openSettings);
+document.getElementById('settings-close').addEventListener('click', closeSettings);
+document.getElementById('settings-overlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('settings-overlay')) closeSettings();
+});
+
+document.getElementById('settings-m4l-add').addEventListener('click', async () => {
+  if (!window.electronConfig) return;
+  const folder = await window.electronConfig.pickFolder();
+  if (!folder) return;
+  if (!appConfig.m4l_paths.includes(folder)) appConfig.m4l_paths.push(folder);
+  await saveConfig();
+  renderSettingsM4lPaths();
+});
+
+document.querySelectorAll('input[name="m4l-vendor"]').forEach(r => {
+  r.addEventListener('change', async () => {
+    appConfig.m4l_vendor = r.value;
+    await saveConfig();
+  });
+});
+
+document.querySelectorAll('input[name="keyboard-layout"]').forEach(r => {
+  r.addEventListener('change', async () => {
+    appConfig.keyboard_layout = r.value;
+    await saveConfig();
+  });
+});
+
+document.getElementById('settings-rescan-btn').addEventListener('click', () => {
+  triggerScan();
+  closeSettings();
+});
+
+document.getElementById('settings-install-btn').addEventListener('click', async () => {
+  if (!window.electronInstall) return;
+  const statusEl = document.getElementById('settings-install-status');
+  statusEl.textContent = 'Installing…';
+  statusEl.className = 'settings-install-status';
+  const result = await window.electronInstall.installRemoteScript();
+  if (result.ok) {
+    statusEl.textContent = '✓ Installed. Restart Ableton and add Browsy as a Control Surface in Preferences → Link/MIDI.';
+    statusEl.className = 'settings-install-status ok';
+  } else {
+    statusEl.textContent = '✗ ' + result.error;
+    statusEl.className = 'settings-install-status err';
+  }
+});
+
+document.getElementById('settings-m4l-btn').addEventListener('click', async () => {
+  if (!window.electronInstall) return;
+  const statusEl = document.getElementById('settings-m4l-status');
+  statusEl.textContent = 'Installing…';
+  statusEl.className = 'settings-install-status';
+  const result = await window.electronInstall.installM4L();
+  if (result.ok) {
+    statusEl.textContent = '✓ Installed. Find Browsy Connect in User Library → Audio Effects → Max Audio Effect.';
+    statusEl.className = 'settings-install-status ok';
+  } else {
+    statusEl.textContent = '✗ ' + result.error;
+    statusEl.className = 'settings-install-status err';
+  }
+});
+
+document.getElementById('settings-hs-btn').addEventListener('click', async () => {
+  if (!window.electronInstall) return;
+  const statusEl = document.getElementById('settings-hs-status');
+  statusEl.textContent = 'Installing…';
+  statusEl.className = 'settings-install-status';
+  const result = await window.electronInstall.installHammerspoon();
+  if (result.ok) {
+    statusEl.textContent = result.already
+      ? '✓ Already installed. Reload Hammerspoon config (⌘R in the console) if needed.'
+      : '✓ Installed. Reload Hammerspoon config — click the menubar icon → Reload Config.';
+    statusEl.className = 'settings-install-status ok';
+  } else {
+    statusEl.textContent = '✗ ' + result.error;
+    statusEl.className = 'settings-install-status err';
+  }
+});
+
+document.getElementById('settings-vocab-add').addEventListener('keydown', e => {
+  if (e.key !== 'Enter') return;
+  const tag = e.target.value.toLowerCase().trim().replace(/\s+/g, '-');
+  if (!tag) return;
+  if (!ALL_TAGS.includes(tag)) {
+    ALL_TAGS.push(tag);
+    ALL_TAGS.sort();
+    try { localStorage.setItem('vst-vocab', JSON.stringify(ALL_TAGS)); } catch(e) {}
+    renderSettingsVocab();
+    renderTagPanel();
+  }
+  e.target.value = '';
+});
+
+
+document.getElementById('settings-reset-btn').addEventListener('click', () => {
+  document.getElementById('settings-reset-confirm').classList.add('visible');
+  document.getElementById('settings-reset-btn').style.display = 'none';
+});
+
+document.getElementById('settings-reset-cancel-btn').addEventListener('click', () => {
+  document.getElementById('settings-reset-confirm').classList.remove('visible');
+  document.getElementById('settings-reset-btn').style.display = '';
+});
+
+document.getElementById('settings-reset-confirm-btn').addEventListener('click', async () => {
+  // Wipe all localStorage
+  ['vst-tags','vst-ui-state','vst-shortcuts','vst-cloud-h','vst-vocab'].forEach(k => {
+    try { localStorage.removeItem(k); } catch(e) {}
+  });
+  // Reset config file
+  if (window.electronConfig) {
+    await window.electronConfig.write({ m4l_paths: [], m4l_vendor: 'blank', fmt_priority: ['vst3','vst2','au'], keyboard_layout: 'azerty' });
+  }
+  location.reload();
+});
+
+// Load persisted vocab additions
+(function loadSavedVocab() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('vst-vocab') || 'null');
+    if (Array.isArray(saved)) {
+      saved.forEach(t => { if (!ALL_TAGS.includes(t)) ALL_TAGS.push(t); });
+      ALL_TAGS.sort();
+    }
+  } catch(e) {}
+})();
+
+loadConfig();
+
+// ─────────────────────────────────────────────────────────────────────────────
+// HELP CAROUSEL
+// ─────────────────────────────────────────────────────────────────────────────
+const HELP_SLIDES = [
+  {
+    cat: 'Getting started',
+    title: 'Welcome to Browsy',
+    desc: 'Browsy is a keyboard-first plugin browser for Ableton Live. It connects via a Remote Script, scans all your VST3, VST2, AU and Max for Live devices, and lets you load them on the selected track without touching the mouse.',
+    tip: 'If you haven\'t already, you\'ll need to install the Remote Script — you\'ll see a warning banner at the top if it\'s missing. Find it in <b>Settings → Install Remote Script</b>, then set <b>Browsy</b> as a Control Surface in Ableton\'s Preferences → Link/MIDI.',
+    highlight: ['#settings-open-btn'],
+    panelPos: 'bottom',
+  },
+  {
+    cat: 'Getting started',
+    title: 'Browsy Connect — the Max for Live device',
+    desc: '<b>Browsy Connect</b> is the Max for Live Audio Effect that bridges Browsy and Ableton Live over OSC. Drop it on any track — it handles the communication so Browsy knows which track is selected and can load plugins on it.<br><br>Install it from <b>Settings → Install Browsy Connect</b>. Once installed it will appear in your User Library under <b>Audio Effects → Max Audio Effect</b>.',
+    tip: 'Keep Browsy Connect on a dedicated <b>Master</b> or <b>Return</b> track so it stays active no matter what track you\'re working on. It only needs to be on one track.',
+    highlight: ['#settings-open-btn'],
+    panelPos: 'bottom',
+  },
+  {
+    cat: 'Loading a device',
+    title: 'Load instantly on the selected track',
+    desc: 'Select a plugin with a single click, then press <code>Enter</code> to load it on the currently selected Ableton track. You can also <b>double-click</b> any plugin to load it in one move.<br><br>Browsy automatically switches focus back to Ableton after loading — no alt-tabbing needed.',
+    tip: '<b>Track name</b> is shown in the bottom-left and updates live as you switch tracks in Ableton, so you always know exactly where the plugin will land.',
+    highlight: ['#load-btn', '#track-info'],
+    panelPos: 'top',
+  },
+  {
+    cat: 'Search',
+    title: 'Find anything instantly',
+    desc: 'Just start typing any part of the name or vendor — <code>valhalla</code> finds <b>Valhalla Room</b>, <code>fab</code> finds every <b>FabFilter</b>. Results are ranked by closeness so the best match always comes first.<br><br>Use <code>↑ ↓</code> to move through results. Narrow them with the category tabs (Audio FX, Instruments, MIDI FX, M4L) and format tabs (VST3, VST2, AU).',
+    tip: '<b>Tip:</b> Press <code>Esc</code> to clear everything instantly. Typing any character while the list is focused starts a new search right away.',
+    highlight: ['#search-box'],
+    panelPos: 'bottom',
+  },
+  {
+    cat: 'Shortcuts',
+    title: 'One-key loading',
+    desc: 'Right-click any plugin → <b>Assign to slot</b> to pin it to one of 6 shortcut slots at the top of the window.<br><br>Press the matching key to load that plugin instantly — no searching, no clicking. On <b>AZERTY</b>: <code>&amp; é " \' ( -</code> — on <b>QWERTY</b>: <code>1 2 3 4 5 6</code>.',
+    tip: 'Change your layout in <b>Settings → Keyboard Layout</b>. Slots can also be triggered from <b>Browsy Connect</b> via OSC <code>/shortcut n</code> — useful for foot pedals or controllers.',
+    highlight: ['#shortcuts-row'],
+    panelPos: 'bottom',
+  },
+  {
+    cat: 'Tags',
+    title: 'Organise your library',
+    desc: '<b>Right-click</b> any plugin → <b>Edit Tags</b> to open the tag editor. Click a tag to add it, click again to remove it. Type to search or create a new tag.<br><br>Open the <b>Tags panel</b> and click any tag to filter the list to matching plugins.',
+    tip: '<b>Favourites</b> — click ★ on any plugin to star it, then sort by favourite. Tags and favourites are saved by plugin name and survive a rescan.',
+    highlight: ['#tag-panel'],
+    panelPos: 'bottom',
+  },
+  {
+    cat: 'Tag search',
+    title: 'Filter by tag from the search bar',
+    desc: 'Type <code>#</code> in the search field to enter <b>tag mode</b>. Start typing — Browsy autocompletes from your tag list. Press <code>↑ ↓</code> to cycle suggestions, <code>Tab</code> or <code>→</code> to accept, <code>Enter</code> to lock it in as a filter pill.<br><br>Stack multiple tags and mix with a text search at the same time.',
+    tip: '<b>Example:</b> <code>#reverb</code> → Enter → <code>shimmer</code> — shows only plugins tagged <i>reverb</i> whose name contains <i>shimmer</i>. Backspace removes the last pill.',
+    highlight: ['#search-box'],
+    panelPos: 'bottom',
+  },
+  {
+    cat: 'AI tagging',
+    title: 'Tag your whole library with AI',
+    desc: 'Go to <b>Settings → Export for AI</b>. The exported JSON includes your full plugin list and a detailed prompt that tells the AI exactly how to tag each plugin — including instructions to look up unfamiliar ones online.<br><br>Feed it to any AI assistant, then import the result back to apply all tags at once.',
+    tip: '<b>M4L devices</b> are included too. Add your <code>.amxd</code> folder paths in <b>Settings → Max for Live</b> — Browsy auto-detects instrument vs. effect vs. MIDI from the file internals.',
+    highlight: ['#settings-open-btn'],
+    panelPos: 'bottom',
+  },
+];
+
+let helpIdx = 0;
+
+function clearHelpHighlights() {
+  document.querySelectorAll('.help-highlighted').forEach(el => el.classList.remove('help-highlighted'));
+  const ov = document.getElementById('help-overlay');
+  ov.classList.remove('pos-top', 'pos-bottom');
+}
+
+function renderHelp() {
+  const s = HELP_SLIDES[helpIdx];
+  document.getElementById('help-category').textContent = s.cat;
+  document.getElementById('help-title').textContent = s.title;
+  document.getElementById('help-desc').innerHTML = s.desc;
+  document.getElementById('help-tip').innerHTML = s.tip;
+
+  const dots = document.getElementById('help-dots');
+  dots.innerHTML = '';
+  HELP_SLIDES.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'help-dot' + (i === helpIdx ? ' active' : '');
+    d.addEventListener('click', () => { helpIdx = i; renderHelp(); });
+    dots.appendChild(d);
+  });
+
+  const isLast = helpIdx === HELP_SLIDES.length - 1;
+  const next = document.getElementById('help-next');
+  next.textContent = isLast ? 'Done' : 'Next →';
+  next.className = isLast ? 'help-done' : '';
+  document.getElementById('help-prev').style.visibility = helpIdx === 0 ? 'hidden' : '';
+
+  // Spotlight: highlight relevant UI elements
+  clearHelpHighlights();
+  const ov = document.getElementById('help-overlay');
+  if (s.highlight && s.highlight.length) {
+    s.highlight.forEach(sel => {
+      const el = document.querySelector(sel);
+      if (el) el.classList.add('help-highlighted');
+    });
+  }
+  if (s.panelPos === 'top') ov.classList.add('pos-top');
+  else if (s.panelPos === 'bottom') ov.classList.add('pos-bottom');
+}
+
+function openHelp() {
+  helpIdx = 0;
+  renderHelp();
+  document.getElementById('help-overlay').classList.add('open');
+}
+function closeHelp() {
+  clearHelpHighlights();
+  document.getElementById('help-overlay').classList.remove('open');
+}
+
+document.getElementById('help-open-btn').addEventListener('click', openHelp);
+document.getElementById('help-close').addEventListener('click', closeHelp);
+document.getElementById('help-overlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('help-overlay')) closeHelp();
+});
+document.getElementById('help-prev').addEventListener('click', () => {
+  if (helpIdx > 0) { helpIdx--; renderHelp(); }
+});
+document.getElementById('help-next').addEventListener('click', () => {
+  if (helpIdx < HELP_SLIDES.length - 1) { helpIdx++; renderHelp(); }
+  else closeHelp();
+});
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('help-overlay').classList.contains('open')) return;
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); if (helpIdx < HELP_SLIDES.length - 1) { helpIdx++; renderHelp(); } else closeHelp(); }
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); if (helpIdx > 0) { helpIdx--; renderHelp(); } }
+  if (e.key === 'Escape') closeHelp();
+});
+
+// Remote script check on startup
+if (window.electronInstall) {
+  window.electronInstall.check().then(installed => {
+    if (!installed) {
+      document.getElementById('setup-banner').style.display = 'flex';
+    }
+  });
+  window.electronInstall.checkM4L().then(installed => {
+    if (installed) {
+      const el = document.getElementById('settings-m4l-status');
+      el.textContent = '✓ Already installed.';
+      el.className = 'settings-install-status ok';
+    }
+  });
+}
+
+document.getElementById('disconnected-retry').addEventListener('click', () => {
+  triggerScan();
+});
+
+document.getElementById('setup-banner-dismiss').addEventListener('click', () => {
+  document.getElementById('setup-banner').style.display = 'none';
+});
+
+document.getElementById('setup-banner-install').addEventListener('click', async () => {
+  const btn = document.getElementById('setup-banner-install');
+  btn.textContent = 'Installing…';
+  btn.disabled = true;
+  const result = await window.electronInstall.installRemoteScript();
+  if (result.ok) {
+    document.getElementById('setup-banner').style.display = 'none';
+    // Also update status in settings if it's open
+    const statusEl = document.getElementById('settings-install-status');
+    if (statusEl) {
+      statusEl.textContent = '✓ Installed. Restart Ableton and add Browsy as a Control Surface in Preferences → Link/MIDI.';
+      statusEl.className = 'settings-install-status ok';
+    }
+  } else {
+    btn.textContent = 'Install now';
+    btn.disabled = false;
+    document.querySelector('.setup-banner-text').textContent = 'Install failed: ' + result.error;
+  }
+});
+</script>
+</body>
+</html>

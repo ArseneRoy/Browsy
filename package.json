@@ -1,0 +1,39 @@
+{
+  "name": "browsy",
+  "productName": "Browsy",
+  "version": "1.0.0",
+  "description": "VST Browser for Ableton Live via OSC",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --mac"
+  },
+  "dependencies": {
+    "node-osc": "^9.0.0"
+  },
+  "devDependencies": {
+    "electron": "^32.0.0",
+    "electron-builder": "^26.8.1"
+  },
+  "build": {
+    "appId": "com.browsy.app",
+    "productName": "Browsy",
+    "mac": {
+      "category": "public.app-category.music",
+      "icon": "build/icon.png",
+      "target": [{ "target": "dmg", "arch": ["arm64", "x64"] }]
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "browsy.html",
+      "plugin-tags.js",
+      "remote-script/**",
+      "Browsy_connect.amxd"
+    ],
+    "asarUnpack": [
+      "remote-script/**",
+      "Browsy_connect.amxd"
+    ]
+  }
+}

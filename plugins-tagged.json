@@ -1,0 +1,7910 @@
+[
+  {
+    "name": "Analog",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Bass",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "bass",
+      "analog",
+      "filter"
+    ]
+  },
+  {
+    "name": "Collision",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "physical-modeling",
+      "creative",
+      "utility"
+    ]
+  },
+  {
+    "name": "CV Instrument",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "modulation",
+      "spatial"
+    ]
+  },
+  {
+    "name": "CV Triggers",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "modulation",
+      "sequencer"
+    ]
+  },
+  {
+    "name": "Drift",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "modulation",
+      "filter"
+    ]
+  },
+  {
+    "name": "Drum Rack",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "drum",
+      "sampler",
+      "utility"
+    ]
+  },
+  {
+    "name": "Drum Sampler",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "drum",
+      "sampler",
+      "distortion"
+    ]
+  },
+  {
+    "name": "DS Clang",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "drum",
+      "synth",
+      "physical-modeling"
+    ]
+  },
+  {
+    "name": "DS Clap",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "drum",
+      "synth",
+      "utility"
+    ]
+  },
+  {
+    "name": "DS Cymbal",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "drum",
+      "synth",
+      "utility"
+    ]
+  },
+  {
+    "name": "DS FM",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "drum",
+      "synth",
+      "fm"
+    ]
+  },
+  {
+    "name": "DS HH",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "drum",
+      "synth",
+      "utility"
+    ]
+  },
+  {
+    "name": "DS Kick",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "drum",
+      "synth",
+      "bass"
+    ]
+  },
+  {
+    "name": "DS Snare",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "drum",
+      "synth",
+      "utility"
+    ]
+  },
+  {
+    "name": "DS Tom",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "drum",
+      "synth",
+      "utility"
+    ]
+  },
+  {
+    "name": "Electric",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "physical-modeling",
+      "analog"
+    ]
+  },
+  {
+    "name": "Emit",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "granular",
+      "creative"
+    ]
+  },
+  {
+    "name": "External Instrument",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "analog",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Granulator III",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "granular",
+      "sampler",
+      "creative"
+    ]
+  },
+  {
+    "name": "Impulse",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "drum",
+      "sampler",
+      "utility"
+    ]
+  },
+  {
+    "name": "Instrument Rack",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "sampler",
+      "synth"
+    ]
+  },
+  {
+    "name": "Meld",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "wavetable",
+      "creative"
+    ]
+  },
+  {
+    "name": "Operator",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "fm",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Poli",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "chorus"
+    ]
+  },
+  {
+    "name": "Sampler",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "sampler",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Simpler",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "sampler",
+      "utility",
+      "filter"
+    ]
+  },
+  {
+    "name": "Tension",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "physical-modeling",
+      "creative"
+    ]
+  },
+  {
+    "name": "Tree Tone",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "creative",
+      "granular"
+    ]
+  },
+  {
+    "name": "Vector FM",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "fm",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Vector Grain",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "granular",
+      "synth",
+      "creative"
+    ]
+  },
+  {
+    "name": "Wavetable",
+    "type": "instrument",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "wavetable",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Align Delay",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "delay",
+      "utility",
+      "spatial"
+    ]
+  },
+  {
+    "name": "Amp",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "distortion",
+      "saturation",
+      "analog"
+    ]
+  },
+  {
+    "name": "Arrangement Looper",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "utility",
+      "creative"
+    ]
+  },
+  {
+    "name": "Audio Effect Rack",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "utility",
+      "creative"
+    ]
+  },
+  {
+    "name": "Auto Filter",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "filter",
+      "eq",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Auto Pan-Tremolo",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "modulation",
+      "spatial",
+      "utility"
+    ]
+  },
+  {
+    "name": "Auto Shift",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "pitch",
+      "creative",
+      "utility"
+    ]
+  },
+  {
+    "name": "Beat Repeat",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "delay",
+      "creative",
+      "utility"
+    ]
+  },
+  {
+    "name": "Cabinet",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "distortion",
+      "saturation",
+      "analog"
+    ]
+  },
+  {
+    "name": "Channel EQ",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "eq",
+      "utility",
+      "filter"
+    ]
+  },
+  {
+    "name": "Chorus-Ensemble",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "chorus",
+      "modulation",
+      "spatial"
+    ]
+  },
+  {
+    "name": "Color Limiter",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "limiter",
+      "compressor",
+      "saturation"
+    ]
+  },
+  {
+    "name": "Compressor",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "compressor",
+      "utility",
+      "dynamics"
+    ]
+  },
+  {
+    "name": "Convolution Reverb",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "reverb",
+      "spatial",
+      "utility"
+    ]
+  },
+  {
+    "name": "Convolution Reverb Pro",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "reverb",
+      "spatial",
+      "utility"
+    ]
+  },
+  {
+    "name": "Corpus",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "filter",
+      "physical-modeling",
+      "creative"
+    ]
+  },
+  {
+    "name": "CV Clock In",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "utility",
+      "modulation"
+    ]
+  },
+  {
+    "name": "CV Clock Out",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "utility",
+      "modulation"
+    ]
+  },
+  {
+    "name": "CV Envelope Follower",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "utility",
+      "modulation"
+    ]
+  },
+  {
+    "name": "CV In",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "utility",
+      "modulation"
+    ]
+  },
+  {
+    "name": "CV LFO",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "utility",
+      "modulation"
+    ]
+  },
+  {
+    "name": "CV Shaper",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "utility",
+      "modulation"
+    ]
+  },
+  {
+    "name": "CV Utility",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "utility",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Delay",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "delay",
+      "utility",
+      "spatial"
+    ]
+  },
+  {
+    "name": "Drum Buss",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "drum",
+      "compressor",
+      "saturation",
+      "distortion"
+    ]
+  },
+  {
+    "name": "Dynamic Tube",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "saturation",
+      "analog",
+      "compressor"
+    ]
+  },
+  {
+    "name": "Echo",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "delay",
+      "reverb",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Envelope Follower",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "utility",
+      "modulation",
+      "compressor"
+    ]
+  },
+  {
+    "name": "EQ Eight",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "eq",
+      "filter",
+      "utility"
+    ]
+  },
+  {
+    "name": "EQ Three",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "eq",
+      "filter",
+      "utility"
+    ]
+  },
+  {
+    "name": "Erosion",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "distortion",
+      "noise",
+      "lo-fi"
+    ]
+  },
+  {
+    "name": "External Audio Effect",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "utility",
+      "analog"
+    ]
+  },
+  {
+    "name": "Filter Delay",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "filter",
+      "delay",
+      "spatial"
+    ]
+  },
+  {
+    "name": "Gate",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "gate",
+      "utility",
+      "compressor"
+    ]
+  },
+  {
+    "name": "Gated Delay",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "delay",
+      "gate",
+      "creative"
+    ]
+  },
+  {
+    "name": "Glue Compressor",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "compressor",
+      "analog",
+      "mastering"
+    ]
+  },
+  {
+    "name": "Grain Delay",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "delay",
+      "granular",
+      "creative"
+    ]
+  },
+  {
+    "name": "Hybrid Reverb",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "reverb",
+      "spatial",
+      "creative"
+    ]
+  },
+  {
+    "name": "IR Measurement Device",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "utility",
+      "reverb"
+    ]
+  },
+  {
+    "name": "LFO",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "modulation",
+      "utility",
+      "filter"
+    ]
+  },
+  {
+    "name": "Limiter",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "limiter",
+      "compressor",
+      "utility"
+    ]
+  },
+  {
+    "name": "Looper",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "utility",
+      "creative"
+    ]
+  },
+  {
+    "name": "Multiband Dynamics",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "compressor",
+      "multiband",
+      "eq"
+    ]
+  },
+  {
+    "name": "Overdrive",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "distortion",
+      "saturation",
+      "analog"
+    ]
+  },
+  {
+    "name": "Pedal",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "distortion",
+      "saturation",
+      "analog"
+    ]
+  },
+  {
+    "name": "Performer",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "utility",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Phaser-Flanger",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "phaser",
+      "flanger",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Pitch Hack",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "pitch",
+      "delay",
+      "creative"
+    ]
+  },
+  {
+    "name": "PitchLoop89",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "pitch",
+      "delay",
+      "creative",
+      "lo-fi"
+    ]
+  },
+  {
+    "name": "Prearranger",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "utility",
+      "creative"
+    ]
+  },
+  {
+    "name": "Re-Enveloper",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "utility",
+      "transient",
+      "compressor"
+    ]
+  },
+  {
+    "name": "Redux",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "lo-fi",
+      "distortion",
+      "noise"
+    ]
+  },
+  {
+    "name": "Resonators",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "filter",
+      "creative",
+      "physical-modeling"
+    ]
+  },
+  {
+    "name": "Reverb",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "reverb",
+      "spatial",
+      "utility"
+    ]
+  },
+  {
+    "name": "Roar",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "saturation",
+      "distortion",
+      "filter",
+      "compressor"
+    ]
+  },
+  {
+    "name": "Saturator",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "saturation",
+      "distortion",
+      "analog"
+    ]
+  },
+  {
+    "name": "Shaper",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "modulation",
+      "utility",
+      "filter"
+    ]
+  },
+  {
+    "name": "Shifter",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "pitch",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Spectral Blur",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "spectral",
+      "reverb",
+      "creative"
+    ]
+  },
+  {
+    "name": "Spectral Resonator",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "spectral",
+      "filter",
+      "creative"
+    ]
+  },
+  {
+    "name": "Spectral Time",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "spectral",
+      "delay",
+      "creative"
+    ]
+  },
+  {
+    "name": "Spectrum",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "utility",
+      "eq",
+      "spectral"
+    ]
+  },
+  {
+    "name": "Surround Panner",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "spatial",
+      "utility",
+      "imager"
+    ]
+  },
+  {
+    "name": "Tuner",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "utility",
+      "pitch"
+    ]
+  },
+  {
+    "name": "Utility",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "utility",
+      "spatial",
+      "imager"
+    ]
+  },
+  {
+    "name": "Variations",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "utility",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Vector Delay",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "delay",
+      "spatial",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Vector Map",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "utility",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Vinyl Distortion",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "distortion",
+      "lo-fi",
+      "saturation",
+      "analog"
+    ]
+  },
+  {
+    "name": "Vocoder",
+    "type": "audio_effect",
+    "cat": "audio-fx",
+    "tags": [
+      "vocal",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "Arpeggiator",
+    "type": "midi_effect",
+    "cat": "midi-fx",
+    "tags": [
+      "sequencer",
+      "utility",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Bouncy Notes",
+    "type": "midi_effect",
+    "cat": "midi-fx",
+    "tags": [
+      "sequencer",
+      "creative",
+      "utility"
+    ]
+  },
+  {
+    "name": "CC Control",
+    "type": "midi_effect",
+    "cat": "midi-fx",
+    "tags": [
+      "utility",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Chord",
+    "type": "midi_effect",
+    "cat": "midi-fx",
+    "tags": [
+      "creative",
+      "utility",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Envelope MIDI",
+    "type": "midi_effect",
+    "cat": "midi-fx",
+    "tags": [
+      "modulation",
+      "utility"
+    ]
+  },
+  {
+    "name": "Expression Control",
+    "type": "midi_effect",
+    "cat": "midi-fx",
+    "tags": [
+      "utility",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Expressive Chords",
+    "type": "midi_effect",
+    "cat": "midi-fx",
+    "tags": [
+      "creative",
+      "utility",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Melodic Steps",
+    "type": "midi_effect",
+    "cat": "midi-fx",
+    "tags": [
+      "sequencer",
+      "utility",
+      "creative"
+    ]
+  },
+  {
+    "name": "Microtuner",
+    "type": "midi_effect",
+    "cat": "midi-fx",
+    "tags": [
+      "utility",
+      "pitch"
+    ]
+  },
+  {
+    "name": "MIDI Effect Rack",
+    "type": "midi_effect",
+    "cat": "midi-fx",
+    "tags": [
+      "utility",
+      "creative"
+    ]
+  },
+  {
+    "name": "MIDI Monitor",
+    "type": "midi_effect",
+    "cat": "midi-fx",
+    "tags": [
+      "utility"
+    ]
+  },
+  {
+    "name": "MPE Control",
+    "type": "midi_effect",
+    "cat": "midi-fx",
+    "tags": [
+      "utility",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Note Echo",
+    "type": "midi_effect",
+    "cat": "midi-fx",
+    "tags": [
+      "delay",
+      "creative",
+      "utility"
+    ]
+  },
+  {
+    "name": "Note Length",
+    "type": "midi_effect",
+    "cat": "midi-fx",
+    "tags": [
+      "utility",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Pitch",
+    "type": "midi_effect",
+    "cat": "midi-fx",
+    "tags": [
+      "pitch",
+      "creative",
+      "utility"
+    ]
+  },
+  {
+    "name": "Random",
+    "type": "midi_effect",
+    "cat": "midi-fx",
+    "tags": [
+      "creative",
+      "utility",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Rhythmic Steps",
+    "type": "midi_effect",
+    "cat": "midi-fx",
+    "tags": [
+      "sequencer",
+      "utility",
+      "creative"
+    ]
+  },
+  {
+    "name": "Rotating Rhythm Generator",
+    "type": "midi_effect",
+    "cat": "midi-fx",
+    "tags": [
+      "sequencer",
+      "creative",
+      "utility"
+    ]
+  },
+  {
+    "name": "Scale",
+    "type": "midi_effect",
+    "cat": "midi-fx",
+    "tags": [
+      "utility",
+      "pitch",
+      "creative"
+    ]
+  },
+  {
+    "name": "Shaper MIDI",
+    "type": "midi_effect",
+    "cat": "midi-fx",
+    "tags": [
+      "modulation",
+      "utility"
+    ]
+  },
+  {
+    "name": "SQ Sequencer",
+    "type": "midi_effect",
+    "cat": "midi-fx",
+    "tags": [
+      "sequencer",
+      "utility",
+      "creative"
+    ]
+  },
+  {
+    "name": "Step Arp",
+    "type": "midi_effect",
+    "cat": "midi-fx",
+    "tags": [
+      "sequencer",
+      "synth",
+      "creative"
+    ]
+  },
+  {
+    "name": "Velocity",
+    "type": "midi_effect",
+    "cat": "midi-fx",
+    "tags": [
+      "utility",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Pitchproof",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "creative",
+      "vocal"
+    ]
+  },
+  {
+    "name": "ATONE",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "vocal",
+      "utility"
+    ]
+  },
+  {
+    "name": "Auto-Tune Artist",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "vocal",
+      "utility"
+    ]
+  },
+  {
+    "name": "Auto-Tune EFX+",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "vocal",
+      "creative",
+      "distortion"
+    ]
+  },
+  {
+    "name": "Auto-Tune Pro",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "vocal",
+      "utility"
+    ]
+  },
+  {
+    "name": "Auto-Tune Slice",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "vocal",
+      "creative"
+    ]
+  },
+  {
+    "name": "Auto-Tune Vocal EQ",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "vocal",
+      "filter"
+    ]
+  },
+  {
+    "name": "Auto-Tune Vocodist",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "AVOX ARTICULATOR",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "AVOX CHOIR",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "spatial",
+      "creative"
+    ]
+  },
+  {
+    "name": "AVOX MUTATOR",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "creative",
+      "distortion"
+    ]
+  },
+  {
+    "name": "AVOX THROAT",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "AVOX WARM",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "saturation",
+      "analog"
+    ]
+  },
+  {
+    "name": "Harmony Engine",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "pitch",
+      "creative"
+    ]
+  },
+  {
+    "name": "AUBandpass",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "utility"
+    ]
+  },
+  {
+    "name": "AUDelay",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "utility",
+      "spatial"
+    ]
+  },
+  {
+    "name": "AUDistortion",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "distortion",
+      "saturation",
+      "utility"
+    ]
+  },
+  {
+    "name": "AUDynamicsProcessor",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "gate",
+      "utility"
+    ]
+  },
+  {
+    "name": "AUFilter",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "utility"
+    ]
+  },
+  {
+    "name": "AUGraphicEQ",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "utility"
+    ]
+  },
+  {
+    "name": "AUHighShelfFilter",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "utility"
+    ]
+  },
+  {
+    "name": "AUHipass",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "utility"
+    ]
+  },
+  {
+    "name": "AULowpass",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "utility"
+    ]
+  },
+  {
+    "name": "AULowShelfFilter",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "utility"
+    ]
+  },
+  {
+    "name": "AUMatrixReverb",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "spatial",
+      "utility"
+    ]
+  },
+  {
+    "name": "AUMIDISynth",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "utility",
+      "sampler"
+    ]
+  },
+  {
+    "name": "AUMultibandCompressor",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "multiband",
+      "utility"
+    ]
+  },
+  {
+    "name": "AUNBandEQ",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "utility"
+    ]
+  },
+  {
+    "name": "AUNetSend",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "spatial"
+    ]
+  },
+  {
+    "name": "AUNewPitch",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "creative",
+      "utility"
+    ]
+  },
+  {
+    "name": "AUParametricEQ",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "utility"
+    ]
+  },
+  {
+    "name": "AUPeakLimiter",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "limiter",
+      "compressor",
+      "utility"
+    ]
+  },
+  {
+    "name": "AUPitch",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "creative",
+      "utility"
+    ]
+  },
+  {
+    "name": "AUReverb2",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "spatial",
+      "utility"
+    ]
+  },
+  {
+    "name": "AURogerBeep",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "creative"
+    ]
+  },
+  {
+    "name": "AURoundTripAAC",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "utility"
+    ]
+  },
+  {
+    "name": "AUSampleDelay",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "utility"
+    ]
+  },
+  {
+    "name": "AUSampler",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "sampler",
+      "utility",
+      "synth"
+    ]
+  },
+  {
+    "name": "AUSoundIsolation",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "filter",
+      "noise"
+    ]
+  },
+  {
+    "name": "DLSMusicDevice",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "sampler",
+      "synth",
+      "utility"
+    ]
+  },
+  {
+    "name": "Acid V",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "filter",
+      "bass",
+      "analog"
+    ]
+  },
+  {
+    "name": "ARP 2600 V3",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Augmented VOICES",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "sampler",
+      "creative"
+    ]
+  },
+  {
+    "name": "Augmented WOODWINDS",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "sampler",
+      "creative",
+      "synth"
+    ]
+  },
+  {
+    "name": "B-3 V2",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "physical-modeling",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Buchla Easel V",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "CS-80 V4",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "chorus"
+    ]
+  },
+  {
+    "name": "DX7 V",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "fm",
+      "analog",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Emulator II V",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "sampler",
+      "vintage",
+      "lo-fi",
+      "analog"
+    ]
+  },
+  {
+    "name": "Farfisa V",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "vintage",
+      "physical-modeling"
+    ]
+  },
+  {
+    "name": "Jun-6 V",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "chorus",
+      "filter"
+    ]
+  },
+  {
+    "name": "Jup-8 V4",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "chorus"
+    ]
+  },
+  {
+    "name": "KORG MS-20 V",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Mellotron V",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "sampler",
+      "vintage",
+      "analog",
+      "creative"
+    ]
+  },
+  {
+    "name": "Mini V4",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "bass"
+    ]
+  },
+  {
+    "name": "MiniFreak V",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "creative",
+      "wavetable",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Piano V3",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "physical-modeling",
+      "analog",
+      "utility"
+    ]
+  },
+  {
+    "name": "Pigments",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "wavetable",
+      "granular",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Pitch SHIFTER-910",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "vintage",
+      "creative",
+      "lo-fi"
+    ]
+  },
+  {
+    "name": "Prophet-5 V",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "vintage"
+    ]
+  },
+  {
+    "name": "SEM V2",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Synthi V",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Vocoder V",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "creative",
+      "filter",
+      "synth"
+    ]
+  },
+  {
+    "name": "VOX Continental V2",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "vintage",
+      "physical-modeling"
+    ]
+  },
+  {
+    "name": "Quanta 2",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "granular",
+      "synth",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "RoughRider3",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "distortion",
+      "analog"
+    ]
+  },
+  {
+    "name": "SWAM Cello 3",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "physical-modeling",
+      "sampler",
+      "creative"
+    ]
+  },
+  {
+    "name": "SWAM VariFlute",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "physical-modeling",
+      "sampler",
+      "creative"
+    ]
+  },
+  {
+    "name": "Atoms",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "distortion",
+      "filter",
+      "creative"
+    ]
+  },
+  {
+    "name": "Humanoid",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "creative",
+      "filter",
+      "synth"
+    ]
+  },
+  {
+    "name": "IHNY-2",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "distortion",
+      "saturation"
+    ]
+  },
+  {
+    "name": "RANDOM",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Denoiser Classic",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "noise",
+      "utility",
+      "vintage"
+    ]
+  },
+  {
+    "name": "Melodyne",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "vocal",
+      "utility",
+      "creative"
+    ]
+  },
+  {
+    "name": "Decimort 2",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "lo-fi",
+      "distortion",
+      "noise"
+    ]
+  },
+  {
+    "name": "Endless Smile",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "creative",
+      "spatial",
+      "delay"
+    ]
+  },
+  {
+    "name": "Eternal Return",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "reverb",
+      "creative",
+      "granular"
+    ]
+  },
+  {
+    "name": "Sausage Fattener",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "saturation",
+      "compressor",
+      "distortion"
+    ]
+  },
+  {
+    "name": "Space In-Your-Face",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spatial",
+      "reverb",
+      "imager"
+    ]
+  },
+  {
+    "name": "Wide Awake",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "imager",
+      "spatial",
+      "utility"
+    ]
+  },
+  {
+    "name": "Concatenator",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "sampler",
+      "creative",
+      "granular"
+    ]
+  },
+  {
+    "name": "PitchMonster",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "creative",
+      "delay"
+    ]
+  },
+  {
+    "name": "Dexed",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "fm",
+      "utility",
+      "analog"
+    ]
+  },
+  {
+    "name": "MiniMetersServer",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "mastering"
+    ]
+  },
+  {
+    "name": "Dodo MIDI",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "sequencer"
+    ]
+  },
+  {
+    "name": "Motion Harmonic",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "pitch",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Micro",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "utility"
+    ]
+  },
+  {
+    "name": "One",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "filter",
+      "analog"
+    ]
+  },
+  {
+    "name": "Pro-C 2",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "utility",
+      "mastering"
+    ]
+  },
+  {
+    "name": "Pro-DS",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "vocal",
+      "filter"
+    ]
+  },
+  {
+    "name": "Pro-G",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "gate",
+      "compressor",
+      "utility"
+    ]
+  },
+  {
+    "name": "Pro-L 2",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "limiter",
+      "mastering",
+      "utility"
+    ]
+  },
+  {
+    "name": "Pro-MB",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "multiband",
+      "mastering"
+    ]
+  },
+  {
+    "name": "Pro-Q 3",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "mastering"
+    ]
+  },
+  {
+    "name": "Pro-Q 4",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "mastering"
+    ]
+  },
+  {
+    "name": "Pro-R 2",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "spatial",
+      "mastering"
+    ]
+  },
+  {
+    "name": "Saturn 2",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "saturation",
+      "distortion",
+      "multiband",
+      "filter"
+    ]
+  },
+  {
+    "name": "Simplon",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "utility"
+    ]
+  },
+  {
+    "name": "Timeless 3",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "filter",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Twin 2",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Twin 3",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Volcano 3",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Backmask",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "creative",
+      "delay",
+      "spatial"
+    ]
+  },
+  {
+    "name": "DreamEater",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "creative",
+      "spatial",
+      "granular"
+    ]
+  },
+  {
+    "name": "Dumpster Fire",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "distortion",
+      "creative",
+      "saturation"
+    ]
+  },
+  {
+    "name": "MISHBY",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "saturation",
+      "utility",
+      "mastering"
+    ]
+  },
+  {
+    "name": "MouthOfSorrow",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "creative",
+      "distortion",
+      "filter"
+    ]
+  },
+  {
+    "name": "PocketDimension",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "granular",
+      "creative",
+      "delay",
+      "reverb"
+    ]
+  },
+  {
+    "name": "Lurssen Mastering Console",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "mastering",
+      "compressor",
+      "eq",
+      "analog"
+    ]
+  },
+  {
+    "name": "GRM Tools Atelier",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "iZotope Trash 2",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "distortion",
+      "saturation",
+      "filter",
+      "creative"
+    ]
+  },
+  {
+    "name": "Vinyl",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "lo-fi",
+      "saturation",
+      "noise",
+      "analog"
+    ]
+  },
+  {
+    "name": "Vocal Doubler",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "spatial",
+      "chorus"
+    ]
+  },
+  {
+    "name": "VocalSynth 2",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "vocal",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "kHs Bitcrush",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "lo-fi",
+      "distortion",
+      "noise"
+    ]
+  },
+  {
+    "name": "kHs Comb Filter",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "creative"
+    ]
+  },
+  {
+    "name": "kHs Formant Filter",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "vocal",
+      "creative"
+    ]
+  },
+  {
+    "name": "kHs Frequency Shifter",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "kHs Haas",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spatial",
+      "delay",
+      "imager"
+    ]
+  },
+  {
+    "name": "kHs Ladder Filter",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "analog",
+      "modulation"
+    ]
+  },
+  {
+    "name": "kHs Resonator",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "creative",
+      "physical-modeling"
+    ]
+  },
+  {
+    "name": "kHs Reverser",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "delay",
+      "utility"
+    ]
+  },
+  {
+    "name": "kHs Ring Mod",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "distortion",
+      "modulation"
+    ]
+  },
+  {
+    "name": "kHs Shaper",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "saturation",
+      "distortion",
+      "utility"
+    ]
+  },
+  {
+    "name": "kHs Stereo",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spatial",
+      "imager",
+      "utility"
+    ]
+  },
+  {
+    "name": "kHs Trance Gate",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "gate",
+      "sequencer",
+      "creative"
+    ]
+  },
+  {
+    "name": "kHs Transient Shaper",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "transient",
+      "compressor",
+      "utility"
+    ]
+  },
+  {
+    "name": "SDRR2",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "saturation",
+      "distortion",
+      "analog",
+      "filter"
+    ]
+  },
+  {
+    "name": "MS-20",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "MS-20FX",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "creative",
+      "modulation",
+      "analog"
+    ]
+  },
+  {
+    "name": "Dehumaniser Simple Monsters",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "creative",
+      "distortion"
+    ]
+  },
+  {
+    "name": "BEAM",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "physical-modeling",
+      "creative"
+    ]
+  },
+  {
+    "name": "Aalto",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "modulation",
+      "creative"
+    ]
+  },
+  {
+    "name": "Kaivo",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "granular",
+      "physical-modeling",
+      "creative"
+    ]
+  },
+  {
+    "name": "Sumu",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "spectral",
+      "creative",
+      "granular"
+    ]
+  },
+  {
+    "name": "Virta",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "creative",
+      "modulation",
+      "vocal"
+    ]
+  },
+  {
+    "name": "Chorus",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "chorus",
+      "modulation",
+      "spatial"
+    ]
+  },
+  {
+    "name": "Grain Streamer",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "granular",
+      "creative",
+      "delay"
+    ]
+  },
+  {
+    "name": "Idee Fixer",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "delay",
+      "utility"
+    ]
+  },
+  {
+    "name": "Spectral Averaging",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "Spectral Blurring",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "reverb",
+      "creative"
+    ]
+  },
+  {
+    "name": "Spectral DroneMaker",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "creative",
+      "reverb"
+    ]
+  },
+  {
+    "name": "Spectral Emergence",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "Spectral Filterbank",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "eq",
+      "filter"
+    ]
+  },
+  {
+    "name": "Spectral Freezing",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "creative",
+      "reverb"
+    ]
+  },
+  {
+    "name": "Spectral Gate And Hold",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "gate",
+      "vintage"
+    ]
+  },
+  {
+    "name": "Spectral Gliding Filters",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "filter",
+      "eq"
+    ]
+  },
+  {
+    "name": "Spectral Granulation",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "granular",
+      "creative"
+    ]
+  },
+  {
+    "name": "Spectral Harmonizer",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "pitch",
+      "creative"
+    ]
+  },
+  {
+    "name": "Spectral Partial Glide",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "creative",
+      "pitch"
+    ]
+  },
+  {
+    "name": "Spectral Pitch Shift",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "pitch",
+      "creative"
+    ]
+  },
+  {
+    "name": "Spectral Pulsing",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Spectral Shimmer",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "reverb",
+      "creative"
+    ]
+  },
+  {
+    "name": "Spectral Shuffle",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "creative",
+      "delay"
+    ]
+  },
+  {
+    "name": "Spectral Stretch",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "creative",
+      "delay"
+    ]
+  },
+  {
+    "name": "Spectral Tracing",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "Spectral Weave",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Super Filterbank",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "spectral"
+    ]
+  },
+  {
+    "name": "Kontakt 7",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "sampler",
+      "utility",
+      "creative"
+    ]
+  },
+  {
+    "name": "Neutone Morpho",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "distortion",
+      "noise",
+      "utility"
+    ]
+  },
+  {
+    "name": "Movement",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "modulation",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "Portal",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "delay",
+      "granular",
+      "spectral"
+    ]
+  },
+  {
+    "name": "Thermal",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "distortion",
+      "saturation",
+      "filter",
+      "creative"
+    ]
+  },
+  {
+    "name": "Tape Fiasco",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "saturation",
+      "tape",
+      "lo-fi",
+      "distortion"
+    ]
+  },
+  {
+    "name": "AlterEgo",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "pitch",
+      "creative"
+    ]
+  },
+  {
+    "name": "plugdata",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "plugdata-fx",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "utility",
+      "distortion"
+    ]
+  },
+  {
+    "name": "bx_cleansweep V2",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "utility"
+    ]
+  },
+  {
+    "name": "bx_masterdesk Classic",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "mastering",
+      "eq",
+      "compressor",
+      "analog"
+    ]
+  },
+  {
+    "name": "bx_rockrack V3 Player",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "distortion",
+      "saturation",
+      "analog"
+    ]
+  },
+  {
+    "name": "bx_solo",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "filter",
+      "imager"
+    ]
+  },
+  {
+    "name": "bx_subfilter",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "bass"
+    ]
+  },
+  {
+    "name": "elysia niveau filter",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "mastering"
+    ]
+  },
+  {
+    "name": "Schoeps Double MS",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spatial",
+      "imager",
+      "utility"
+    ]
+  },
+  {
+    "name": "SPL De-Esser",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "vocal",
+      "filter"
+    ]
+  },
+  {
+    "name": "SPL De-Esser Dual-Band",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "vocal",
+      "filter",
+      "multiband"
+    ]
+  },
+  {
+    "name": "SPL DrumXchanger",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "drum",
+      "utility",
+      "creative"
+    ]
+  },
+  {
+    "name": "SPL EQ Ranger Plus",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "analog"
+    ]
+  },
+  {
+    "name": "SPL Free Ranger",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "utility"
+    ]
+  },
+  {
+    "name": "SPL HawkEye",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "spatial",
+      "imager"
+    ]
+  },
+  {
+    "name": "SPL IRON",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "saturation",
+      "analog"
+    ]
+  },
+  {
+    "name": "SPL Passeq",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "analog"
+    ]
+  },
+  {
+    "name": "SPL Passeq Single",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "analog"
+    ]
+  },
+  {
+    "name": "SPL PQ",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "mastering"
+    ]
+  },
+  {
+    "name": "SPL TwinTube",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "saturation",
+      "analog",
+      "distortion"
+    ]
+  },
+  {
+    "name": "SPL Vitalizer MK2-T",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "saturation",
+      "analog",
+      "spatial"
+    ]
+  },
+  {
+    "name": "Unfiltered Audio Bass Mint",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "bass"
+    ]
+  },
+  {
+    "name": "Unfiltered Audio Dent 2",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "distortion",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "Unfiltered Audio Fault",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "distortion",
+      "lo-fi",
+      "creative"
+    ]
+  },
+  {
+    "name": "Unfiltered Audio Silo",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "reverb",
+      "creative"
+    ]
+  },
+  {
+    "name": "Unfiltered Audio SpecOps",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "Unfiltered Audio Zip",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "modulation",
+      "filter"
+    ]
+  },
+  {
+    "name": "Comet",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "spatial",
+      "creative"
+    ]
+  },
+  {
+    "name": "Filtron",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Gatekeeper",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "gate",
+      "sequencer",
+      "creative"
+    ]
+  },
+  {
+    "name": "I Wish",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "pitch",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Manipulator",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "creative",
+      "pitch"
+    ]
+  },
+  {
+    "name": "Supermodal",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "creative",
+      "physical-modeling"
+    ]
+  },
+  {
+    "name": "Wider",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spatial",
+      "imager",
+      "utility"
+    ]
+  },
+  {
+    "name": "StandardCLIP",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "limiter",
+      "utility",
+      "mastering"
+    ]
+  },
+  {
+    "name": "Fresh Air",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "saturation",
+      "vocal",
+      "utility"
+    ]
+  },
+  {
+    "name": "smartComp",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "utility",
+      "mastering"
+    ]
+  },
+  {
+    "name": "smartEQ3",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "mastering"
+    ]
+  },
+  {
+    "name": "smartLimit",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "limiter",
+      "mastering",
+      "utility"
+    ]
+  },
+  {
+    "name": "smartReverb",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "spatial",
+      "utility"
+    ]
+  },
+  {
+    "name": "Kick 2",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "drum",
+      "synth",
+      "bass"
+    ]
+  },
+  {
+    "name": "Microtonic",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "drum",
+      "synth",
+      "sequencer"
+    ]
+  },
+  {
+    "name": "Microtonic Multi",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "drum",
+      "synth",
+      "sequencer"
+    ]
+  },
+  {
+    "name": "Synplant",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "creative",
+      "granular"
+    ]
+  },
+  {
+    "name": "PaulXStretch",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "reverb",
+      "spatial",
+      "granular"
+    ]
+  },
+  {
+    "name": "WaveWarper 2",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "wavetable",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "OCS-45",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "vintage",
+      "lo-fi",
+      "saturation",
+      "distortion"
+    ]
+  },
+  {
+    "name": "Pancz",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "transient",
+      "compressor",
+      "saturation"
+    ]
+  },
+  {
+    "name": "Spacer",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spatial",
+      "reverb",
+      "imager"
+    ]
+  },
+  {
+    "name": "Splice Bridge",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "sampler"
+    ]
+  },
+  {
+    "name": "Bin Scrambler",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "creative",
+      "lo-fi"
+    ]
+  },
+  {
+    "name": "Frequency Magnet",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "creative"
+    ]
+  },
+  {
+    "name": "Frequency Shifter",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Morph",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Phase Lock",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "phaser",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Sinusoidal Shaped Filter",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "creative"
+    ]
+  },
+  {
+    "name": "Spectral Gate",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "gate",
+      "creative"
+    ]
+  },
+  {
+    "name": "NeuralAmpModeler",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "distortion",
+      "saturation",
+      "analog",
+      "creative"
+    ]
+  },
+  {
+    "name": "DUNE 3",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "wavetable",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "TDR Kotelnikov",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "utility",
+      "mastering"
+    ]
+  },
+  {
+    "name": "EZdrummer 3",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "drum",
+      "sampler",
+      "utility"
+    ]
+  },
+  {
+    "name": "Diva",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Runciter",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "creative",
+      "distortion"
+    ]
+  },
+  {
+    "name": "Twangstrom",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "spatial",
+      "analog",
+      "creative"
+    ]
+  },
+  {
+    "name": "Uhbik-A",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "modulation",
+      "chorus",
+      "spatial"
+    ]
+  },
+  {
+    "name": "Uhbik-D",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "modulation",
+      "creative"
+    ]
+  },
+  {
+    "name": "Uhbik-F",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "flanger",
+      "modulation",
+      "chorus"
+    ]
+  },
+  {
+    "name": "Uhbik-G",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "granular",
+      "creative",
+      "delay"
+    ]
+  },
+  {
+    "name": "Uhbik-P",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "phaser",
+      "modulation",
+      "filter"
+    ]
+  },
+  {
+    "name": "Uhbik-Q",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "creative"
+    ]
+  },
+  {
+    "name": "Uhbik-S",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "chorus",
+      "spatial",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Uhbik-T",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "tremolo",
+      "modulation",
+      "utility"
+    ]
+  },
+  {
+    "name": "Elastik 3",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "sampler",
+      "utility",
+      "creative"
+    ]
+  },
+  {
+    "name": "FIN-BOOST",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "saturation",
+      "eq",
+      "utility"
+    ]
+  },
+  {
+    "name": "FIN-DYNAMO",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "saturation",
+      "creative"
+    ]
+  },
+  {
+    "name": "FIN-FLUXX",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "modulation",
+      "creative",
+      "chorus"
+    ]
+  },
+  {
+    "name": "FIN-NEO",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "distortion",
+      "filter"
+    ]
+  },
+  {
+    "name": "FIN-RETRO",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "vintage",
+      "saturation",
+      "lo-fi"
+    ]
+  },
+  {
+    "name": "FIN-VOOD",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "filter",
+      "distortion"
+    ]
+  },
+  {
+    "name": "Console Recall",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "analog",
+      "mastering"
+    ]
+  },
+  {
+    "name": "UADx Century Tube Channel Strip",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "compressor",
+      "saturation",
+      "analog"
+    ]
+  },
+  {
+    "name": "UADx Galaxy Tape Echo",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "saturation",
+      "tape",
+      "analog"
+    ]
+  },
+  {
+    "name": "UADx LA-2 Compressor",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "analog",
+      "vintage"
+    ]
+  },
+  {
+    "name": "UADx LA-2A Gray Compressor",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "analog",
+      "vintage"
+    ]
+  },
+  {
+    "name": "UADx LA-2A Silver Compressor",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "analog",
+      "vintage"
+    ]
+  },
+  {
+    "name": "UADx Oxide Tape Recorder",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "saturation",
+      "tape",
+      "analog",
+      "lo-fi"
+    ]
+  },
+  {
+    "name": "UADx PolyMAX Synth",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "creative"
+    ]
+  },
+  {
+    "name": "UADx Pultec EQP-1A EQ",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "analog",
+      "mastering"
+    ]
+  },
+  {
+    "name": "UADx Pultec HLF-3C EQ",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "analog",
+      "filter"
+    ]
+  },
+  {
+    "name": "UADx Pultec MEQ-5 EQ",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "analog",
+      "mastering"
+    ]
+  },
+  {
+    "name": "UADx Pure Plate Reverb",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "spatial",
+      "analog"
+    ]
+  },
+  {
+    "name": "UADx Verve Analog Machines Essentials",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "saturation",
+      "analog",
+      "tape"
+    ]
+  },
+  {
+    "name": "ValhallaDelay",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "reverb",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "ValhallaFreqEcho",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "modulation",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "ValhallaPlate",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "spatial",
+      "analog"
+    ]
+  },
+  {
+    "name": "ValhallaRoom",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "spatial",
+      "utility"
+    ]
+  },
+  {
+    "name": "ValhallaShimmer",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "pitch",
+      "creative",
+      "spatial"
+    ]
+  },
+  {
+    "name": "ValhallaSpaceModulator",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "modulation",
+      "creative",
+      "flanger"
+    ]
+  },
+  {
+    "name": "ValhallaSupermassive",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "delay",
+      "creative",
+      "spatial"
+    ]
+  },
+  {
+    "name": "ValhallaUberMod",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "chorus",
+      "modulation",
+      "delay",
+      "creative"
+    ]
+  },
+  {
+    "name": "ValhallaVintageVerb",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "vintage",
+      "spatial",
+      "analog"
+    ]
+  },
+  {
+    "name": "Vital",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "wavetable",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Vowel Changer Formant Filter",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "vocal",
+      "creative"
+    ]
+  },
+  {
+    "name": "Vastaus",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "creative",
+      "spatial"
+    ]
+  },
+  {
+    "name": "H-Delay (m)",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "analog",
+      "saturation"
+    ]
+  },
+  {
+    "name": "H-Delay (m->s)",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "analog",
+      "spatial"
+    ]
+  },
+  {
+    "name": "H-Delay (s)",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "analog",
+      "saturation"
+    ]
+  },
+  {
+    "name": "LFOTool",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "modulation",
+      "gate",
+      "utility"
+    ]
+  },
+  {
+    "name": "Serum",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "wavetable",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Serum 2",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "wavetable",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Serum 2 FX",
+    "type": "plugin",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "creative",
+      "distortion",
+      "modulation"
+    ]
+  },
+  {
+    "name": "RoughRider3",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "distortion",
+      "analog"
+    ]
+  },
+  {
+    "name": "bx_cleansweep V2",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "utility"
+    ]
+  },
+  {
+    "name": "bx_masterdesk Classic",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "mastering",
+      "eq",
+      "compressor",
+      "analog"
+    ]
+  },
+  {
+    "name": "bx_rockrack V3 Player",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "distortion",
+      "saturation",
+      "analog"
+    ]
+  },
+  {
+    "name": "bx_solo",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "filter",
+      "imager"
+    ]
+  },
+  {
+    "name": "bx_subfilter",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "bass"
+    ]
+  },
+  {
+    "name": "elysia niveau filter",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "mastering"
+    ]
+  },
+  {
+    "name": "SPL Attacker Plus",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "transient",
+      "compressor",
+      "utility"
+    ]
+  },
+  {
+    "name": "SPL De-Esser",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "vocal",
+      "filter"
+    ]
+  },
+  {
+    "name": "SPL De-Esser Dual-Band",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "vocal",
+      "filter",
+      "multiband"
+    ]
+  },
+  {
+    "name": "SPL De-Verb Plus",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "utility",
+      "compressor"
+    ]
+  },
+  {
+    "name": "SPL DrumXchanger",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "drum",
+      "utility",
+      "creative"
+    ]
+  },
+  {
+    "name": "SPL EQ Ranger Plus",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "analog"
+    ]
+  },
+  {
+    "name": "SPL Free Ranger",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "utility"
+    ]
+  },
+  {
+    "name": "SPL IRON",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "saturation",
+      "analog"
+    ]
+  },
+  {
+    "name": "SPL Mo-Verb Plus",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "spatial",
+      "creative"
+    ]
+  },
+  {
+    "name": "SPL Passeq",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "analog"
+    ]
+  },
+  {
+    "name": "SPL Passeq Single",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "analog"
+    ]
+  },
+  {
+    "name": "SPL PQ",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "mastering"
+    ]
+  },
+  {
+    "name": "SPL Transient Designer Plus",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "transient",
+      "compressor",
+      "utility"
+    ]
+  },
+  {
+    "name": "SPL TwinTube",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "saturation",
+      "analog",
+      "distortion"
+    ]
+  },
+  {
+    "name": "SPL Vitalizer MK2-T",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "saturation",
+      "analog",
+      "spatial"
+    ]
+  },
+  {
+    "name": "Unfiltered Audio Silo",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "reverb",
+      "creative"
+    ]
+  },
+  {
+    "name": "Unfiltered Audio SpecOps",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "Unfiltered Audio Zip",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "modulation",
+      "filter"
+    ]
+  },
+  {
+    "name": "Fresh Air",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "saturation",
+      "vocal",
+      "utility"
+    ]
+  },
+  {
+    "name": "Microtonic",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "drum",
+      "synth",
+      "sequencer"
+    ]
+  },
+  {
+    "name": "Microtonic Multi",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "drum",
+      "synth",
+      "sequencer"
+    ]
+  },
+  {
+    "name": "Synplant",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "creative",
+      "granular"
+    ]
+  },
+  {
+    "name": "Diva",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Runciter",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "creative",
+      "distortion"
+    ]
+  },
+  {
+    "name": "Twangstrom",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "spatial",
+      "analog",
+      "creative"
+    ]
+  },
+  {
+    "name": "Uhbik-A",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "modulation",
+      "chorus",
+      "spatial"
+    ]
+  },
+  {
+    "name": "Uhbik-D",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "modulation",
+      "creative"
+    ]
+  },
+  {
+    "name": "Uhbik-F",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "flanger",
+      "modulation",
+      "chorus"
+    ]
+  },
+  {
+    "name": "Uhbik-G",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "granular",
+      "creative",
+      "delay"
+    ]
+  },
+  {
+    "name": "Uhbik-P",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "phaser",
+      "modulation",
+      "filter"
+    ]
+  },
+  {
+    "name": "Uhbik-Q",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "creative"
+    ]
+  },
+  {
+    "name": "Uhbik-S",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "chorus",
+      "spatial",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Uhbik-T",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "tremolo",
+      "modulation",
+      "utility"
+    ]
+  },
+  {
+    "name": "FIN-BOOST",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "saturation",
+      "eq",
+      "utility"
+    ]
+  },
+  {
+    "name": "FIN-DYNAMO",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "saturation",
+      "creative"
+    ]
+  },
+  {
+    "name": "FIN-FLUXX",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "modulation",
+      "creative",
+      "chorus"
+    ]
+  },
+  {
+    "name": "FIN-NEO",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "distortion",
+      "filter"
+    ]
+  },
+  {
+    "name": "FIN-RETRO",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "vintage",
+      "saturation",
+      "lo-fi"
+    ]
+  },
+  {
+    "name": "FIN-VOOD",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "filter",
+      "distortion"
+    ]
+  },
+  {
+    "name": "Aalto",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "modulation",
+      "creative"
+    ]
+  },
+  {
+    "name": "Acid V",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "filter",
+      "bass",
+      "analog"
+    ]
+  },
+  {
+    "name": "AlterEgo",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "pitch",
+      "creative"
+    ]
+  },
+  {
+    "name": "ARP 2600 V3",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Atoms",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "distortion",
+      "filter",
+      "creative"
+    ]
+  },
+  {
+    "name": "Augmented VOICES",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "sampler",
+      "creative"
+    ]
+  },
+  {
+    "name": "Augmented WOODWINDS",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "sampler",
+      "creative",
+      "synth"
+    ]
+  },
+  {
+    "name": "B-3 V2",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "physical-modeling",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Buchla Easel V",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "CS-80 V4",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "chorus"
+    ]
+  },
+  {
+    "name": "Decimort2",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "lo-fi",
+      "distortion",
+      "noise"
+    ]
+  },
+  {
+    "name": "DehumaniserSimpleMonsters",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "creative",
+      "distortion"
+    ]
+  },
+  {
+    "name": "DX7 V",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "fm",
+      "analog",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Elastik 3",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "sampler",
+      "utility",
+      "creative"
+    ]
+  },
+  {
+    "name": "Emulator II V",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "sampler",
+      "vintage",
+      "lo-fi",
+      "analog"
+    ]
+  },
+  {
+    "name": "Endless Smile",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "creative",
+      "spatial",
+      "delay"
+    ]
+  },
+  {
+    "name": "Eternal Return",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "reverb",
+      "creative",
+      "granular"
+    ]
+  },
+  {
+    "name": "FabFilter Micro",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "utility"
+    ]
+  },
+  {
+    "name": "FabFilter Micro (Mono)",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "utility"
+    ]
+  },
+  {
+    "name": "FabFilter One",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "filter",
+      "analog"
+    ]
+  },
+  {
+    "name": "FabFilter Pro-C 2",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "utility",
+      "mastering"
+    ]
+  },
+  {
+    "name": "FabFilter Pro-C 2 (Mono)",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "utility",
+      "mastering"
+    ]
+  },
+  {
+    "name": "FabFilter Pro-DS",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "vocal",
+      "filter"
+    ]
+  },
+  {
+    "name": "FabFilter Pro-DS (Mono)",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "vocal",
+      "filter"
+    ]
+  },
+  {
+    "name": "FabFilter Pro-G",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "gate",
+      "compressor",
+      "utility"
+    ]
+  },
+  {
+    "name": "FabFilter Pro-G (Mono)",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "gate",
+      "compressor",
+      "utility"
+    ]
+  },
+  {
+    "name": "FabFilter Pro-L 2",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "limiter",
+      "mastering",
+      "utility"
+    ]
+  },
+  {
+    "name": "FabFilter Pro-MB",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "multiband",
+      "mastering"
+    ]
+  },
+  {
+    "name": "FabFilter Pro-MB (Mono)",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "multiband",
+      "mastering"
+    ]
+  },
+  {
+    "name": "FabFilter Pro-Q 3",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "mastering"
+    ]
+  },
+  {
+    "name": "FabFilter Pro-Q 4",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "mastering"
+    ]
+  },
+  {
+    "name": "FabFilter Pro-R 2",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "spatial",
+      "mastering"
+    ]
+  },
+  {
+    "name": "FabFilter Saturn 2",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "saturation",
+      "distortion",
+      "multiband",
+      "filter"
+    ]
+  },
+  {
+    "name": "FabFilter Simplon",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "utility"
+    ]
+  },
+  {
+    "name": "FabFilter Timeless 3",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "filter",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "FabFilter Twin 2",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "FabFilter Twin 3",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "FabFilter Volcano 3",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Farfisa V",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "vintage",
+      "physical-modeling"
+    ]
+  },
+  {
+    "name": "Gatekeeper",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "gate",
+      "sequencer",
+      "creative"
+    ]
+  },
+  {
+    "name": "Humanoid",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "creative",
+      "filter",
+      "synth"
+    ]
+  },
+  {
+    "name": "IHNY-2",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "distortion",
+      "saturation"
+    ]
+  },
+  {
+    "name": "iZotope Trash 2",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "distortion",
+      "saturation",
+      "filter",
+      "creative"
+    ]
+  },
+  {
+    "name": "Jun-6 V",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "chorus",
+      "filter"
+    ]
+  },
+  {
+    "name": "Jup-8 V4",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "chorus"
+    ]
+  },
+  {
+    "name": "Kaivo",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "granular",
+      "physical-modeling",
+      "creative"
+    ]
+  },
+  {
+    "name": "Kick 2",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "drum",
+      "synth",
+      "bass"
+    ]
+  },
+  {
+    "name": "KORG MS-20 V",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "LFOTool",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "modulation",
+      "gate",
+      "utility"
+    ]
+  },
+  {
+    "name": "Lurssen Mastering Console",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "mastering",
+      "compressor",
+      "eq",
+      "analog"
+    ]
+  },
+  {
+    "name": "Mellotron V",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "sampler",
+      "vintage",
+      "analog",
+      "creative"
+    ]
+  },
+  {
+    "name": "Mini V4",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "bass"
+    ]
+  },
+  {
+    "name": "MiniFreak V",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "creative",
+      "wavetable",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Motion Harmonic",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "pitch",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Movement",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "modulation",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "MS-20",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "MS-20FX",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "creative",
+      "modulation",
+      "analog"
+    ]
+  },
+  {
+    "name": "OCS-45",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "vintage",
+      "lo-fi",
+      "saturation",
+      "distortion"
+    ]
+  },
+  {
+    "name": "Pancz",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "transient",
+      "compressor",
+      "saturation"
+    ]
+  },
+  {
+    "name": "Piano V3",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "physical-modeling",
+      "analog",
+      "utility"
+    ]
+  },
+  {
+    "name": "Pigments",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "wavetable",
+      "granular",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "PitchMonster",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "creative",
+      "delay"
+    ]
+  },
+  {
+    "name": "Pitchproof",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "creative",
+      "vocal"
+    ]
+  },
+  {
+    "name": "Portal",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "delay",
+      "granular",
+      "spectral"
+    ]
+  },
+  {
+    "name": "Prophet-5 V",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "vintage"
+    ]
+  },
+  {
+    "name": "RANDOM",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "SausageFattener",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "saturation",
+      "compressor",
+      "distortion"
+    ]
+  },
+  {
+    "name": "SDRR2",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "saturation",
+      "distortion",
+      "analog",
+      "filter"
+    ]
+  },
+  {
+    "name": "SEM V2",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Serum",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "wavetable",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "smartcomp",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "utility",
+      "mastering"
+    ]
+  },
+  {
+    "name": "smartEQ3",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "mastering"
+    ]
+  },
+  {
+    "name": "smartlimit",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "limiter",
+      "mastering",
+      "utility"
+    ]
+  },
+  {
+    "name": "smartreverb",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "spatial",
+      "utility"
+    ]
+  },
+  {
+    "name": "Spacer",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "spatial",
+      "reverb",
+      "imager"
+    ]
+  },
+  {
+    "name": "Synthi V",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Thermal",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "distortion",
+      "saturation",
+      "filter",
+      "creative"
+    ]
+  },
+  {
+    "name": "Unfiltered Audio Bass Mint",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "bass"
+    ]
+  },
+  {
+    "name": "Unfiltered Audio Dent 2",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "distortion",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "Unfiltered Audio Fault",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "distortion",
+      "lo-fi",
+      "creative"
+    ]
+  },
+  {
+    "name": "Unfiltered Audio Silo",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "reverb",
+      "creative"
+    ]
+  },
+  {
+    "name": "Unfiltered Audio SpecOps",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "ValhallaDelay",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "reverb",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "ValhallaFreqEcho",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "modulation",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "ValhallaPlate",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "spatial",
+      "analog"
+    ]
+  },
+  {
+    "name": "ValhallaRoom",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "spatial",
+      "utility"
+    ]
+  },
+  {
+    "name": "ValhallaShimmer",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "pitch",
+      "creative",
+      "spatial"
+    ]
+  },
+  {
+    "name": "ValhallaSpaceModulator",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "modulation",
+      "creative",
+      "flanger"
+    ]
+  },
+  {
+    "name": "ValhallaSupermassive",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "delay",
+      "creative",
+      "spatial"
+    ]
+  },
+  {
+    "name": "ValhallaUberMod",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "chorus",
+      "modulation",
+      "delay",
+      "creative"
+    ]
+  },
+  {
+    "name": "ValhallaVintageVerb",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "vintage",
+      "spatial",
+      "analog"
+    ]
+  },
+  {
+    "name": "Vinyl",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "lo-fi",
+      "saturation",
+      "noise",
+      "analog"
+    ]
+  },
+  {
+    "name": "Virta",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "creative",
+      "modulation",
+      "vocal"
+    ]
+  },
+  {
+    "name": "Vital",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "wavetable",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Vocal Doubler",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "spatial",
+      "chorus"
+    ]
+  },
+  {
+    "name": "VocalSynth 2",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "vocal",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "Vocoder V",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "creative",
+      "filter",
+      "synth"
+    ]
+  },
+  {
+    "name": "VOX Continental V2",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "vintage",
+      "physical-modeling"
+    ]
+  },
+  {
+    "name": "Voxengo SPAN",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "eq",
+      "mastering"
+    ]
+  },
+  {
+    "name": "Voxengo Voxformer",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "compressor",
+      "eq"
+    ]
+  },
+  {
+    "name": "Wide Awake",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "imager",
+      "spatial",
+      "utility"
+    ]
+  },
+  {
+    "name": "Wider",
+    "type": "vst2",
+    "cat": "instrument",
+    "tags": [
+      "spatial",
+      "imager",
+      "utility"
+    ]
+  },
+  {
+    "name": "ATONE",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "vocal",
+      "utility"
+    ]
+  },
+  {
+    "name": "Auto-Tune Artist",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "vocal",
+      "utility"
+    ]
+  },
+  {
+    "name": "Auto-Tune EFX+",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "vocal",
+      "creative",
+      "distortion"
+    ]
+  },
+  {
+    "name": "Auto-Tune Pro",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "vocal",
+      "utility"
+    ]
+  },
+  {
+    "name": "Auto-Tune Slice",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "vocal",
+      "creative"
+    ]
+  },
+  {
+    "name": "Auto-Tune Vocal EQ",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "vocal",
+      "filter"
+    ]
+  },
+  {
+    "name": "Auto-Tune Vocodist",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "AVOX ARTICULATOR",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "AVOX CHOIR",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "spatial",
+      "creative"
+    ]
+  },
+  {
+    "name": "AVOX MUTATOR",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "creative",
+      "distortion"
+    ]
+  },
+  {
+    "name": "AVOX THROAT",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "AVOX WARM",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "saturation",
+      "analog"
+    ]
+  },
+  {
+    "name": "Harmony Engine",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "pitch",
+      "creative"
+    ]
+  },
+  {
+    "name": "Acid V",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "filter",
+      "bass",
+      "analog"
+    ]
+  },
+  {
+    "name": "Augmented VOICES",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "sampler",
+      "creative"
+    ]
+  },
+  {
+    "name": "Augmented WOODWINDS",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "sampler",
+      "creative",
+      "synth"
+    ]
+  },
+  {
+    "name": "Buchla Easel V",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "CS-80 V4",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "chorus"
+    ]
+  },
+  {
+    "name": "DX7 V",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "fm",
+      "analog",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Efx AMBIENT",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "creative",
+      "spatial"
+    ]
+  },
+  {
+    "name": "Emulator II V",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "sampler",
+      "vintage",
+      "lo-fi",
+      "analog"
+    ]
+  },
+  {
+    "name": "Farfisa V",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "vintage",
+      "physical-modeling"
+    ]
+  },
+  {
+    "name": "Jun-6 V",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "chorus",
+      "filter"
+    ]
+  },
+  {
+    "name": "Jup-8 V4",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "chorus"
+    ]
+  },
+  {
+    "name": "KORG MS-20 V",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Mellotron V",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "sampler",
+      "vintage",
+      "analog",
+      "creative"
+    ]
+  },
+  {
+    "name": "Mini V4",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "bass"
+    ]
+  },
+  {
+    "name": "MiniFreak V",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "creative",
+      "wavetable",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Piano V3",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "physical-modeling",
+      "analog",
+      "utility"
+    ]
+  },
+  {
+    "name": "Pigments",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "wavetable",
+      "granular",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Pitch SHIFTER-910",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "vintage",
+      "creative",
+      "lo-fi"
+    ]
+  },
+  {
+    "name": "Prophet-5 V",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "vintage"
+    ]
+  },
+  {
+    "name": "SEM V2",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Synthi V",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Vocoder V",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "creative",
+      "filter",
+      "synth"
+    ]
+  },
+  {
+    "name": "VOX Continental V2",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "vintage",
+      "physical-modeling"
+    ]
+  },
+  {
+    "name": "Quanta 2",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "granular",
+      "synth",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "RoughRider3",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "distortion",
+      "analog"
+    ]
+  },
+  {
+    "name": "SWAM Cello 3",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "physical-modeling",
+      "sampler",
+      "creative"
+    ]
+  },
+  {
+    "name": "SWAM VariFlute",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "physical-modeling",
+      "sampler",
+      "creative"
+    ]
+  },
+  {
+    "name": "Atoms",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "distortion",
+      "filter",
+      "creative"
+    ]
+  },
+  {
+    "name": "Humanoid",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "creative",
+      "filter",
+      "synth"
+    ]
+  },
+  {
+    "name": "IHNY-2",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "distortion",
+      "saturation"
+    ]
+  },
+  {
+    "name": "RANDOM",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Denoiser Classic",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "noise",
+      "utility",
+      "vintage"
+    ]
+  },
+  {
+    "name": "Melodyne",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "vocal",
+      "utility",
+      "creative"
+    ]
+  },
+  {
+    "name": "Endless Smile",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "creative",
+      "spatial",
+      "delay"
+    ]
+  },
+  {
+    "name": "Eternal Return",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "reverb",
+      "creative",
+      "granular"
+    ]
+  },
+  {
+    "name": "SausageFattener",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "saturation",
+      "compressor",
+      "distortion"
+    ]
+  },
+  {
+    "name": "Space In-Your-Face",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "spatial",
+      "reverb",
+      "imager"
+    ]
+  },
+  {
+    "name": "Wide Awake",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "imager",
+      "spatial",
+      "utility"
+    ]
+  },
+  {
+    "name": "Concatenator",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "sampler",
+      "creative",
+      "granular"
+    ]
+  },
+  {
+    "name": "PitchMonster",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "creative",
+      "delay"
+    ]
+  },
+  {
+    "name": "Dexed",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "fm",
+      "utility",
+      "analog"
+    ]
+  },
+  {
+    "name": "MiniMetersServer",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "mastering"
+    ]
+  },
+  {
+    "name": "Dodo MIDI",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "sequencer"
+    ]
+  },
+  {
+    "name": "Motion Harmonic",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "pitch",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Micro",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "utility"
+    ]
+  },
+  {
+    "name": "One",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "filter",
+      "analog"
+    ]
+  },
+  {
+    "name": "Pro-C 2",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "utility",
+      "mastering"
+    ]
+  },
+  {
+    "name": "Pro-DS",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "vocal",
+      "filter"
+    ]
+  },
+  {
+    "name": "Pro-G",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "gate",
+      "compressor",
+      "utility"
+    ]
+  },
+  {
+    "name": "Pro-L 2",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "limiter",
+      "mastering",
+      "utility"
+    ]
+  },
+  {
+    "name": "Pro-MB",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "multiband",
+      "mastering"
+    ]
+  },
+  {
+    "name": "Pro-Q 3",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "mastering"
+    ]
+  },
+  {
+    "name": "Pro-Q 4",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "mastering"
+    ]
+  },
+  {
+    "name": "Pro-R 2",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "spatial",
+      "mastering"
+    ]
+  },
+  {
+    "name": "Saturn 2",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "saturation",
+      "distortion",
+      "multiband",
+      "filter"
+    ]
+  },
+  {
+    "name": "Simplon",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "utility"
+    ]
+  },
+  {
+    "name": "Timeless 3",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "filter",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Twin 2",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Twin 3",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Volcano 3",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Backmask",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "creative",
+      "delay",
+      "spatial"
+    ]
+  },
+  {
+    "name": "DreamEater",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "creative",
+      "spatial",
+      "granular"
+    ]
+  },
+  {
+    "name": "Dumpster Fire",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "distortion",
+      "creative",
+      "saturation"
+    ]
+  },
+  {
+    "name": "MISHBY",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "saturation",
+      "utility",
+      "mastering"
+    ]
+  },
+  {
+    "name": "MouthOfSorrow",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "creative",
+      "distortion",
+      "filter"
+    ]
+  },
+  {
+    "name": "PocketDimension",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "granular",
+      "creative",
+      "delay",
+      "reverb"
+    ]
+  },
+  {
+    "name": "Lurssen Mastering Console",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "mastering",
+      "compressor",
+      "eq",
+      "analog"
+    ]
+  },
+  {
+    "name": "GRM Tools Atelier",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "iZotope Trash 2",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "distortion",
+      "saturation",
+      "filter",
+      "creative"
+    ]
+  },
+  {
+    "name": "Vinyl",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "lo-fi",
+      "saturation",
+      "noise",
+      "analog"
+    ]
+  },
+  {
+    "name": "Vocal Doubler",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "spatial",
+      "chorus"
+    ]
+  },
+  {
+    "name": "VocalSynth 2",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "vocal",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "kHs Bitcrush",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "lo-fi",
+      "distortion",
+      "noise"
+    ]
+  },
+  {
+    "name": "kHs Comb Filter",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "creative"
+    ]
+  },
+  {
+    "name": "kHs Formant Filter",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "vocal",
+      "creative"
+    ]
+  },
+  {
+    "name": "kHs Frequency Shifter",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "kHs Haas",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "spatial",
+      "delay",
+      "imager"
+    ]
+  },
+  {
+    "name": "kHs Ladder Filter",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "analog",
+      "modulation"
+    ]
+  },
+  {
+    "name": "kHs Resonator",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "creative",
+      "physical-modeling"
+    ]
+  },
+  {
+    "name": "kHs Reverser",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "delay",
+      "utility"
+    ]
+  },
+  {
+    "name": "kHs Ring Mod",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "distortion",
+      "modulation"
+    ]
+  },
+  {
+    "name": "kHs Shaper",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "saturation",
+      "distortion",
+      "utility"
+    ]
+  },
+  {
+    "name": "kHs Stereo",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "spatial",
+      "imager",
+      "utility"
+    ]
+  },
+  {
+    "name": "kHs Trance Gate",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "gate",
+      "sequencer",
+      "creative"
+    ]
+  },
+  {
+    "name": "kHs Transient Shaper",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "transient",
+      "compressor",
+      "utility"
+    ]
+  },
+  {
+    "name": "SDRR2",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "saturation",
+      "distortion",
+      "analog",
+      "filter"
+    ]
+  },
+  {
+    "name": "MS-20",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "MS-20FX",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "creative",
+      "modulation",
+      "analog"
+    ]
+  },
+  {
+    "name": "Dehumaniser Simple Monsters",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "creative",
+      "distortion"
+    ]
+  },
+  {
+    "name": "BEAM",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "physical-modeling",
+      "creative"
+    ]
+  },
+  {
+    "name": "Sumu",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "spectral",
+      "creative",
+      "granular"
+    ]
+  },
+  {
+    "name": "MAutoPitch",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "vocal",
+      "creative"
+    ]
+  },
+  {
+    "name": "Kontakt 7",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "sampler",
+      "utility",
+      "creative"
+    ]
+  },
+  {
+    "name": "Neutone Morpho",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "distortion",
+      "noise",
+      "utility"
+    ]
+  },
+  {
+    "name": "Movement",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "modulation",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "Portal",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "delay",
+      "granular",
+      "spectral"
+    ]
+  },
+  {
+    "name": "Thermal",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "distortion",
+      "saturation",
+      "filter",
+      "creative"
+    ]
+  },
+  {
+    "name": "AlterEgo",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "pitch",
+      "creative"
+    ]
+  },
+  {
+    "name": "plugdata",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "plugdata-fx",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "utility",
+      "distortion"
+    ]
+  },
+  {
+    "name": "bx_cleansweep V2",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "utility"
+    ]
+  },
+  {
+    "name": "bx_masterdesk Classic",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "mastering",
+      "eq",
+      "compressor",
+      "analog"
+    ]
+  },
+  {
+    "name": "bx_rockrack V3 Player",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "distortion",
+      "saturation",
+      "analog"
+    ]
+  },
+  {
+    "name": "bx_solo",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "filter",
+      "imager"
+    ]
+  },
+  {
+    "name": "bx_subfilter",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "bass"
+    ]
+  },
+  {
+    "name": "elysia niveau filter",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "mastering"
+    ]
+  },
+  {
+    "name": "Schoeps Double MS",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "spatial",
+      "imager",
+      "utility"
+    ]
+  },
+  {
+    "name": "SPL Attacker Plus",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "transient",
+      "compressor",
+      "utility"
+    ]
+  },
+  {
+    "name": "SPL De-Esser",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "vocal",
+      "filter"
+    ]
+  },
+  {
+    "name": "SPL De-Esser Dual-Band",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "vocal",
+      "filter",
+      "multiband"
+    ]
+  },
+  {
+    "name": "SPL De-Verb Plus",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "utility",
+      "compressor"
+    ]
+  },
+  {
+    "name": "SPL DrumXchanger",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "drum",
+      "utility",
+      "creative"
+    ]
+  },
+  {
+    "name": "SPL EQ Ranger Plus",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "analog"
+    ]
+  },
+  {
+    "name": "SPL Free Ranger",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "utility"
+    ]
+  },
+  {
+    "name": "SPL HawkEye",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "spatial",
+      "imager"
+    ]
+  },
+  {
+    "name": "SPL IRON",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "saturation",
+      "analog"
+    ]
+  },
+  {
+    "name": "SPL Mo-Verb Plus",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "spatial",
+      "creative"
+    ]
+  },
+  {
+    "name": "SPL Passeq",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "analog"
+    ]
+  },
+  {
+    "name": "SPL Passeq Single",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "analog"
+    ]
+  },
+  {
+    "name": "SPL PQ",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "mastering"
+    ]
+  },
+  {
+    "name": "SPL Transient Designer Plus",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "transient",
+      "compressor",
+      "utility"
+    ]
+  },
+  {
+    "name": "SPL TwinTube",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "saturation",
+      "analog",
+      "distortion"
+    ]
+  },
+  {
+    "name": "SPL Vitalizer MK2-T",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "saturation",
+      "analog",
+      "spatial"
+    ]
+  },
+  {
+    "name": "Unfiltered Audio Bass Mint",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "bass"
+    ]
+  },
+  {
+    "name": "Unfiltered Audio Dent 2",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "distortion",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "Unfiltered Audio Fault",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "distortion",
+      "lo-fi",
+      "creative"
+    ]
+  },
+  {
+    "name": "Unfiltered Audio Silo",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "reverb",
+      "creative"
+    ]
+  },
+  {
+    "name": "Unfiltered Audio SpecOps",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "Unfiltered Audio Zip",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "modulation",
+      "filter"
+    ]
+  },
+  {
+    "name": "Comet",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "spatial",
+      "creative"
+    ]
+  },
+  {
+    "name": "Filtron",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Gatekeeper",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "gate",
+      "sequencer",
+      "creative"
+    ]
+  },
+  {
+    "name": "I Wish",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "pitch",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Manipulator",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "creative",
+      "pitch"
+    ]
+  },
+  {
+    "name": "Supermodal",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "creative",
+      "physical-modeling"
+    ]
+  },
+  {
+    "name": "Wider",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "spatial",
+      "imager",
+      "utility"
+    ]
+  },
+  {
+    "name": "StandardCLIP",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "limiter",
+      "utility",
+      "mastering"
+    ]
+  },
+  {
+    "name": "Fresh Air",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "saturation",
+      "vocal",
+      "utility"
+    ]
+  },
+  {
+    "name": "smartComp",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "utility",
+      "mastering"
+    ]
+  },
+  {
+    "name": "smartEQ3",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "mastering"
+    ]
+  },
+  {
+    "name": "smartReverb",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "spatial",
+      "utility"
+    ]
+  },
+  {
+    "name": "Microtonic",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "drum",
+      "synth",
+      "sequencer"
+    ]
+  },
+  {
+    "name": "Microtonic Multi",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "drum",
+      "synth",
+      "sequencer"
+    ]
+  },
+  {
+    "name": "Synplant",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "creative",
+      "granular"
+    ]
+  },
+  {
+    "name": "PaulXStretch",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "reverb",
+      "spatial",
+      "granular"
+    ]
+  },
+  {
+    "name": "WaveWarper 2",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "wavetable",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "OCS-45",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "vintage",
+      "lo-fi",
+      "saturation",
+      "distortion"
+    ]
+  },
+  {
+    "name": "Pancz",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "transient",
+      "compressor",
+      "saturation"
+    ]
+  },
+  {
+    "name": "Spacer",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "spatial",
+      "reverb",
+      "imager"
+    ]
+  },
+  {
+    "name": "Splice Bridge",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "sampler"
+    ]
+  },
+  {
+    "name": "Bin Scrambler",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "creative",
+      "lo-fi"
+    ]
+  },
+  {
+    "name": "Frequency Magnet",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "filter",
+      "creative"
+    ]
+  },
+  {
+    "name": "Frequency Shifter",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "pitch",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Morph",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Phase Lock",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "phaser",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Sinusoidal Shaped Filter",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "creative"
+    ]
+  },
+  {
+    "name": "Spectral Gate",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "spectral",
+      "gate",
+      "creative"
+    ]
+  },
+  {
+    "name": "NeuralAmpModeler",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "distortion",
+      "saturation",
+      "analog",
+      "creative"
+    ]
+  },
+  {
+    "name": "DUNE 3",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "wavetable",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Flechtwerk",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "TDR Kotelnikov",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "utility",
+      "mastering"
+    ]
+  },
+  {
+    "name": "Diva",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Runciter",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "creative",
+      "distortion"
+    ]
+  },
+  {
+    "name": "Twangstrom",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "spatial",
+      "analog",
+      "creative"
+    ]
+  },
+  {
+    "name": "Uhbik-A",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "modulation",
+      "chorus",
+      "spatial"
+    ]
+  },
+  {
+    "name": "Uhbik-D",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "modulation",
+      "creative"
+    ]
+  },
+  {
+    "name": "Uhbik-F",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "flanger",
+      "modulation",
+      "chorus"
+    ]
+  },
+  {
+    "name": "Uhbik-G",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "granular",
+      "creative",
+      "delay"
+    ]
+  },
+  {
+    "name": "Uhbik-P",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "phaser",
+      "modulation",
+      "filter"
+    ]
+  },
+  {
+    "name": "Uhbik-Q",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "eq",
+      "creative"
+    ]
+  },
+  {
+    "name": "Uhbik-S",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "chorus",
+      "spatial",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Uhbik-T",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "tremolo",
+      "modulation",
+      "utility"
+    ]
+  },
+  {
+    "name": "Elastik 3",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "sampler",
+      "utility",
+      "creative"
+    ]
+  },
+  {
+    "name": "FIN-BOOST",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "saturation",
+      "eq",
+      "utility"
+    ]
+  },
+  {
+    "name": "FIN-DYNAMO",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "saturation",
+      "creative"
+    ]
+  },
+  {
+    "name": "FIN-FLUXX",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "modulation",
+      "creative",
+      "chorus"
+    ]
+  },
+  {
+    "name": "FIN-NEO",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "distortion",
+      "filter"
+    ]
+  },
+  {
+    "name": "FIN-RETRO",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "vintage",
+      "saturation",
+      "lo-fi"
+    ]
+  },
+  {
+    "name": "FIN-VOOD",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "creative",
+      "filter",
+      "distortion"
+    ]
+  },
+  {
+    "name": "UADx Century Tube Channel Strip",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "compressor",
+      "saturation",
+      "analog"
+    ]
+  },
+  {
+    "name": "UADx Galaxy Tape Echo",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "saturation",
+      "tape",
+      "analog"
+    ]
+  },
+  {
+    "name": "UADx LA-2 Compressor",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "analog",
+      "vintage"
+    ]
+  },
+  {
+    "name": "UADx LA-2A Gray Compressor",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "analog",
+      "vintage"
+    ]
+  },
+  {
+    "name": "UADx LA-2A Silver Compressor",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "compressor",
+      "analog",
+      "vintage"
+    ]
+  },
+  {
+    "name": "UADx Oxide Tape Recorder",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "saturation",
+      "tape",
+      "analog",
+      "lo-fi"
+    ]
+  },
+  {
+    "name": "UADx PolyMAX Synth",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "analog",
+      "creative"
+    ]
+  },
+  {
+    "name": "UADx Pultec EQP-1A EQ",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "analog",
+      "mastering"
+    ]
+  },
+  {
+    "name": "UADx Pultec HLF-3C EQ",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "analog",
+      "filter"
+    ]
+  },
+  {
+    "name": "UADx Pultec MEQ-5 EQ",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "eq",
+      "analog",
+      "mastering"
+    ]
+  },
+  {
+    "name": "UADx Pure Plate Reverb",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "spatial",
+      "analog"
+    ]
+  },
+  {
+    "name": "UADx Verve Analog Machines Essentials",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "saturation",
+      "analog",
+      "tape"
+    ]
+  },
+  {
+    "name": "ValhallaDelay",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "reverb",
+      "creative",
+      "modulation"
+    ]
+  },
+  {
+    "name": "ValhallaFreqEcho",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "modulation",
+      "creative",
+      "filter"
+    ]
+  },
+  {
+    "name": "ValhallaPlate",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "spatial",
+      "analog"
+    ]
+  },
+  {
+    "name": "ValhallaRoom",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "spatial",
+      "utility"
+    ]
+  },
+  {
+    "name": "ValhallaShimmer",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "pitch",
+      "creative",
+      "spatial"
+    ]
+  },
+  {
+    "name": "ValhallaSpaceModulator",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "modulation",
+      "creative",
+      "flanger"
+    ]
+  },
+  {
+    "name": "ValhallaSupermassive",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "delay",
+      "creative",
+      "spatial"
+    ]
+  },
+  {
+    "name": "ValhallaUberMod",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "chorus",
+      "modulation",
+      "delay",
+      "creative"
+    ]
+  },
+  {
+    "name": "ValhallaVintageVerb",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "vintage",
+      "spatial",
+      "analog"
+    ]
+  },
+  {
+    "name": "Vital",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "wavetable",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Vowel Changer Formant Filter",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "vocal",
+      "creative"
+    ]
+  },
+  {
+    "name": "SPAN",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "utility",
+      "eq",
+      "mastering"
+    ]
+  },
+  {
+    "name": "Voxformer",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "vocal",
+      "compressor",
+      "eq"
+    ]
+  },
+  {
+    "name": "Vastaus",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "reverb",
+      "creative",
+      "spatial"
+    ]
+  },
+  {
+    "name": "H-Delay Mono",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "analog",
+      "saturation"
+    ]
+  },
+  {
+    "name": "H-Delay Mono/Stereo",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "analog",
+      "spatial"
+    ]
+  },
+  {
+    "name": "H-Delay Stereo",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "delay",
+      "analog",
+      "spatial",
+      "imager"
+    ]
+  },
+  {
+    "name": "Serum",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "wavetable",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Serum 2",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "synth",
+      "wavetable",
+      "filter",
+      "modulation"
+    ]
+  },
+  {
+    "name": "Serum 2 FX",
+    "type": "vst3",
+    "cat": "instrument",
+    "tags": [
+      "filter",
+      "creative",
+      "distortion",
+      "modulation"
+    ]
+  }
+]
