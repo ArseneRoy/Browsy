@@ -45,7 +45,6 @@ Plugin list is cached locally — Browsy loads instantly on every startup withou
 | `browsy.html` | UI and app logic |
 | `plugin-tags.js` | Default tag database |
 | `remote-script/Browsy/` | Ableton Remote Script |
-| `Browsy_connect.amxd` | Max for Live device (optional) |
 
 ---
 
@@ -64,4 +63,3 @@ Browsy listens on port **11001**, sends to Ableton on port **11000**.
 
 - macOS
 - Ableton Live 11 or later
-- Max for Live (only if using Browsy Connect or scanning `.amxd` files)
