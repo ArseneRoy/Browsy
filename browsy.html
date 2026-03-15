@@ -1902,14 +1902,6 @@ mark {
         <div class="settings-label" style="margin-top:14px">Ableton Remote Script</div>
         <button class="settings-add-btn" id="settings-install-btn">Install Remote Script…</button>
         <div class="settings-install-status" id="settings-install-status"></div>
-        <div class="settings-label" style="margin-top:14px">Max for Live Device</div>
-        <div class="settings-sublabel">Installs <b>Browsy Connect</b> in your User Library (Audio Effects → Max Audio Effect)</div>
-        <button class="settings-add-btn" id="settings-m4l-btn">Install Browsy Connect…</button>
-        <div class="settings-install-status" id="settings-m4l-status"></div>
-        <div class="settings-label" style="margin-top:14px">Hammerspoon</div>
-        <div class="settings-sublabel">Adds a shortcut: press <code style="font-size:10px;background:#252525;border:1px solid #383838;border-radius:3px;padding:1px 5px;color:var(--orange)">@</code> in Ableton to open Browsy</div>
-        <button class="settings-add-btn" id="settings-hs-btn">Install Hammerspoon script…</button>
-        <div class="settings-install-status" id="settings-hs-status"></div>
       </div>
 
       <div class="settings-section">
@@ -2962,6 +2954,9 @@ if(window.osc && !window._oscInitDone) {
   // Shortcut trigger from Max: /shortcut <n> (1-indexed)
   window.osc.on('/shortcut', (n) => triggerShortcut(n - 1));
 
+  // Shortcut trigger from global hotkey (when Ableton is frontmost)
+  window.electronWindow.onShortcut((idx) => triggerShortcut(idx));
+
   // Startup: load cache instantly if available, then check connection
   window.osc.send('/vst/track/get');
   const cached = loadScanCache();
@@ -3199,19 +3194,6 @@ function openSettings() {
   }
   document.getElementById('settings-overlay').classList.add('open');
   if (window.electronInstall) {
-    window.electronInstall.checkHammerspoon().then(state => {
-      const el = document.getElementById('settings-hs-status');
-      if (state === 'installed') {
-        el.textContent = '✓ Script is installed.';
-        el.className = 'settings-install-status ok';
-      } else if (state === 'not-configured') {
-        el.textContent = 'Hammerspoon found but Browsy script not added yet.';
-        el.className = 'settings-install-status';
-      } else {
-        el.textContent = '';
-        el.className = 'settings-install-status';
-      }
-    });
   }
 }
 
@@ -3270,37 +3252,7 @@ document.getElementById('settings-install-btn').addEventListener('click', async 
   }
 });
 
-document.getElementById('settings-m4l-btn').addEventListener('click', async () => {
-  if (!window.electronInstall) return;
-  const statusEl = document.getElementById('settings-m4l-status');
-  statusEl.textContent = 'Installing…';
-  statusEl.className = 'settings-install-status';
-  const result = await window.electronInstall.installM4L();
-  if (result.ok) {
-    statusEl.textContent = '✓ Installed. Find Browsy Connect in User Library → Audio Effects → Max Audio Effect.';
-    statusEl.className = 'settings-install-status ok';
-  } else {
-    statusEl.textContent = '✗ ' + result.error;
-    statusEl.className = 'settings-install-status err';
-  }
-});
 
-document.getElementById('settings-hs-btn').addEventListener('click', async () => {
-  if (!window.electronInstall) return;
-  const statusEl = document.getElementById('settings-hs-status');
-  statusEl.textContent = 'Installing…';
-  statusEl.className = 'settings-install-status';
-  const result = await window.electronInstall.installHammerspoon();
-  if (result.ok) {
-    statusEl.textContent = result.already
-      ? '✓ Already installed. Reload Hammerspoon config (⌘R in the console) if needed.'
-      : '✓ Installed. Reload Hammerspoon config — click the menubar icon → Reload Config.';
-    statusEl.className = 'settings-install-status ok';
-  } else {
-    statusEl.textContent = '✗ ' + result.error;
-    statusEl.className = 'settings-install-status err';
-  }
-});
 
 document.getElementById('settings-vocab-add').addEventListener('keydown', e => {
   if (e.key !== 'Enter') return;
@@ -3366,10 +3318,10 @@ const HELP_SLIDES = [
   },
   {
     cat: 'Getting started',
-    title: 'Browsy Connect — the Max for Live device',
-    desc: '<b>Browsy Connect</b> is the Max for Live Audio Effect that bridges Browsy and Ableton Live over OSC. Drop it on any track — it handles the communication so Browsy knows which track is selected and can load plugins on it.<br><br>Install it from <b>Settings → Install Browsy Connect</b>. Once installed it will appear in your User Library under <b>Audio Effects → Max Audio Effect</b>.',
-    tip: 'Keep Browsy Connect on a dedicated <b>Master</b> or <b>Return</b> track so it stays active no matter what track you\'re working on. It only needs to be on one track.',
-    highlight: ['#settings-open-btn'],
+    title: 'Works while Ableton is in focus',
+    desc: 'You never need to switch windows. Shortcut slots (keys <code>1–6</code>) work even when Ableton is the active application — Browsy loads the plugin silently in the background and focus stays in Live.<br><br>Press <code>Cmd+Shift+F</code> in Ableton at any time to bring Browsy to the front — useful when you want to search for something.',
+    tip: 'Browsy switches focus back to Ableton automatically after loading a plugin.',
+    highlight: ['#shortcuts-row'],
     panelPos: 'bottom',
   },
   {
@@ -3392,7 +3344,7 @@ const HELP_SLIDES = [
     cat: 'Shortcuts',
     title: 'One-key loading',
     desc: 'Right-click any plugin → <b>Assign to slot</b> to pin it to one of 6 shortcut slots at the top of the window.<br><br>Press the matching key to load that plugin instantly — no searching, no clicking. On <b>AZERTY</b>: <code>&amp; é " \' ( -</code> — on <b>QWERTY</b>: <code>1 2 3 4 5 6</code>.',
-    tip: 'Change your layout in <b>Settings → Keyboard Layout</b>. Slots can also be triggered from <b>Browsy Connect</b> via OSC <code>/shortcut n</code> — useful for foot pedals or controllers.',
+    tip: 'Change your layout in <b>Settings → Keyboard Layout</b>. Shortcuts work even when Ableton is in focus — no need to switch windows.',
     highlight: ['#shortcuts-row'],
     panelPos: 'bottom',
   },
@@ -3499,13 +3451,6 @@ if (window.electronInstall) {
   window.electronInstall.check().then(installed => {
     if (!installed) {
       document.getElementById('setup-banner').style.display = 'flex';
-    }
-  });
-  window.electronInstall.checkM4L().then(installed => {
-    if (installed) {
-      const el = document.getElementById('settings-m4l-status');
-      el.textContent = '✓ Already installed.';
-      el.className = 'settings-install-status ok';
     }
   });
 }

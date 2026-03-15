@@ -33,10 +33,6 @@ contextBridge.exposeInMainWorld('electronConfig', {
 contextBridge.exposeInMainWorld('electronInstall', {
   check:               () => ipcRenderer.invoke('remote-script:check'),
   installRemoteScript: () => ipcRenderer.invoke('remote-script:install'),
-  checkHammerspoon:    () => ipcRenderer.invoke('hammerspoon:check'),
-  installHammerspoon:  () => ipcRenderer.invoke('hammerspoon:install'),
-  checkM4L:            () => ipcRenderer.invoke('m4l:check'),
-  installM4L:          () => ipcRenderer.invoke('m4l:install'),
 })
 
 // Window controls — exposed as window.electronWindow
@@ -44,4 +40,5 @@ contextBridge.exposeInMainWorld('electronWindow', {
   close:        () => ipcRenderer.send('window:close'),
   minimize:     () => ipcRenderer.send('window:minimize'),
   focusAbleton: () => ipcRenderer.send('window:focusAbleton'),
+  onShortcut:   (cb) => ipcRenderer.on('shortcut:trigger', (_event, idx) => cb(idx)),
 })

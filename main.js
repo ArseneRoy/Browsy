@@ -115,61 +115,7 @@ ipcMain.handle('remote-script:install', () => {
   }
 })
 
-// Max for Live device — Browsy Connect
-const M4L_SRC  = path.join(__dirname, 'Browsy_connect.amxd')
-const M4L_DEST = path.join(
-  require('os').homedir(),
-  'Music', 'Ableton', 'User Library', 'Presets', 'Audio Effects', 'Max Audio Effect', 'Browsy Connect.amxd'
-)
 
-ipcMain.handle('m4l:check', () => fs.existsSync(M4L_DEST))
-
-ipcMain.handle('m4l:install', () => {
-  try {
-    fs.mkdirSync(path.dirname(M4L_DEST), { recursive: true })
-    fs.copyFileSync(M4L_SRC, M4L_DEST)
-    return { ok: true, dest: M4L_DEST }
-  } catch (err) {
-    return { ok: false, error: err.message }
-  }
-})
-
-// Hammerspoon integration
-const HS_INIT   = path.join(require('os').homedir(), '.hammerspoon', 'init.lua')
-const HS_MARKER = '-- Browsy:'
-const HS_SNIPPET = `
--- Browsy: open/focus when @ is pressed in Ableton Live
-local function _browsy_openOrFocus()
-  local app = hs.application.find('Browsy')
-  if app then app:activate()
-  else hs.application.open('/Applications/Browsy.app') end
-end
-local _browsy_watcher = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
-  local front = hs.application.frontmostApplication()
-  if not front or front:name() ~= 'Live' then return false end
-  if e:getCharacters(true) == '@' then _browsy_openOrFocus(); return true end
-  return false
-end)
-_browsy_watcher:start()
-`
-
-ipcMain.handle('hammerspoon:check', () => {
-  if (!fs.existsSync(HS_INIT)) return 'missing'
-  const content = fs.readFileSync(HS_INIT, 'utf-8')
-  return content.includes(HS_MARKER) ? 'installed' : 'not-configured'
-})
-
-ipcMain.handle('hammerspoon:install', () => {
-  try {
-    fs.mkdirSync(path.dirname(HS_INIT), { recursive: true })
-    const existing = fs.existsSync(HS_INIT) ? fs.readFileSync(HS_INIT, 'utf-8') : ''
-    if (existing.includes(HS_MARKER)) return { ok: true, already: true }
-    fs.writeFileSync(HS_INIT, existing + HS_SNIPPET)
-    return { ok: true, already: false }
-  } catch (err) {
-    return { ok: false, error: err.message }
-  }
-})
 
 // Window controls
 ipcMain.on('window:close',    () => mainWindow?.close())
@@ -178,9 +124,60 @@ ipcMain.on('window:focusAbleton', () => {
   exec(`osascript -e 'tell application "Live" to activate'`)
 })
 
+// ─── Global shortcuts (active when Ableton is frontmost) ──────────────────────
+const SHORTCUT_KEYS = ['1','2','3','4','5','6']
+let focusPollInterval = null
+
+function getFrontApp() {
+  return new Promise(resolve => {
+    exec(`osascript -e 'tell application "System Events" to get name of first application process whose frontmost is true'`, (err, stdout) => {
+      resolve(err ? '' : stdout.trim())
+    })
+  })
+}
+
+function registerGlobalShortcuts() {
+  SHORTCUT_KEYS.forEach((key, i) => {
+    if (globalShortcut.isRegistered(key)) return
+    globalShortcut.register(key, () => {
+      mainWindow?.webContents.send('shortcut:trigger', i)
+    })
+  })
+  if (!globalShortcut.isRegistered('Cmd+Shift+F')) {
+    globalShortcut.register('Cmd+Shift+F', () => {
+      if (mainWindow) { mainWindow.show(); mainWindow.focus() }
+    })
+  }
+}
+
+function unregisterGlobalShortcuts() {
+  SHORTCUT_KEYS.forEach(key => globalShortcut.unregister(key))
+  globalShortcut.unregister('Cmd+Shift+F')
+}
+
+function setupFocusWatcher(win) {
+  win.on('focus', () => {
+    clearInterval(focusPollInterval)
+    focusPollInterval = null
+    unregisterGlobalShortcuts()
+  })
+
+  win.on('blur', () => {
+    focusPollInterval = setInterval(async () => {
+      const front = await getFrontApp()
+      if (front === 'Live') {
+        registerGlobalShortcuts()
+      } else {
+        unregisterGlobalShortcuts()
+      }
+    }, 200)
+  })
+}
+
 app.whenReady().then(() => {
   setupOSC()
   createWindow()
+  setupFocusWatcher(mainWindow)
 })
 
 app.on('window-all-closed', () => {
