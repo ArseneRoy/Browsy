@@ -28,12 +28,10 @@
       "preload.js",
       "browsy.html",
       "plugin-tags.js",
-      "remote-script/**",
-      "Browsy_connect.amxd"
+      "remote-script/**"
     ],
     "asarUnpack": [
-      "remote-script/**",
-      "Browsy_connect.amxd"
+      "remote-script/**"
     ]
   }
 }
