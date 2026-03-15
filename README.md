@@ -8,7 +8,6 @@ A keyboard-first plugin browser for Ableton Live. Connects via a Remote Script, 
 
 1. Install the app from the `.dmg`
 2. Open Browsy and click **?** — it will guide you through the full setup
-3. *(Optional)* Install **Browsy Connect** from Settings if you want to trigger shortcuts directly from Ableton using the same keys, without switching focus to the Browsy window
 
 ---
 
@@ -21,9 +20,11 @@ Select a plugin and press `Enter` to load it on the selected Ableton track. Doub
 Type any part of a name or vendor — results are ranked by closeness. Filter by category (Audio FX, Instruments, MIDI FX, M4L) and format (VST3, VST2, AU). Press `Esc` to clear.
 
 **Shortcuts**
-Right-click any plugin → Assign to slot to pin it to one of 6 shortcut slots. Press the matching key to load instantly — no searching, no clicking.
+Right-click any plugin → Assign to slot to pin it to one of 6 shortcut slots. Press the matching key to load instantly — works even when Ableton is in focus.
 - AZERTY: `& é " ' ( -`
 - QWERTY: `1 2 3 4 5 6`
+
+Press `Cmd+Shift+F` in Ableton to bring Browsy to the front.
 
 **Tags**
 Right-click any plugin → Edit Tags to organise your library. Filter by tag from the search bar using `#tag`. Stack multiple tags and mix with text search.
@@ -63,3 +64,4 @@ Browsy listens on port **11001**, sends to Ableton on port **11000**.
 
 - macOS
 - Ableton Live 11 or later
+- Max for Live (only if scanning `.amxd` files)
